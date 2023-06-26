@@ -91,4 +91,12 @@ public class User {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public void addReview(Review review) {
+        this.reviews.add(review);
+    }
+
+    public void addMovie(Movie movie) {
+        this.movies.add(movie);
+    }
 }
