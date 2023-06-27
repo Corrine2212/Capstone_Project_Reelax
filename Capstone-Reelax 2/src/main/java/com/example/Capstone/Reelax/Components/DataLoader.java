@@ -38,9 +38,9 @@ public class DataLoader implements ApplicationRunner {
         User user2 = new User("UserTwo","4321@gmail.com","4321");
         userRepository.save(user2);
 
-        Movie movie1= new Movie("Underwhelming 2 hours of your life", "poster2", 2, "last week", false, user1);
+        Movie movie1= new Movie("Underwhelming 2 hours of your life", "depressing", "poster2", 2, "last week", false, user1);
         movieRepository.save(movie1);
-        Movie movie2= new Movie("overwhelming 2 hours of your day", "poster13", 5, "yesterday", true, user2);
+        Movie movie2= new Movie("overwhelming 2 hours of your day", "wow! (owen wilson voice)", "poster13", 5, "yesterday", true, user2);
         movieRepository.save(movie2);
 
         Review review1 = new Review(user1, movie1, 5, "was alright i suppose");

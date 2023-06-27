@@ -59,7 +59,7 @@ const MainContainer = () => {
     //     //     }
     //     //   };
     //       const allRequests = []
-    //       for (let i = 1; i <= 2; i++){
+    //       for (let i = 1; i <= 1000; i++){
     //         const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
     //         .then(response => response.json())
     //         allRequests.push(newFetch)
@@ -75,6 +75,7 @@ const MainContainer = () => {
     //     for(let movie of result.results){
     //       let newMovie = {
     //         "title": movie.title,
+    //         "overview": movie.overview,
     //         "poster": movie.poster_path,
     //         "genre": 1,
     //         "release": movie.release_date,
@@ -92,7 +93,7 @@ const MainContainer = () => {
     // }
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} alt="poster"/> </li>
+        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} alt="poster"/> {movie.overview}</li>
     })
 
     const userDisplay = users.map((user, index) => {

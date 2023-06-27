@@ -19,6 +19,9 @@ public class Movie {
     @Column(name="title", nullable = true)
     private String title;
 
+    @Column(name="overview", nullable = true)
+    private String overview;
+
     @Column(name="poster", nullable = true)
     private String poster;
 
@@ -40,8 +43,9 @@ public class Movie {
     @JoinColumn(name="user_id", nullable = true)
     private User user;
 
-    public Movie(String title, String poster, int genre, String release, Boolean seen, User user) {
+    public Movie(String title, String overview, String poster, int genre, String release, Boolean seen, User user) {
         this.title = title;
+        this.overview = overview;
         this.poster = poster;
         this.genre = genre;
         this.release = release;
@@ -68,6 +72,14 @@ public class Movie {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
     public Long getId() {
