@@ -92,7 +92,7 @@ const MainContainer = () => {
     // }
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}>{movie.title}</li>
+        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} alt="poster"/> </li>
     })
 
     const userDisplay = users.map((user, index) => {
@@ -100,7 +100,7 @@ const MainContainer = () => {
     })
 
     const reviewDisplay = reviews.map((review, index) => {
-    return <li key={index}>{review.review}</li>
+    return <li key={index}>{review.review} </li>
     })
     
     
