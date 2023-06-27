@@ -31,11 +31,12 @@ class CapstoneReelaxApplicationTests {
 		Review review = new Review(user, movie, 4, "great Chungus full of fun!");
 		reviewRepository.save(review);
 
-		user.addReview(review);
-		userRepository.save(user);
+//		user.addReview(review);
+//		userRepository.save(user);
+//
+//		user.addMovie(movie);
+//		userRepository.save(user);
 
-		user.addMovie(movie);
-		userRepository.save(user);
 	}
 
 

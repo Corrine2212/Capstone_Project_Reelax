@@ -1,6 +1,7 @@
 package com.example.Capstone.Reelax;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,28 +16,28 @@ public class Movie {
     @Column(name="id")
     private Long Id;
 
-    @Column(name="title")
+    @Column(name="title", nullable = true)
     private String title;
 
-    @Column(name="poster")
+    @Column(name="poster", nullable = true)
     private String poster;
 
-    @Column(name="genre")
+    @Column(name="genre", nullable = true)
     private int genre;
 
-    @Column(name="release")
+    @Column(name="release", nullable = true)
     private String release;
 
-    @Column(name="seen")
+    @Column(name="seen", nullable = true)
     private Boolean seen;
 
     @JsonBackReference
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews;
 
-
+    @JsonIgnoreProperties({"movies"})
     @ManyToOne()
-    @JoinColumn(name="user_id", nullable = false)
+    @JoinColumn(name="user_id", nullable = true)
     private User user;
 
     public Movie(String title, String poster, int genre, String release, Boolean seen, User user) {
@@ -116,4 +117,6 @@ public class Movie {
     public void setSeen(Boolean seen) {
         this.seen = seen;
     }
+
+
 }
