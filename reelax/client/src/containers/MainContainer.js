@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import Request from '../helpers/request'
+import LiveSearch from './LiveSearch'
 
 const MainContainer = () => {
 
@@ -107,6 +108,7 @@ const MainContainer = () => {
     
     return ( 
         <div>
+          <LiveSearch/>
             <ul>
 
               <p>this is a movie container</p>
