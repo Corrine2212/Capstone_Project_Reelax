@@ -1,6 +1,6 @@
 package com.example.Capstone.Reelax;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,11 +19,10 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany
-    @JoinColumn(name="movie_id", nullable = true)
+    @OneToMany(mappedBy = "user")
     private List<Movie> movies;
 
-    @JsonBackReference
+    @JsonIgnoreProperties({"user"}  )
     @OneToMany(mappedBy = "user")
     private List<Review> reviews;
 

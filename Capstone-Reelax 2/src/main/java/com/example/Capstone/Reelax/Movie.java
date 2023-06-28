@@ -1,6 +1,5 @@
 package com.example.Capstone.Reelax;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -34,7 +33,10 @@ public class Movie {
     @Column(name="seen", nullable = true)
     private Boolean seen;
 
-    @JsonBackReference
+
+//    @JsonBackReference
+
+    @JsonIgnoreProperties({"movie", "user"})
     @OneToMany(mappedBy = "movie")
     private List<Review> reviews;
 

@@ -1,6 +1,5 @@
 package com.example.Capstone.Reelax;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -14,14 +13,15 @@ public class Review {
     @Column(name = "id")
     private Long id;
 
-    @JsonIgnoreProperties({"reviews"})
-    @JsonBackReference
+    @JsonIgnoreProperties({"reviews", "movies"})
+//    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = true)
     private User user;
 
+    @JsonIgnoreProperties({"user"})
     @ManyToOne
-    @JoinColumn(name = "movie_id", nullable = false)
+    @JoinColumn(name = "movie_id", nullable = true)
     private Movie movie;
 
     @Column(name = "stars")
