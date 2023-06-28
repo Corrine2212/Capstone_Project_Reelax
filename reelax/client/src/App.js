@@ -36,9 +36,7 @@ function App() {
     setLoggedInUser(null);
     localStorage.removeItem('loggedInUser') // removes the logged in user from local storage
   }
-  // const addUser = (user) => {
-  //   setUsers([...users, user])
-  // }
+  
   // const handleEditClicked = (id, post) => {
   //   putPost(id, post)
   //   let updatedPostIndex = posts.indexOf(post)
