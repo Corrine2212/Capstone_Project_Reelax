@@ -4,27 +4,21 @@ import LiveSearch from './LiveSearch'
 
 const MainContainer = () => {
 
-    const baseURL = "/api/users"
+    
     const [movies, setMovies] = useState([])
     const [users, setUsers] = useState([])
     const [reviews, setReviews] = useState([])
+    const [movieTitle, setMovieTitle] = useState([])
 
 
     useEffect(() => {
       getMovies();
-      getUsers();
       getReviews();
+      getMovieTitle();
      
     }, [])
     
 
-    const getUsers = () => {
-      return fetch(baseURL)
-          .then(res => res.json())
-          .then(data => setUsers(data))
-
-
-  }
 
   const getMovies= () => {
     const request= new Request()
@@ -42,6 +36,13 @@ const MainContainer = () => {
       setReviews(data)
     })
   }
+  const getMovieTitle = (title) => {
+    const request = new Request()
+    request.get("/api/movies/"+ title)
+    .then((data) =>{
+      setMovieTitle(data)
+    })
+  }
 
 
   // const addUser = (user) => {
@@ -52,13 +53,13 @@ const MainContainer = () => {
     // const getMovies = function () {
     
 
-    //     const options = {
-    //         method: 'GET',
-    //         headers: {
-    //           accept: 'application/json',
-    //           Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
-    //         }
-    //       };
+    //     // const options = {
+    //     //     method: 'GET',
+    //     //     headers: {
+    //     //       accept: 'application/json',
+    //     //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
+    //     //     }
+    //     //   };
     //       const allRequests = []
     //       for (let i = 1; i <= 1000; i++){
     //         const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
@@ -94,7 +95,7 @@ const MainContainer = () => {
     // }
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} width={250} height={300} alt="poster"/> </li>
+        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} width={250} height={300}alt="poster"/> {movie.overview}</li>
     })
 
     const userDisplay = users.map((user, index) => {
@@ -108,7 +109,7 @@ const MainContainer = () => {
     
     return ( 
         <div>
-          <LiveSearch/>
+          <LiveSearch getMovies={getMovies}/>
             <ul>
 
               <p>this is a movie container</p>
