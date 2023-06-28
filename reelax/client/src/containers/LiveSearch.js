@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Request from '../helpers/request';
 
 function LiveSearch() {
     const [query, setQuery] = useState('');
@@ -7,9 +8,10 @@ function LiveSearch() {
     useEffect(() => {
         const delayDebounceFn = setTimeout(() => {
             if (query) {
-                fetch(`https://api.themoviedb.org/3/search/movie?api_key=5a2f99915271afb74d1fbff41026eb4c&query=${query}`)
-                    .then(res => res.json())
-                    .then(data => setResults(data.results))
+                const request = new Request()
+                request.get(`api/movies/${query}`)
+                    // .then(res => res.json())
+                    .then(data => setResults(data))
                     .catch(err => console.error(err));
             }
         }, 500) // delay in ms

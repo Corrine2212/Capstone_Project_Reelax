@@ -8,12 +8,14 @@ const MainContainer = () => {
     const [movies, setMovies] = useState([])
     const [users, setUsers] = useState([])
     const [reviews, setReviews] = useState([])
+    const [movieTitle, setMovieTitle] = useState([])
 
 
     useEffect(() => {
       getMovies();
       getUsers();
       getReviews();
+      getMovieTitle();
      
     }, [])
     
@@ -40,6 +42,13 @@ const MainContainer = () => {
     request.get("/api/reviews")
     .then((data) => {
       setReviews(data)
+    })
+  }
+  const getMovieTitle = (title) => {
+    const request = new Request()
+    request.get("/api/movies/"+ title)
+    .then((data) =>{
+      setMovieTitle(data)
     })
   }
 
@@ -108,7 +117,7 @@ const MainContainer = () => {
     
     return ( 
         <div>
-          <LiveSearch/>
+          <LiveSearch getMovies={getMovies}/>
             <ul>
 
               <p>this is a movie container</p>
