@@ -31,5 +31,16 @@ public class UserController {
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 
-    @DeleteMapping()
+    @DeleteMapping(value = "/users/{id}")
+    public ResponseEntity<User> deleteUser(@PathVariable Long id) {
+        User found = userRepository.getOne(id);
+        userRepository.delete(found);
+        return new ResponseEntity<>(null, HttpStatus.OK);
+    }
+
+    @PatchMapping(value = "/users/{id}")
+    public ResponseEntity<User> updateUser(@RequestBody User user) {
+        userRepository.save(user);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+    }
 }

@@ -60,6 +60,12 @@ public class DataLoader implements ApplicationRunner {
         movie2.setUser(user2);
         movieRepository.save(movie2);
 
+        review1.setUser(user1);
+        reviewRepository.save(review1);
+
+        review2.setUser(user2);
+        reviewRepository.save(review2);
+
 
 
 

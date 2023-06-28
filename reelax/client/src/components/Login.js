@@ -3,7 +3,7 @@ import ForgotPassword from './ForgotPassword';
 import React, { useState } from 'react';
 
 
-const Login = ({ onSubmitLogin, addUser }) => {
+const Login = ({ onSubmitLogin, addUser, createUser }) => {
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
@@ -18,25 +18,28 @@ const Login = ({ onSubmitLogin, addUser }) => {
         movies: [],
         reviews: []
     })
-    // const handleCreate = () => {
-    //     setButtonClicked(!buttonClicked)
-    // }
+
+    const handleCreate = () => {
+        setButtonClicked(!buttonClicked)
+    }
+
     const onChange = (e) => {
         const newFormData = Object.assign({}, formData);
         newFormData[e.target.name] = e.target.value;
         setFormData(newFormData);
     }
-    // const onSubmit = (event) => {
-    //     event.preventDefault();
-    //     postNewUser(formData).then((data) => {
-    //         addUser(data);
-    //     })
-    //     setFormData({
-    //         username: "",
-    //         email: "",
-    //         password: ""
-    //     })
-    // }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        createUser(formData)
+        
+        setFormData({
+            username: "",
+            email: "",
+            password: ""
+        })
+    }
+
     const handleUsernameOrEmailChange = (event) => {
         setUsernameOrEmail(event.target.value)
     }
@@ -98,12 +101,11 @@ const Login = ({ onSubmitLogin, addUser }) => {
                     </div>
                     <input className="login-submit-btn" type="submit" value="Sign In" />
                 </form>
-                {/* <div>
+                <div>
                     <button onClick={handleCreate} className="create-acc-btn">Create an account</button>
                     {buttonClicked && (
                         <div className="modal-overlay">
                             <div className="modal-content">
-                            <img className="header-logo" src="../../Meme logo.png" alt="logo" />
                                 <h1>Create Form</h1>
                                 <form onSubmit={onSubmit}>
                                     <div className="input-field">
@@ -119,7 +121,7 @@ const Login = ({ onSubmitLogin, addUser }) => {
                             </div>
                         </div>
                     )}
-                </div> */}
+                </div>
             </div>
         </div>
     )
