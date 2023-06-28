@@ -3,7 +3,8 @@ import Login from '../components/Login'
 import MainContainer from './MainContainer';
 
 
-const UserContainer = () => {
+
+const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
 
     if (loggedInUser) {
         return <MainContainer/>
@@ -11,7 +12,7 @@ const UserContainer = () => {
 
     return ( 
         <div>
-            <Login/>
+            <Login onSubmitLogin={onSubmitLogin}/>
         </div>
      );
 }
