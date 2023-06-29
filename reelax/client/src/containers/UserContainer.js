@@ -17,7 +17,7 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
 
 
     if (loggedInUser) {
-        return <MainContainer/>
+        return <MainContainer users ={users} user={loggedInUser}/>
     }
 
     return ( 

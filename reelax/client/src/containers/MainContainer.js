@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
 
 
-const MainContainer = (user) => {
+const MainContainer = ({user}) => {
 
     
     const [movies, setMovies] = useState([])
@@ -140,9 +140,13 @@ const MainContainer = (user) => {
             <NavBar/>
             <LiveSearch getMovies={getMovies}/>
           <Routes>
+
           <Route path="/*" element = {movieDisplay}/>
           <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
           <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
+
+         
+
           </Routes>
           </Router>
           </div>
