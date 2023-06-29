@@ -4,6 +4,7 @@ class Request {
     return fetch(url)
     .then((res) => res.json());
     }
+    
     delete(url){
         return fetch(url, {
         method: "DELETE",

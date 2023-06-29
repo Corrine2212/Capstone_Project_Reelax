@@ -85,8 +85,7 @@ function App() {
   // }
   return (
     <div className='App'>
-      <UserContainer  users={users} loggedInUser={loggedInUser}
-      onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} />
+      <UserContainer  users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} />
       {/* // addPost={addPost} updatePostForUser={updatePostForUser} updateCommentForUser={updateCommentForUser} postForUserUpdated={postForUserUpdated}/> */}
     </div>
   );

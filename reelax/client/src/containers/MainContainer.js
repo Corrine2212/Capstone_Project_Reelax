@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 
 
 
-const MainContainer = (user) => {
+const MainContainer = ({user}) => {
 
     
     const [movies, setMovies] = useState([])
@@ -121,7 +121,7 @@ const MainContainer = (user) => {
             <LiveSearch getMovies={getMovies}/>
           <Routes>
           <Route path="/" element = {movieDisplay}/>
-          <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
+          <Route path="/profile" element = {<ProfileCard key={user.id} users={users} user={user} getMovies={getMovies()}/>}/>
           </Routes>
           </Router>
           </div>
