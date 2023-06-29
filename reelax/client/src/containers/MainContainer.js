@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import Request from '../helpers/request'
 import LiveSearch from './LiveSearch'
+import MovieCard from '../components/MovieCard';
 
 const MainContainer = () => {
 
@@ -95,7 +96,7 @@ const MainContainer = () => {
     // }
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}>{movie.title} <img id="poster" src={"https://image.tmdb.org/t/p/original"+movie.poster} width={250} height={300}alt="poster"/> {movie.overview}</li>
+        return <li key={index}><MovieCard movie={movie}/></li>
     })
 
     const userDisplay = users.map((user, index) => {
