@@ -2,8 +2,12 @@ import React, {useState, useEffect} from 'react'
 import Request from '../helpers/request'
 import LiveSearch from './LiveSearch'
 import MovieCard from '../components/MovieCard';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import ProfileCard from '../components/ProfileCard';
+import NavBar from './NavBar';
 
-const MainContainer = () => {
+
+const MainContainer = (user) => {
 
     
     const [movies, setMovies] = useState([])
@@ -110,6 +114,14 @@ const MainContainer = () => {
     
     return ( 
         <div>
+          <div>
+          <Router>
+            <NavBar/>
+          <Routes>
+          <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
+          </Routes>
+          </Router>
+          </div>
           <LiveSearch getMovies={getMovies}/>
             <ul>
 
