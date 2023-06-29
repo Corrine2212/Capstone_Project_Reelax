@@ -2,10 +2,12 @@ import React from 'react';
 
 
 
+
 const ProfileCard = (user) => {
 
     return ( 
         <>
+       
         <h1>Hello @{user.username}</h1>
 
         <h3>@{user.username}</h3>
