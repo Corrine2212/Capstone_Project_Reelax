@@ -2,10 +2,10 @@ import React, {useState, useEffect} from 'react'
 import Request from '../helpers/request'
 import LiveSearch from './LiveSearch'
 import MovieCard from '../components/MovieCard';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-dom'
 import ProfileCard from '../components/ProfileCard';
 import NavBar from './NavBar';
-
+import MovieDetail from '../components/MovieDetail';
 
 
 const MainContainer = (user) => {
@@ -98,10 +98,30 @@ const MainContainer = (user) => {
     //     }
     //   }
 
-    // }
+    //
+
+
+    
+    const findMovieById = (id) => {
+      let foundMovie = null;
+      for (let movie of movies){
+        if (movie.id === parseInt(id)){
+          foundMovie = movie
+        }
+      }
+      return foundMovie
+    }
+    
+    const MovieDetailWrapper = () => {
+      const {id} = useParams()
+      let foundMovie = findMovieById(id)
+      console.log("foundMovie", foundMovie);
+      return <MovieDetail movie={foundMovie}/>
+  }
+
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}><MovieCard movie={movie}/></li>
+        return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById}/></li>
     })
 
     const userDisplay = users.map((user, index) => {
@@ -120,7 +140,8 @@ const MainContainer = (user) => {
             <NavBar/>
             <LiveSearch getMovies={getMovies}/>
           <Routes>
-          <Route path="/" element = {movieDisplay}/>
+          <Route path="/*" element = {movieDisplay}/>
+          <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
           <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
           </Routes>
           </Router>
