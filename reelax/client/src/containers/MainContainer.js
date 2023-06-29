@@ -9,7 +9,7 @@ import MovieDetail from '../components/MovieDetail';
 import { flushSync } from 'react-dom';
 
 
-const MainContainer = ({user, removeUser, onUserLogout}) => {
+const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
 
     
     const [movies, setMovies] = useState([])
@@ -130,7 +130,7 @@ const MainContainer = ({user, removeUser, onUserLogout}) => {
       const {id} = useParams()
       let foundMovie = findMovieById(id)
       console.log("foundMovie", foundMovie);
-      return <MovieDetail movie={foundMovie}/>
+      return <MovieDetail user={user} movie={foundMovie} addToWatchList={addToWatchList}/>
   }
 
 

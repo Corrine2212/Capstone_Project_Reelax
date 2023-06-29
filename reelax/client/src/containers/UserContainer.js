@@ -14,10 +14,17 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout, remove
         window.location = '/movies'
       })
     }
-
+    
+    const saveUser = (user) => {
+      const request = new Request()
+      request.patch('/api/users' + user.id, user)
+      .then(() => {
+        window.location = '/users/'+user.id
+      })
+    }
 
     if (loggedInUser) {
-        return <MainContainer users ={users} user={loggedInUser} onUserLogout={onUserLogout} removeUser={removeUser}/>
+        return <MainContainer users ={users} user={loggedInUser} onUserLogout={onUserLogout} addToWatchList={saveUser}removeUser={removeUser}/>
     }
 
     return ( 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieDetail = ({movie}) => {
+const MovieDetail = ({movie, addToWatchList, user}) => {
 
     if(!movie){
         return "Loading..."
@@ -19,6 +19,11 @@ const MovieDetail = ({movie}) => {
         }
     }
 
+    const onButtonClicked = (movie) => {
+        user.movies.push(movie)
+        addToWatchList(user)
+    }
+
     return ( 
         <div>
             <h1>
@@ -29,6 +34,7 @@ const MovieDetail = ({movie}) => {
                 width={250} height={300}alt="poster"/>
                 <p>{movie.overview}</p>
                 <p>{seen()}</p>
+                <button onClick={onButtonClicked}>Add To Watch List</button>
             <ul>
                 {reviews}
             </ul>
