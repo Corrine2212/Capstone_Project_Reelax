@@ -5,9 +5,8 @@ const NavBar = () => {
         <>
         <header>
             <Link to="/profile"> profile </Link> 
+            <Link to="/"> Home</Link>
 
-
-            {/* </Link> */}
         </header>
         </>
      );

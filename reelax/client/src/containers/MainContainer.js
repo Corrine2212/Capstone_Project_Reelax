@@ -7,6 +7,7 @@ import ProfileCard from '../components/ProfileCard';
 import NavBar from './NavBar';
 
 
+
 const MainContainer = (user) => {
 
     
@@ -117,18 +118,19 @@ const MainContainer = (user) => {
           <div>
           <Router>
             <NavBar/>
+            <LiveSearch getMovies={getMovies}/>
           <Routes>
+          <Route path="/" element = {movieDisplay}/>
           <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
           </Routes>
           </Router>
           </div>
-          <LiveSearch getMovies={getMovies}/>
             <ul>
 
-              <p>this is a movie container</p>
+              {/* <p>this is a movie container</p>
                 {movieDisplay} 
                 {/* {userDisplay}
-                {reviewDisplay} */}
+                {reviewDisplay} */} 
             </ul>
         </div>
      );
