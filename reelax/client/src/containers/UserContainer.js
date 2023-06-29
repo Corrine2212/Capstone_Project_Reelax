@@ -18,7 +18,7 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
       const request = await new Request()
       request.patch('/api/users' + user.id, user)
       .then(() => {
-        window.location = '/users/' + user.id
+        window.location = '/users/' + user
       })
     }
 
