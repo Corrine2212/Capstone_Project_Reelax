@@ -1,4 +1,5 @@
 import React from 'react';
+import Request from '../helpers/request';
 
 const MovieDetail = ({movie, addToWatchList, user}) => {
 
@@ -19,9 +20,17 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
         }
     }
 
-    const onButtonClicked = (movie) => {
-        user.movies.push(movie)
-        addToWatchList(user)
+    const onButtonClicked = (event) => {
+        console.log("movie user", user);
+        console.log("movie movie", movie);
+        let newMovie = {...movie}
+        newMovie.user = user
+        let request = new Request()
+        request.post("/api/movies", newMovie)
+
+        console.log("movie id movie id", movie.id);
+        // user.movies.push(movie)
+        // addToWatchList(user)
     }
 
     return ( 
