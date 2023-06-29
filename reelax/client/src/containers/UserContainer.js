@@ -5,7 +5,7 @@ import Request from '../helpers/request';
 
 
 
-const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
+const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout, removeUser}) => {
 
     const createUser = (user) => {
       const request = new Request()
@@ -17,7 +17,7 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
 
 
     if (loggedInUser) {
-        return <MainContainer users ={users} user={loggedInUser}/>
+        return <MainContainer users ={users} user={loggedInUser} onUserLogout={onUserLogout} removeUser={removeUser}/>
     }
 
     return ( 

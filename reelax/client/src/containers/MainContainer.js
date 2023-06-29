@@ -6,9 +6,10 @@ import {BrowserRouter as Router, Route, Routes, useParams} from 'react-router-do
 import ProfileCard from '../components/ProfileCard';
 import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
+import { flushSync } from 'react-dom';
 
 
-const MainContainer = ({user}) => {
+const MainContainer = ({user, removeUser, onUserLogout}) => {
 
     
     const [movies, setMovies] = useState([])
@@ -50,6 +51,19 @@ const MainContainer = ({user}) => {
     })
   }
 
+  const handleLogout = () => {
+    onUserLogout();
+  }
+
+
+  const handleDelete = (id) => {
+    const request = new Request()
+    const url = "/api/users/" + id;
+    request.delete(url)
+    .then (() => {
+      window.location = "/users"
+    })
+  }
 
   // const addUser = (user) => {
   //   setUsers([...users, user])
@@ -137,13 +151,13 @@ const MainContainer = ({user}) => {
         <div>
           <div>
           <Router>
-            <NavBar/>
+            <NavBar handleLogout={handleLogout}/>
             <LiveSearch getMovies={getMovies}/>
           <Routes>
 
           <Route path="/*" element = {movieDisplay}/>
           <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
-          <Route path="/profile" element = {<ProfileCard key={user.id} user={user}/>}/>
+          <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete}/>}/>
 
          
 
