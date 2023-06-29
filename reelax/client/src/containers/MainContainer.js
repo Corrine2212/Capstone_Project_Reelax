@@ -8,7 +8,7 @@ import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
 
 
-const MainContainer = ({user}) => {
+const MainContainer = ({user, addToWatchList}) => {
 
     
     const [movies, setMovies] = useState([])
@@ -116,12 +116,12 @@ const MainContainer = ({user}) => {
       const {id} = useParams()
       let foundMovie = findMovieById(id)
       console.log("foundMovie", foundMovie);
-      return <MovieDetail movie={foundMovie}/>
+      return <MovieDetail movie={foundMovie} addToWatchList={addToWatchList} user={user}/>
   }
 
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById}/></li>
+        return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} user={user}/></li>
     })
 
     const userDisplay = users.map((user, index) => {

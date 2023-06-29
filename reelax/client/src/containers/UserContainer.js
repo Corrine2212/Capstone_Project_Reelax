@@ -14,10 +14,18 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout}) => {
         window.location = '/movies'
       })
     }
+    const saveUser = async (user) => {
+      const request = await new Request()
+      request.patch('/api/users' + user.id, user)
+      .then(() => {
+        window.location = '/users/' + user.id
+      })
+    }
+
 
 
     if (loggedInUser) {
-        return <MainContainer users ={users} user={loggedInUser}/>
+        return <MainContainer users ={users} user={loggedInUser} addToWatchList={saveUser}/>
     }
 
     return ( 
