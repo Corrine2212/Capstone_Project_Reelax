@@ -17,9 +17,12 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout, remove
     
     const saveUser = (user) => {
       const request = new Request()
-      request.patch('/api/users' + user.id, user)
+      console.log("user", user);
+      user.movies = []
+      console.log("edited User", user);
+      request.patch('/api/users/' + user.id, user)
       .then(() => {
-        window.location = '/users/'+user.id
+        // window.location = '/users/'+user.id
       })
     }
 
