@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -7,14 +7,17 @@ import { Link } from 'react-router-dom';
 const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movies}) => {
     
 
-    // const seenMovies = user.movies.map((user, index) => {
-    //     return <li key={index}>{user.movies} </li>
-    //   })
+    const [buttonClicked, setButtonClicked] = useState([false])
 
     const onDelete = () => {
       handleDelete(user.id);
      
     }
+
+    const handleClick1 = () => {
+        setButtonClicked(!buttonClicked)
+    }
+
     let movieList = []
     if(reviews.length > 0 && movies.length > 0){
 
@@ -52,7 +55,8 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
         return <li key={index}><p>{movie.title}</p><p>{movie.overview}</p></li>
     })
 
-}
+    }
+
 
 
     return ( 
@@ -63,16 +67,15 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
         profilePicture
         <h3>@{user.username}</h3>
         <p>user profile</p>
+        <div>
+        <button onClick={handleClick1}className='watchlist-btn'>Watch List</button>
+        </div>
 
-        <button className='watchlist-btn'>Watch List</button>
-        <button className="watched-btn">Watched List</button>
-        <Link to="/"><button onClick={onDelete}>Delete Account</button></Link>
-
-        <ul>
+        {buttonClicked? <ul>
             {movieList}
-        </ul>
+        </ul> : null}
 
-        {/* {selectedWatchList? getMovies(seenMovies): getMovies(watchListMovies)} */}
+        <Link to="/"><button onClick={onDelete}>Delete Account</button></Link>
         </div>
      );
 }
