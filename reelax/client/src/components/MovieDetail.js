@@ -7,9 +7,7 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
         return "Loading..."
     }
 
-    const reviews = movie.reviews.map((review, index) => {
-        return <li key={index}>{review.stars}{review.review}</li>
-    })
+
 
         const seen = () => {
         if (movie.seen === true){
@@ -23,13 +21,14 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
     const onButtonClicked = (event) => {
         console.log("movie user", user);
         console.log("movie movie", movie);
-        let newMovie = {...movie}
-        newMovie.user = user
+        let newReview = {
+            "user_id": user.id,
+            "movie_id": movie.id
+        }
         let request = new Request()
-        request.post("/api/movies", newMovie)
+        request.post("/api/reviews", newReview)
 
-        console.log("movie id movie id", movie.id);
-        // user.movies.push(movie)
+       // user.movies.push(movie)
         // addToWatchList(user)
     }
 
@@ -45,7 +44,7 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
                 <p>{seen()}</p>
                 <button onClick={onButtonClicked}>Add To Watch List</button>
             <ul>
-                {reviews}
+
             </ul>
         </div>
      );
