@@ -1,10 +1,6 @@
 package com.example.Capstone.Reelax;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -19,12 +15,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @OneToMany(mappedBy = "user")
-    private List<Movie> movies;
-
-    @JsonIgnoreProperties({"user"}  )
-    @OneToMany(mappedBy = "user")
-    private List<Review> reviews;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,8 +25,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.movies = new ArrayList<>();
-        this.reviews = new ArrayList<>();
+
     }
 
     public User(){
@@ -67,35 +56,11 @@ public class User {
         this.password = password;
     }
 
-    public List<Movie> getMovies() {
-        return movies;
-    }
-
-    public void setMovies(List<Movie> movies) {
-        this.movies = movies;
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void addReview(Review review) {
-        this.reviews.add(review);
-    }
-
-    public void addMovie(Movie movie) {
-        this.movies.add(movie);
     }
 }
