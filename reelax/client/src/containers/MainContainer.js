@@ -155,7 +155,7 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
 
           <Route path="/*" element = {movieDisplay}/>
           <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
-          <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete}/>}/>
+          <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies}/>}/>
 
          
 
