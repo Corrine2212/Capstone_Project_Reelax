@@ -10,6 +10,7 @@ const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
   useEffect(() => {
     setInput(''); // clear input on location change
     setSearchInput(''); // also clear the input in the parent component state
+    getMovieByTitle('');
   }, [location]); 
 
   const handleChange = event => {

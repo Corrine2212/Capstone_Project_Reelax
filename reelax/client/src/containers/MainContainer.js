@@ -18,6 +18,7 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     const [reviews, setReviews] = useState([])
     const [movieTitle, setMovieTitle] = useState([])
     const [searchInput, setSearchInput] = useState("");
+    const [foundMovies, setFoundMovies] = useState("");
 
 
 
@@ -49,15 +50,16 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
 
   const getMovieByTitle = (title) => {
     const request = new Request();
+    if(title === ''){
+      getMovies();
+    }
     if (title) {
       request.get("/api/movies/search/" + title)
         .then((data) => {
           setMovies(data);
         });
     } else {
-      
       getMovies();
-  
     }
   }
   
@@ -82,47 +84,47 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
 
   // }
     
-    // const getMovies = function () {
-    
+      // const getMovies = function () {
+      
 
-    //     // const options = {
-    //     //     method: 'GET',
-    //     //     headers: {
-    //     //       accept: 'application/json',
-    //     //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
-    //     //     }
-    //     //   };
-    //       const allRequests = []
-    //       for (let i = 1; i <= 1000; i++){
-    //         const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
-    //         .then(response => response.json())
-    //         allRequests.push(newFetch)
-    //       }
-    //         Promise.all(allRequests)
-    //         .then((data) => saveToDb(data))
-    
-    // }
+      //     // const options = {
+      //     //     method: 'GET',
+      //     //     headers: {
+      //     //       accept: 'application/json',
+      //     //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
+      //     //     }
+      //     //   };
+      //       const allRequests = []
+      //       for (let i = 1; i <= 1000; i++){
+      //         const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
+      //         .then(response => response.json())
+      //         allRequests.push(newFetch)
+      //       }
+      //         Promise.all(allRequests)
+      //         .then((data) => saveToDb(data))
+      
+      // }
 
-    // const saveToDb =(data) =>{
-    //   for(let result of data){
+      // const saveToDb =(data) =>{
+      //   for(let result of data){
 
-    //     for(let movie of result.results){
-    //       let newMovie = {
-    //         "title": movie.title,
-    //         "overview": movie.overview,
-    //         "poster": movie.poster_path,
-    //         "genre": 1,
-    //         "release": movie.release_date,
-    //         "backdrop": movie.backdrop_path 
-    //       }
-          
-    //       console.log(newMovie);
-    //       let request = new Request()
-    //     request.post("/api/movies", newMovie)
-    //     }
-    //   }
+      //     for(let movie of result.results){
+      //       let newMovie = {
+      //         "title": movie.title,
+      //         "overview": movie.overview,
+      //         "poster": movie.poster_path,
+      //         "genre": 1,
+      //         "release": movie.release_date,
+      //         "backdrop": movie.backdrop_path 
+      //       }
+            
+      //       console.log(newMovie);
+      //       let request = new Request()
+      //     request.post("/api/movies", newMovie)
+      //     }
+      //   }
 
-    // }
+      // }
 
 
     
