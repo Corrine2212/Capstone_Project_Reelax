@@ -142,12 +142,12 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
       const {id} = useParams()
       let foundMovie = findMovieById(id)
       console.log("foundMovie", foundMovie);
-      return <MovieDetail user={user} movie={foundMovie} addToWatchList={addToWatchList}/>
+      return <MovieDetail user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews}/>
   }
 
 
     const movieDisplay = movies.map((movie, index) => {
-        return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById}/></li>
+        return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
     })
 
     const movieSearchDisplay = movies.map((movie, index) => {

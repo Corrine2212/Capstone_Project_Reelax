@@ -1,7 +1,7 @@
 import React from 'react';
 import Request from '../helpers/request';
 
-const MovieDetail = ({movie, addToWatchList, user}) => {
+const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
     if(!movie){
         return "Loading..."
@@ -23,7 +23,10 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
         console.log("movie movie", movie);
         let newReview = {
             "user_id": user.id,
-            "movie_id": movie.id
+            "movie_id": movie.id,
+            "stars": 0,
+            "review": "",
+            "seen": false
         }
         let request = new Request()
         request.post("/api/reviews", newReview)
@@ -31,6 +34,18 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
        // user.movies.push(movie)
         // addToWatchList(user)
     }
+
+    const deleteReview = (id) => {
+        console.log("deleted")
+        for (let review of reviews){
+            if (review.user_id === user.id && review.movie_id === movie.id){
+                let request = new Request()
+                request.delete("/api/reviews/" + review.id)
+            }
+        }
+    }
+
+
 
     return ( 
         <div>
@@ -43,6 +58,7 @@ const MovieDetail = ({movie, addToWatchList, user}) => {
                 <p>{movie.overview}</p>
                 <p>{seen()}</p>
                 <button onClick={onButtonClicked}>Add To Watch List</button>
+                <button onClick={deleteReview}>Remove From Watch List</button>
             <ul>
 
             </ul>
