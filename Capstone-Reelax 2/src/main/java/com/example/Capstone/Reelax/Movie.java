@@ -1,10 +1,6 @@
 package com.example.Capstone.Reelax;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="movies")
@@ -30,58 +26,29 @@ public class Movie {
     @Column(name="release", nullable = true)
     private String release;
 
-    @Column(name="seen", nullable = true)
-    private Boolean seen;
+    @Column(name="backdrop", nullable = true)
+    private String backdrop;
+
+
 
 
 //    @JsonBackReference
 
-    @JsonIgnoreProperties({"movie", "user"})
-    @OneToMany(mappedBy = "movie")
-    private List<Review> reviews;
 
-    @JsonIgnoreProperties({"movies"})
-    @ManyToOne()
-    @JoinColumn(name="user_id", nullable = true)
-    private User user;
 
-    public Movie(String title, String overview, String poster, int genre, String release, Boolean seen, User user) {
+    public Movie(String title, String overview, String poster, int genre, String release, String backdrop) {
         this.title = title;
         this.overview = overview;
         this.poster = poster;
         this.genre = genre;
         this.release = release;
-        this.seen = seen;
-        this.reviews = new ArrayList<>();
-        this.user = user;
+        this.backdrop = backdrop;
+
+
     }
 
     public Movie(){
 
-    }
-
-    public List<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(List<Review> reviews) {
-        this.reviews = reviews;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public String getOverview() {
-        return overview;
-    }
-
-    public void setOverview(String overview) {
-        this.overview = overview;
     }
 
     public Long getId() {
@@ -98,6 +65,14 @@ public class Movie {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getOverview() {
+        return overview;
+    }
+
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
     public String getPoster() {
@@ -124,13 +99,11 @@ public class Movie {
         this.release = release;
     }
 
-    public Boolean getSeen() {
-        return seen;
+    public String getBackdrop() {
+        return backdrop;
     }
 
-    public void setSeen(Boolean seen) {
-        this.seen = seen;
+    public void setBackdrop(String backdrop) {
+        this.backdrop = backdrop;
     }
-
-
 }

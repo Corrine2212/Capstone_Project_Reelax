@@ -24,12 +24,7 @@ class CapstoneReelaxApplicationTests {
 
 	@Test
 	public void createUser() {
-		User user = new User("ecgizzle", "ewan@mail.com", "jesusMan");
-		userRepository.save(user);
-		Movie movie = new Movie("The Great Chungus", "wow thats a chunky chunk","url:picture", 22, "12.08.2022", false, user);
-		movieRepository.save(movie);
-		Review review = new Review(user, movie, 4, "great Chungus full of fun!");
-		reviewRepository.save(review);
+
 
 //		user.addReview(review);
 //		userRepository.save(user);

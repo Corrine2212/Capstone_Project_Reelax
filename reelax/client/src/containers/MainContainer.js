@@ -21,7 +21,7 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     useEffect(() => {
       getMovies();
       getReviews();
-      getMovieTitle();
+      // getMovieTitle();
      
     }, [])
     
@@ -101,9 +101,7 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     //         "poster": movie.poster_path,
     //         "genre": 1,
     //         "release": movie.release_date,
-    //         "seen": false,
-    //         "reviews": [],
-    //         "user": {"id":2, "username":"UserTwo","email":"4321@gmail.com","password":"4321"}
+    //         "backdrop": movie.backdrop_path 
     //       }
           
     //       console.log(newMovie);
@@ -112,7 +110,7 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     //     }
     //   }
 
-    //
+    // }
 
 
     
