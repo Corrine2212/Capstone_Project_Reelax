@@ -7,6 +7,7 @@ import ProfileCard from '../components/ProfileCard';
 import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
 import { flushSync } from 'react-dom';
+import MovieSearchCard from '../components/MovieSearchCard';
 
 
 const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
@@ -16,12 +17,14 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     const [users, setUsers] = useState([])
     const [reviews, setReviews] = useState([])
     const [movieTitle, setMovieTitle] = useState([])
+    const [searchInput, setSearchInput] = useState("");
+
 
 
     useEffect(() => {
       getMovies();
       getReviews();
-      getMovieTitle();
+      
      
     }, [])
     
@@ -43,13 +46,22 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
       setReviews(data)
     })
   }
-  const getMovieTitle = (title) => {
-    const request = new Request()
-    request.get("/api/movies/"+ title)
-    .then((data) =>{
-      setMovieTitle(data)
-    })
+
+  const getMovieByTitle = (title) => {
+    const request = new Request();
+    if (title) {
+      request.get("/api/movies/search/" + title)
+        .then((data) => {
+          setMovies(data);
+        });
+    } else {
+      
+      getMovies();
+  
+    }
   }
+  
+  
 
   const handleLogout = () => {
     onUserLogout();
@@ -138,6 +150,11 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
         return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById}/></li>
     })
 
+    const movieSearchDisplay = movies.map((movie, index) => {
+      return <MovieSearchCard key={index} movie={movie} />
+    })
+    
+
     const userDisplay = users.map((user, index) => {
       return <li key={index}>{user.username} {reviews.reviews}</li>
     })
@@ -151,8 +168,8 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
         <div>
           <div>
           <Router>
-            <NavBar handleLogout={handleLogout}/>
-            <LiveSearch getMovies={getMovies}/>
+            <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput}/>
+            <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput}/>
           <Routes>
 
           <Route path="/*" element = {movieDisplay}/>

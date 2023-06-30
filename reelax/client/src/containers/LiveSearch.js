@@ -1,38 +1,29 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
-function LiveSearch() {
-    const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
+const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
 
-    useEffect(() => {
-        const delayDebounceFn = setTimeout(() => {
-            if (query) {
-                fetch(`https://api.themoviedb.org/3/search/movie?api_key=5a2f99915271afb74d1fbff41026eb4c&query=${query}`)
-                    .then(res => res.json())
-                    .then(data => setResults(data.results))
-                    .catch(err => console.error(err));
-            }
-        }, 500) // delay in ms
+  const [input, setInput] = useState('');
+  const navigate = useNavigate();
+  const location = useLocation();
 
-        return () => clearTimeout(delayDebounceFn)
-    }, [query])
+  useEffect(() => {
+    setInput(''); // clear input on location change
+    setSearchInput(''); // also clear the input in the parent component state
+  }, [location]); 
 
-    return (
-        <div>
-            <input
-                type="text"
-                placeholder="Search for a movie..."
-                onChange={(e) => setQuery(e.target.value)}
-            />
-            <div>
-                {results.map(movie => (
-                    <div key={movie.id}>
-                        <h3>{movie.title}</h3>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
+  const handleChange = event => {
+    setInput(event.target.value);
+    setSearchInput(event.target.value);
+    getMovieByTitle(event.target.value);
+  }
+
+  return (
+    <input type="text" onChange={handleChange} value={input} placeholder="Search for a movie..."/>
+  )
 }
 
 export default LiveSearch;
+
+
+  
