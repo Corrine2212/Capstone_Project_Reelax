@@ -1,23 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 
 const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
+    const navigate = useNavigate()
+    
     if(!movie){
         return "Loading..."
     }
-
-
-
-        const seen = () => {
-        if (movie.seen === true){
-            return <p>Would you like to leave a review?</p>
-        }
-        else {
-            return <p>would you like to add this movie to your watch list</p>
-        }
-    }
-
+    
     const onButtonClicked = (event) => {
         console.log("movie user", user);
         console.log("movie movie", movie);
@@ -30,12 +22,10 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
         }
         let request = new Request()
         request.post("/api/reviews", newReview)
-
-       // user.movies.push(movie)
-        // addToWatchList(user)
+        navigate("/movies/" + movie.id)
     }
-
-    const deleteReview = (id) => {
+    
+    const deleteReview = () => {
         console.log("deleted")
         for (let review of reviews){
             if (review.user_id === user.id && review.movie_id === movie.id){
@@ -43,10 +33,21 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                 request.delete("/api/reviews/" + review.id)
             }
         }
+        navigate("/profile")
     }
 
-
-
+    let watchListOptions = null
+      for (let review of reviews){
+        if (review.user_id !== user.id && review.movie_id !== movie.id){
+            watchListOptions = <button onClick={onButtonClicked}>Add To Watch List</button>
+        }
+        else if (review.user_id === user.id && review.movie_id === movie.id){
+            watchListOptions = <button onClick={deleteReview}>Remove From Watch List</button>
+        }
+      }
+    
+    
+    
     return ( 
         <div>
             <h1>
@@ -56,12 +57,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                 src={"https://image.tmdb.org/t/p/original"+movie.poster} 
                 width={250} height={300}alt="poster"/>
                 <p>{movie.overview}</p>
-                <p>{seen()}</p>
-                <button onClick={onButtonClicked}>Add To Watch List</button>
-                <button onClick={deleteReview}>Remove From Watch List</button>
-            <ul>
-
-            </ul>
+                {watchListOptions}
         </div>
      );
 }

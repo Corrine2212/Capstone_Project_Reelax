@@ -25,8 +25,6 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
     useEffect(() => {
       getMovies();
       getReviews();
-
-     
     }, [])
     
 
@@ -154,15 +152,6 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
       return <MovieSearchCard key={index} movie={movie} />
     })
     
-
-    const userDisplay = users.map((user, index) => {
-      return <li key={index}>{user.username} {reviews.reviews}</li>
-    })
-
-    const reviewDisplay = reviews.map((review, index) => {
-    return <li key={index}>{review.review} </li>
-    })
-    
     
     return ( 
         <div>
@@ -172,9 +161,9 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
             <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput}/>
           <Routes>
 
-          <Route path="/*" element = {movieDisplay}/>
+          <Route path="/" element = {movieDisplay}/>
           <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
-          <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies}/>}/>
+          <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews}/>}/>
 
          
 

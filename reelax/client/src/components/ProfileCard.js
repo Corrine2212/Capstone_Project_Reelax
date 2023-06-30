@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import './ProfileCard.css';
 
 
 
 
-const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movies}) => {
+const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movies, MovieDetailWrapper, getReviews}) => {
     
 
     const [buttonClicked, setButtonClicked] = useState([false])
+
+    useEffect(() => {
+      getReviews()
+    }, [])
 
     const onDelete = () => {
       handleDelete(user.id);
@@ -42,17 +47,13 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
         }
         console.log("watchList movies", watchListMovies);
 
-
-
-
-
-    
-
-
-
         movieList = watchListMovies.map((movie, index) => {
         console.log("map called", index);
-        return <li key={index}><p>{movie.title}</p><p>{movie.overview}</p></li>
+        return <li key={index}>
+            <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}><img id="poster" 
+                src={"https://image.tmdb.org/t/p/original"+movie.poster} 
+                width={250} height={300}alt="poster"/>
+            <p>{movie.title}</p></Link></li>
     })
 
     }
@@ -60,7 +61,7 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
 
 
     return ( 
-        <div>
+        <div className='container'>
        
         <h1>Hello @{user.username}</h1>
         
@@ -71,7 +72,7 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
         <button onClick={handleClick1}className='watchlist-btn'>Watch List</button>
         </div>
 
-        {buttonClicked? <ul>
+        {buttonClicked? <ul className='movieGrid'>
             {movieList}
         </ul> : null}
 
