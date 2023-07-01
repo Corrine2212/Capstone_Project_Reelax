@@ -6,6 +6,9 @@ import "slick-carousel/slick/slick-theme.css";
 import '../App.css'
 import MovieDetail from "./MovieDetail";
 
+
+
+
 const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     const [movies, setMovies] = useState([]);
 
@@ -30,13 +33,13 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
         autoplaySpeed: 1000,
     };
 
-        const MovieDetailWrapper = () => {
+    const MovieDetailWrapper = () => {
         const {id} = useParams()
         let foundMovie = findMovieById(id)
         return <MovieDetail movie={foundMovie}/>
     }
 
-    const url = "/movies/" + movie.id;
+    const url = "/movies/";
 
 
     return (
@@ -46,8 +49,9 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (
-                            <div>
-                                <Link to={url} element={<MovieDetailWrapper/>}>
+                            <div key={movie.id}>
+                                <Link to={url + movie.id} element={<MovieDetailWrapper/>}>
+                                {/* <Link to={`/movies/${movie.id}`}> */}
                                     <img
                                         id="poster"
                                         alt={movie.title}

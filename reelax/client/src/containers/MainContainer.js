@@ -161,7 +161,8 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
         <Router>
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
-          <SmallerCarousels movie={movies} findMovieById={findMovieById} />
+          <SmallerCarousels movies={movies} genre="comedy" findMovieById={findMovieById} />
+
 
           <Routes>
 
