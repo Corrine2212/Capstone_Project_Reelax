@@ -5,7 +5,7 @@ const NavBar = ({handleLogout, setSearchInput}) => {
         <>
         <header>
             <Link to="/profile"> profile </Link> 
-            <Link to="/*" onClick={() => setSearchInput("")}> Home</Link>
+            <Link to="/" onClick={() => setSearchInput("")}> Home</Link>
             <Link to="/" onClick={handleLogout}>Logout</Link>
 
         </header>
