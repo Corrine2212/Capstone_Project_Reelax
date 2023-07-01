@@ -173,38 +173,15 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
 
   return (
     <div>
-      
       <div>
         <Router>
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
           <SmallerCarousels movies={movies} genre="comedy" findMovieById={findMovieById} />
-
-
           <Routes>
-
             <Route path="/" element={movieDisplay} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
-
-  const movieSearchDisplay = movies.map((movie, index) => {
-    return <MovieSearchCard key={index} movie={movie} />
-  })
-
-
-  return (
-    <div>
-      <div>
-        <Router>
-          <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
-          <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
-          <Routes>
-
-            <Route path="/" element={movieDisplay} />
-            <Route path="/movies/:id" element={<MovieDetailWrapper />} />
-            <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
-
-
           </Routes>
         </Router>
       </div>
@@ -218,10 +195,6 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
                 {/* {userDisplay}
                 {reviewDisplay} */}
       </ul>
-
-      <div>
-      </div>
-
     </div>
   );
 }
