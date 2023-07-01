@@ -33,7 +33,7 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
 
             <header>
                 <Link to="/profile"> profile </Link>
-                <StyledLink to="/*" onClick={() => setSearchInput("")}>
+                <StyledLink to="/" onClick={() => setSearchInput("")}>
                     <StyledFoodpandaIcon />
                 </StyledLink>
                 <StyledLink to="/" onClick={handleLogout}>
