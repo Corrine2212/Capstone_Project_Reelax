@@ -1,0 +1,11 @@
+/* body,
+html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: rgb(54, 2, 62);
+    background: linear-gradient(180deg, rgba(54, 2, 62, 1) 7%, rgba(98, 16, 101, 1) 46%, rgba(139, 78, 173, 1) 100%);
+} */

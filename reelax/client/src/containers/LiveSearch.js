@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
+
 const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
 
   const [input, setInput] = useState('');
@@ -20,7 +21,7 @@ const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
   }
 
   return (
-    <input type="text" onChange={handleChange} value={input} placeholder="Search for a movie..."/>
+    <input type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
   )
 }
 
