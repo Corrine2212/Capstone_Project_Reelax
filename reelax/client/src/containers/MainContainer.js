@@ -11,6 +11,7 @@ import MovieSearchCard from '../components/MovieSearchCard';
 import SmallerCarousels from '../components/SmallerCarousels';
 import styled from 'styled-components';
 import "./MainContainer.css"
+import YearSlider from '../components/YearSlider';
 
 const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
 
@@ -37,6 +38,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   const [movieTitle, setMovieTitle] = useState([])
   const [searchInput, setSearchInput] = useState("");
   const [foundMovies, setFoundMovies] = useState("");
+  const [yearRange, setYearRange] = useState({ min: 2000, max: 2023 });
 
 
 
@@ -80,6 +82,12 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   }
 
 
+  const filteredMovies = movies.filter(movie => {
+    const movieYear = new Date(movie.release).getFullYear();
+    return movieYear >= yearRange.min && movieYear <= yearRange.max;
+  });
+  
+  
 
   const handleLogout = () => {
     onUserLogout();
@@ -162,9 +170,10 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   }
 
 
-  const movieDisplay = movies.map((movie, index) => {
+  const movieDisplay = filteredMovies.map((movie, index) => {
     return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
   })
+  
 
   const movieSearchDisplay = movies.map((movie, index) => {
     return <MovieSearchCard key={index} movie={movie} />
@@ -177,6 +186,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
         <Router>
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
+          <YearSlider yearRange={yearRange} setYearRange={setYearRange} />
           <SmallerCarousels movies={movies} genre="comedy" findMovieById={findMovieById} />
           <Routes>
             <Route path="/" element={movieDisplay} />
