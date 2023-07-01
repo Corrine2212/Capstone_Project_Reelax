@@ -30,6 +30,7 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
     `;
     return (
         <>
+
             <header>
                 <Link to="/profile"> profile </Link>
                 <StyledLink to="/*" onClick={() => setSearchInput("")}>
@@ -38,6 +39,7 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
                 <StyledLink to="/" onClick={handleLogout}>
                     <StyledLogoutIcon/>
                 </StyledLink>
+
 
             </header>
         </>
