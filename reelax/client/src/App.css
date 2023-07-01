@@ -37,6 +37,55 @@
   }
 }
 
+
+/* Smaller Carousel css start */
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  background: #fff;
+  width: 90%;
+}
+.content {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.header {
+  font-size: 42px;
+}
+.img {
+  display: flex;
+  margin: 0 auto;
+  height: 30vh;
+  width: 200px;
+  border-radius: 5%;
+}
+
+.sml-carousel-container {
+  margin: 0 auto;
+  width: 100%;
+  height: 55vh;
+  border-color: white;
+}
+.title {
+  margin-left: 50px;
+  width: 70%;
+  font-size: 20px;
+  /* padding: 20px; */
+  border-radius: 5px;
+  text-align: center;
+
+}
+.description {
+  margin: 20px auto;
+  width: 80%;
+  font-size: 25px;
+  margin: 20px auto;
+}
+
+/* Smaller Carousel css end */
+
 body,
 html {
     margin: 0;

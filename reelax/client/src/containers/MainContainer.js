@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
 import { flushSync } from 'react-dom';
 import MovieSearchCard from '../components/MovieSearchCard';
+import SmallerCarousels from '../components/SmallerCarousels';
 import styled from 'styled-components';
 import "./MainContainer.css"
 
@@ -172,6 +173,27 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
 
   return (
     <div>
+      
+      <div>
+        <Router>
+          <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
+          <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
+          <SmallerCarousels movies={movies} genre="comedy" findMovieById={findMovieById} />
+
+
+          <Routes>
+
+            <Route path="/" element={movieDisplay} />
+            <Route path="/movies/:id" element={<MovieDetailWrapper />} />
+            <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
+
+  const movieSearchDisplay = movies.map((movie, index) => {
+    return <MovieSearchCard key={index} movie={movie} />
+  })
+
+
+  return (
+    <div>
       <div>
         <Router>
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
@@ -183,12 +205,12 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
 
 
-
           </Routes>
         </Router>
       </div>
 
       <Footer>A.H.E.C. ltd</Footer>
+
       <ul>
 
         {/* <p>this is a movie container</p>
@@ -196,6 +218,10 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
                 {/* {userDisplay}
                 {reviewDisplay} */}
       </ul>
+
+      <div>
+      </div>
+
     </div>
   );
 }
