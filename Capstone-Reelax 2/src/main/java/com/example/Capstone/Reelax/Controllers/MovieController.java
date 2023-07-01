@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -31,4 +32,17 @@ public class MovieController {
         movieRepository.save(movie);
                 return new ResponseEntity<>(movie, HttpStatus.CREATED);
     }
+
+    @GetMapping(value = "/movies/search/{title}")
+    public  ResponseEntity<List<Movie>> getMoviesByTitle(@PathVariable String title){
+        return new ResponseEntity<>(movieRepository.findByTitleContainingIgnoreCase(title), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/movies/search/dates")
+    public ResponseEntity<List<Movie>> getMoviesByDates(@RequestParam String start, @RequestParam String end){
+        LocalDate startDate = LocalDate.parse(start);
+        LocalDate endDate = LocalDate.parse(end);
+        return new ResponseEntity<>(movieRepository.findMoviesBetweenDates(startDate, endDate), HttpStatus.OK);
+    }
+
 }
