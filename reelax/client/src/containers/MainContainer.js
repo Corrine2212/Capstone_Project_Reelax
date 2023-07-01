@@ -8,6 +8,7 @@ import NavBar from './NavBar';
 import MovieDetail from '../components/MovieDetail';
 import { flushSync } from 'react-dom';
 import MovieSearchCard from '../components/MovieSearchCard';
+import SmallerCarousels from '../components/SmallerCarousels';
 
 
 const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
@@ -165,11 +166,10 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
           <Route path="/movies/:id" element={<MovieDetailWrapper/>}/>
           <Route path="/profile" element = {<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews}/>}/>
 
-         
-
           </Routes>
           </Router>
           </div>
+
             <ul>
 
               {/* <p>this is a movie container</p>
@@ -177,6 +177,11 @@ const MainContainer = ({user, removeUser, onUserLogout, addToWatchList}) => {
                 {/* {userDisplay}
                 {reviewDisplay} */} 
             </ul>
+
+          <div>
+            <SmallerCarousels/>
+          </div>
+            
         </div>
      );
 }
