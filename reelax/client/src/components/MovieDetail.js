@@ -7,6 +7,8 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
     const [buttonClicked, setButtonClicked]= useState([false])
     const [formData, setFormData] = useState({
+        "user_id": user.id,
+        "movie_id": movie.id,
         "stars": 0,
         "review": "",
         "seen": true
@@ -42,6 +44,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
         for (let review of reviews){
             if (review.user_id === user.id && review.movie_id === movie.id){
                 let request = new Request()
+                console.log(review.id);
                 request.delete("/api/reviews/" + review.id)
             }
         }
@@ -68,21 +71,21 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        let id = null
         for (let review of reviews){
             if (review.user_id === user.id && review.movie_id === movie.id){
-                id = review.id
+                createMovieReview(formData)
+                console.log("form data", formData);
+                console.log("review id", review.id);
+                setFormData({
+                    "id": review.id,
+                    "user_id": user.id,
+                    "movie_id": movie.id,
+                    "stars": 0,
+                    "review": "",
+                    "seen": true
+                })
             }
         }
-        createMovieReview(formData)
-        setFormData({
-            "id": id,
-            "user_id": user.id,
-            "movie_id": movie.id,
-            "stars": 0,
-            "review": "",
-            "seen": true
-        })
     }
 
     // let movieReviews = null
