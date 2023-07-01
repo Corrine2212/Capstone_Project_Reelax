@@ -9,10 +9,27 @@ import MovieDetail from '../components/MovieDetail';
 import { flushSync } from 'react-dom';
 import MovieSearchCard from '../components/MovieSearchCard';
 import SmallerCarousels from '../components/SmallerCarousels';
-
+import styled from 'styled-components';
+import "./MainContainer.css"
 
 const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
 
+
+  const Footer = styled.footer`
+  position: fixed;
+    left: 0;
+    bottom: 15px;
+    width: 100%;
+    /* text-align: center; */
+    margin-top: 20px;
+    position: fixed;
+    margin-top: auto;
+    z-index: 1;
+    color: white;
+    font-size: 2vh;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 15px 25px, rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    font-family: reem kufi, sans-serif;
+  `
 
   const [movies, setMovies] = useState([])
   const [users, setUsers] = useState([])
@@ -170,10 +187,29 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
 
+  const movieSearchDisplay = movies.map((movie, index) => {
+    return <MovieSearchCard key={index} movie={movie} />
+  })
+
+
+  return (
+    <div>
+      <div>
+        <Router>
+          <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
+          <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
+          <Routes>
+
+            <Route path="/" element={movieDisplay} />
+            <Route path="/movies/:id" element={<MovieDetailWrapper />} />
+            <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
+
+
           </Routes>
         </Router>
       </div>
 
+      <Footer>A.H.E.C. ltd</Footer>
 
       <ul>
 

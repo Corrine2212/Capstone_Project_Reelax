@@ -37,4 +37,10 @@ public class ReviewController {
         reviewRepository.delete(found);
         return new ResponseEntity<>(null, HttpStatus.OK);
     }
+
+    @PatchMapping(value="/reviews/{id}")
+    public ResponseEntity<Review> updateReview(@RequestBody Review review){
+        reviewRepository.save(review);
+        return new ResponseEntity<>(review, HttpStatus.OK);
+    }
 }
