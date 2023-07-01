@@ -45,6 +45,14 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
             watchListOptions = <button onClick={deleteReview}>Remove From Watch List</button>
         }
       }
+
+    // const getMovieReview = () => {
+    //   for (let review of reviews){
+    //     if (review.movie_id === movie.id){
+    //     return <p>{review.review}</p>
+    //     }
+    //   }
+    // }
     
     
     
@@ -58,6 +66,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                 width={250} height={300}alt="poster"/>
                 <p>{movie.overview}</p>
                 {watchListOptions}
+                {/* <button onClick={getMovieReview}>Reviews</button> */}
         </div>
      );
 }
