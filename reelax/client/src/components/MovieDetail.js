@@ -5,8 +5,18 @@ import ReviewForm from './ReviewForm';
 
 const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
+    let review_id = null
+    for (let review of reviews){
+        if (review.movie_id === movie.id && review.user_id === user.id){
+            console.log(review.id);
+            review_id = review.id
+        }
+    }
+    console.log("review id", review_id);
+
     const [buttonClicked, setButtonClicked]= useState([false])
     const [formData, setFormData] = useState({
+        "id": review_id,
         "user_id": user.id,
         "movie_id": movie.id,
         "stars": 0,
@@ -52,15 +62,16 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
     }
 
     const createMovieReview = (movieReview) => {
-        let newReview = null
-        for (let review of reviews){
-            if (review.user_id === user.id && review.movie_id === movie.id){
-                newReview = movieReview
-                let id = review.id
+        // let newReview = null
+        // for (let review of reviews){
+        //     if (review.user_id === user.id && review.movie_id === movie.id){
+        //         newReview = movieReview
+        //         let id = review.id
                 const request = new Request()
-                request.patch('/api/reviews/' + id, newReview)
-            }
-        }
+                request.patch('/api/reviews/' + review_id, movieReview)
+                console.log(movieReview);
+            // }
+        // }
     }
 
     const onChange = (event) => {
@@ -71,21 +82,21 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        for (let review of reviews){
-            if (review.user_id === user.id && review.movie_id === movie.id){
+        // for (let review of reviews){
+        //     if (review.user_id === user.id && review.movie_id === movie.id){
                 createMovieReview(formData)
                 console.log("form data", formData);
-                console.log("review id", review.id);
+                console.log("review id", review_id);
                 setFormData({
-                    "id": review.id,
+                    "id": review_id,
                     "user_id": user.id,
                     "movie_id": movie.id,
                     "stars": 0,
                     "review": "",
                     "seen": true
                 })
-            }
-        }
+            // }
+        // }
     }
 
     // let movieReviews = null
