@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
 
-const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
+const MovieDetail = ({movie, addToWatchList, user, users,reviews}) => {
 
     let review_id = null
     for (let review of reviews){
@@ -13,6 +13,16 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
         }
     }
     console.log("review id", review_id);
+    console.log("movie detail users", users)
+    let user_names = []
+    for (let movieUser of users){
+        for (let review of reviews){
+            if (movieUser.id === review.user_id){
+                user_names.push(movieUser)
+            }
+        }
+    }
+    console.log("users id", user_names);
 
     const [buttonClicked, setButtonClicked]= useState([false])
     const [formData, setFormData] = useState({
@@ -100,6 +110,18 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
         }
       }
 
+    const movieReviewsList = []
+    for ( let movieReview of reviews){
+        if (movieReview.movie_id === movie.id){
+            movieReviewsList.push(movieReview)
+        }
+    }
+    console.log(movieReviewsList);
+    const movieReviews = movieReviewsList.map((review, index) => {
+        return <li key={index}><h3>Reelax User</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
+    })
+    console.log(movieReviews)
+
     
     
     
@@ -131,9 +153,9 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                             <input type="submit" value="Confirm"/>
                         </div>
                     </form> : null}
-                {/* <ul>
+                <ul>
                     {movieReviews}
-                </ul> */}
+                </ul>
         </div>
      );
 }

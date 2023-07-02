@@ -12,7 +12,7 @@ import styled from 'styled-components';
 import "./MainContainer.css"
 import GenreFilter from './GenreFilter';
 
-const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
+const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
 
 
   const Footer = styled.footer`
@@ -32,7 +32,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   `
 
   const [movies, setMovies] = useState([])
-  const [users, setUsers] = useState([])
+  console.log("main users", users)
   const [reviews, setReviews] = useState([])
   const [movieTitle, setMovieTitle] = useState([])
   const [searchInput, setSearchInput] = useState("");
@@ -188,7 +188,7 @@ const MovieDetailWrapper = () => {
   const { id } = useParams()
   let foundMovie = findMovieById(id)
   console.log("foundMovie", foundMovie);
-  return <MovieDetail user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} />
+  return <MovieDetail users={users} user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} />
 }
 
 
