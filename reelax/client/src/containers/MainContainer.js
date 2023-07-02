@@ -220,7 +220,7 @@ return (
       </Router>
     </div>
 
-    <Footer>A.H.E.C. ltd</Footer>
+    {/* <Footer>A.H.E.C. ltd</Footer> */}
     <ul>
 
       {/* <p>this is a movie container</p>

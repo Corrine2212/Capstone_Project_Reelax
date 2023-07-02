@@ -62,16 +62,9 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
     }
 
     const createMovieReview = (movieReview) => {
-        // let newReview = null
-        // for (let review of reviews){
-        //     if (review.user_id === user.id && review.movie_id === movie.id){
-        //         newReview = movieReview
-        //         let id = review.id
                 const request = new Request()
                 request.patch('/api/reviews/' + review_id, movieReview)
                 console.log(movieReview);
-            // }
-        // }
     }
 
     const onChange = (event) => {
@@ -95,18 +88,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                     "review": "",
                     "seen": true
                 })
-            // }
-        // }
     }
-
-    // let movieReviews = null
-    //   for (let review of reviews){
-    //     if (movie.id === review.movie_id){
-    //         movieReviews = reviews.map((review, index) => {
-    //             return <li key={index}>{review.review}</li>
-    //         })
-    //     }
-    //   }
 
     let watchListOptions = null
       for (let review of reviews){
