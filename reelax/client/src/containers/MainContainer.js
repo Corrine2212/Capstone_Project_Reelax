@@ -130,24 +130,24 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
   // }
 
-  // const getMovies = function () {
+//   const getMovies = function () {
 
 
-  //     // const options = {
-  //     //     method: 'GET',
-  //     //     headers: {
-  //     //       accept: 'application/json',
-  //     //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
-  //     //     }
-  //     //   };
-  // const allRequests = []
-  // for (let i = 1; i <= 1000; i++){
-  //   const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
-  //   .then(response => response.json())
-  //   allRequests.push(newFetch)
-  // }
-  //   Promise.all(allRequests)
-  //   .then((data) => saveToDb(data))
+//       // const options = {
+//       //     method: 'GET',
+//       //     headers: {
+//       //       accept: 'application/json',
+//       //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
+//       //     }
+//       //   };
+//   const allRequests = []
+//   for (let i = 1; i <= 1000; i++){
+//     const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
+//     .then(response => response.json())
+//     allRequests.push(newFetch)
+//   }
+//     Promise.all(allRequests)
+//     .then((data) => saveToDb(data))
 
 // }
 
@@ -172,7 +172,86 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
 // }
 
+let genreIds = [
+  {
+    "id": 28,
+    "name": "Action"
+  },
+  {
+    "id": 12,
+    "name": "Adventure"
+  },
+  {
+    "id": 16,
+    "name": "Animation"
+  },
+  {
+    "id": 35,
+    "name": "Comedy"
+  },
+  {
+    "id": 80,
+    "name": "Crime"
+  },
+  {
+    "id": 99,
+    "name": "Documentary"
+  },
+  {
+    "id": 18,
+    "name": "Drama"
+  },
+  {
+    "id": 10751,
+    "name": "Family"
+  },
+  {
+    "id": 14,
+    "name": "Fantasy"
+  },
+  {
+    "id": 36,
+    "name": "History"
+  },
+  {
+    "id": 27,
+    "name": "Horror"
+  },
+  {
+    "id": 10402,
+    "name": "Music"
+  },
+  {
+    "id": 9648,
+    "name": "Mystery"
+  },
+  {
+    "id": 10749,
+    "name": "Romance"
+  },
+  {
+    "id": 878,
+    "name": "Science Fiction"
+  },
+  {
+    "id": 10770,
+    "name": "TV Movie"
+  },
+  {
+    "id": 53,
+    "name": "Thriller"
+  },
+  {
+    "id": 10752,
+    "name": "War"
+  },
+  {
+    "id": 37,
+    "name": "Western"
+  }
+]
 
+console.log("genres", genreIds)
 
 const findMovieById = (id) => {
   let foundMovie = null;
@@ -188,12 +267,12 @@ const MovieDetailWrapper = () => {
   const { id } = useParams()
   let foundMovie = findMovieById(id)
   console.log("foundMovie", foundMovie);
-  return <MovieDetail users={users} user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} />
+  return <MovieDetail users={users} user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds}/>
 }
 
 
 const movieDisplay = movies.map((movie, index) => {
-  return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
+  return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} genres={genreIds}/></li>
 })
 
 const movieSearchDisplay = movies.map((movie, index) => {
