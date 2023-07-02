@@ -44,5 +44,9 @@ public class MovieController {
         LocalDate endDate = LocalDate.parse(end);
         return new ResponseEntity<>(movieRepository.findMoviesBetweenDates(startDate, endDate), HttpStatus.OK);
     }
+    @GetMapping(value = "/movies/search/genre")
+    public  ResponseEntity<List<Movie>> getMovie(@PathVariable int genre){
+        return new ResponseEntity<>(movieRepository.findByGenre(genre), HttpStatus.OK);
+    }
 
 }

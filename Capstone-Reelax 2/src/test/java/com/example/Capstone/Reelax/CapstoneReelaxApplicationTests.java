@@ -7,6 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 @SpringBootTest
 class CapstoneReelaxApplicationTests {
 	@Autowired
@@ -17,6 +21,9 @@ class CapstoneReelaxApplicationTests {
 
 	@Autowired
 	ReviewRepository reviewRepository;
+
+	Movie movie;
+
 
 	@Test
 	void contextLoads() {
@@ -34,6 +41,12 @@ class CapstoneReelaxApplicationTests {
 
 	}
 
+	@Test
+	public void findByGenre() {
+
+		List<Movie> found = movieRepository.findByGenre(16);
+		assertTrue(found.size() > 0);
+	}
 
 
 

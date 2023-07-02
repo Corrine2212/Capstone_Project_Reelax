@@ -16,6 +16,8 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
     @Query("SELECT m FROM Movie m WHERE m.release BETWEEN :start AND :end")
     List<Movie> findMoviesBetweenDates(@Param("start") LocalDate start, @Param("end") LocalDate end);
 
+    List<Movie> findByGenre(int genre);
+
 }
 
 

@@ -18,7 +18,9 @@ const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
     setInput(event.target.value);
     setSearchInput(event.target.value);
     getMovieByTitle(event.target.value);
+   
   }
+ 
 
   return (
     <input type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
