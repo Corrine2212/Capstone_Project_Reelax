@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
 
-const MovieDetail = ({movie, addToWatchList, user, users,reviews}) => {
+const MovieDetail = ({movie, addToWatchList, user, users,reviews, genres}) => {
 
     let review_id = null
     for (let review of reviews){
@@ -12,8 +12,14 @@ const MovieDetail = ({movie, addToWatchList, user, users,reviews}) => {
             review_id = review.id
         }
     }
-    console.log("review id", review_id);
-    console.log("movie detail users", users)
+    
+    let movieGenre = null
+    for (let genre of genres){
+        if (genre.id === movie.genre){
+            movieGenre = genre.name
+        }
+    }
+
     let user_names = []
     for (let movieUser of users){
         for (let review of reviews){
@@ -130,6 +136,7 @@ const MovieDetail = ({movie, addToWatchList, user, users,reviews}) => {
             <h1>
                 {movie.title}
             </h1>
+            <h3>{movieGenre}</h3>
             <img id="poster" 
                 src={"https://image.tmdb.org/t/p/original"+movie.poster} 
                 width={250} height={300}alt="poster"/>

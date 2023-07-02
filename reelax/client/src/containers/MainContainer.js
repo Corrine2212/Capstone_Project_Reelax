@@ -125,21 +125,8 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
       })
   }
 
-  // const addUser = (user) => {
-  //   setUsers([...users, user])
-
-  // }
-
 //   const getMovies = function () {
 
-
-//       // const options = {
-//       //     method: 'GET',
-//       //     headers: {
-//       //       accept: 'application/json',
-//       //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
-//       //     }
-//       //   };
 //   const allRequests = []
 //   for (let i = 1; i <= 1000; i++){
 //     const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
@@ -172,7 +159,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
 // }
 
-let genreIds = [
+const genreIds = [
   {
     "id": 28,
     "name": "Action"
@@ -301,11 +288,6 @@ return (
 
     {/* <Footer>A.H.E.C. ltd</Footer> */}
     <ul>
-
-      {/* <p>this is a movie container</p>
-                {movieDisplay} 
-                {/* {userDisplay}
-                {reviewDisplay} */}
     </ul>
   </div>
 );
