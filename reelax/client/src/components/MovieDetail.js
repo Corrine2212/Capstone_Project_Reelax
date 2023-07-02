@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
 
-const MovieDetail = ({movie, addToWatchList, user, users,reviews, genres}) => {
+const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
 
     let review_id = null
     for (let review of reviews){
@@ -21,16 +21,16 @@ const MovieDetail = ({movie, addToWatchList, user, users,reviews, genres}) => {
     } 
 
     console.log("review id", review_id);
-    console.log("movie detail users", users)
-    let user_names = []
-    for (let movieUser of users){
-        for (let review of reviews){
-            if (movieUser.id === review.user_id){
-                user_names.push(movieUser)
-            }
-        }
-    }
-    console.log("users id", user_names);
+    // console.log("movie detail users", users)
+    // let user_names = []
+    // for (let movieUser of users){
+    //     for (let review of reviews){
+    //         if (movieUser.id === review.user_id){
+    //             user_names.push(movieUser)
+    //         }
+    //     }
+    // }
+    // console.log("users id", user_names);
 
     const [buttonClicked, setButtonClicked]= useState([false])
     const [formData, setFormData] = useState({

@@ -97,19 +97,19 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   //   }
   // }
 
-  const getMoviesByGenre = (genre) => {
-    const request = new Request();
-    if (genre === '') {
-      getMovies();
-    } else if (typeof genre === genre) {
-      request.get(`/api/movies/search/genre/${genre}`)
-        .then((data) => {
-          setMovies(data);
-        });
-    } else {
-      getMovies();
-    }
-  };
+  // const getMoviesByGenre = (genre) => {
+  //   const request = new Request();
+  //   if (genre === '') {
+  //     getMovies();
+  //   } else if (typeof genre === genre) {
+  //     request.get(`/api/movies/search/genre/${genre}`)
+  //       .then((data) => {
+  //         setMovies(data);
+  //       });
+  //   } else {
+  //     getMovies();
+  //   }
+  // };
 
 
 
@@ -325,7 +325,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
-          <GenreFilter getMoviesByGenre={getMoviesByGenre} searchInput={searchInput} setSearchInput={setSearchInput} />
+          {/* <GenreFilter getMoviesByGenre={getMoviesByGenre} searchInput={searchInput} setSearchInput={setSearchInput} /> */}
 
           {/* Carousels start */}
           {/* <div className="main-carousel">
@@ -377,7 +377,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
             </Slider>
           </div>
 
-          <SmallerCarousels movies={movies} findMovieById={findMovieById} getMoviesByGenre={getMoviesByGenre} />
+          <SmallerCarousels movies={movies} findMovieById={findMovieById} />
           {/* Carousels end */}
 
           <Routes>
