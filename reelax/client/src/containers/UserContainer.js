@@ -14,6 +14,7 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout, remove
         window.location = '/movies'
       })
     }
+    console.log("login users", users);
     
     const saveUser = (user) => {
       const request = new Request()
@@ -27,7 +28,7 @@ const UserContainer = ({loggedInUser, onSubmitLogin, users, onUserLogout, remove
     }
 
     if (loggedInUser) {
-        return <MainContainer users ={users} user={loggedInUser} onUserLogout={onUserLogout} addToWatchList={saveUser}removeUser={removeUser}/>
+        return <MainContainer users={users} user={loggedInUser} onUserLogout={onUserLogout} addToWatchList={saveUser}removeUser={removeUser}/>
     }
 
     return ( 
