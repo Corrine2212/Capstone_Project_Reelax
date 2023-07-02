@@ -6,9 +6,6 @@ import "slick-carousel/slick/slick-theme.css";
 import '../App.css'
 import MovieDetail from "./MovieDetail";
 
-
-
-
 const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     const [movies, setMovies] = useState([]);
 
@@ -21,6 +18,19 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
         };
         fetchMovies();
     }, [genre]);
+    
+
+    // useEffect(() => {
+        
+    //     const fetchMovies = () => {
+    //         if (genre === '') {
+    //             getMoviesByGenre('');
+    //         } else {
+    //             getMoviesByGenre(genre);
+    //         }
+    //     };
+    //     fetchMovies();
+    // }, [genre, getMoviesByGenre]);
 
 
     const settings = {
@@ -45,7 +55,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     return (
         <>
             <div className="content">
-                <h1 className="header">All Movies</h1>
+                <h1 className="header">Trending</h1>
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (

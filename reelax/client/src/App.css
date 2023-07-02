@@ -1,17 +1,20 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 .App-header {
   background-color: #282c34;
@@ -28,14 +31,14 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
 
 /* Smaller Carousel css start */
@@ -47,13 +50,16 @@ body {
   background: #fff;
   width: 90%;
 }
+
 .content {
   text-align: center;
   margin-bottom: 30px;
 }
+
 .header {
   font-size: 42px;
 }
+
 .img {
   display: flex;
   margin: 0 auto;
@@ -68,6 +74,7 @@ body {
   height: 55vh;
   border-color: white;
 }
+
 .title {
   margin-left: 50px;
   width: 70%;
@@ -77,6 +84,7 @@ body {
   text-align: center;
 
 }
+
 .description {
   margin: 20px auto;
   width: 80%;
@@ -86,14 +94,129 @@ body {
 
 /* Smaller Carousel css end */
 
+/* Main Carousel css start */
+/* .App {
+  text-align: center;
+  width: 50%;
+  margin: 10rem auto;
+} */
+
+
+
+.carousel-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: scale(0.09);
+  transition: transform 300ms;
+  opacity: 0.5;
+}
+
+.current-slide {
+  transform: scale(0.15);
+  opacity: 1;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 700px;
+  width: 20rem;
+  margin: 0 auto;
+}
+
+.img-container img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.movie-card {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  width: 600px;
+}
+
+.poster {
+  flex: 0 0 auto;
+  margin-right: 20px;
+}
+
+.poster img {
+  width: 200px; /* Adjust the width as needed */
+  height: auto;
+}
+
+.details {
+  flex: 1 1 auto;
+}
+
+.details h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.details p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+
+/* .arrow {
+  background-color: #fff;
+  position: absolute;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow svg {
+  transition: color 300ms;
+}
+
+.arrow svg:hover {
+  color: #68edff;
+}
+
+.next {
+  right: 0%;
+  top: 50%;
+}
+
+.prev {
+  left: 0%;
+  top: 50%;
+} */
+
+/* Main Carousel css end */
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:focus {
+  outline: none;
+}
+
 body,
 html {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-    min-height: 100vh;
-    background: rgb(76,59,92);
-    background: linear-gradient(0deg, rgba(76,59,92,1) 7%, rgba(89,66,110,1) 44%, rgba(98,69,129,1) 87%);
+  min-height: 100vh;
+  background: rgb(76, 59, 92);
+  background: linear-gradient(0deg, rgba(76, 59, 92, 1) 7%, rgba(89, 66, 110, 1) 44%, rgba(98, 69, 129, 1) 87%);
 }
