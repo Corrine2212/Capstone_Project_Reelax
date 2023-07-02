@@ -269,7 +269,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     const { id } = useParams()
     let foundMovie = findMovieById(id)
     console.log("foundMovie", foundMovie);
-    return <MovieDetail user={user} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds}/>
+    return <MovieDetail user={user} users={users} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds}/>
   }
 
 
@@ -389,7 +389,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
         </Router>
       </div>
 
-      <Footer>A.H.E.C. ltd</Footer>
+      <div><Footer>A.H.E.C. ltd</Footer></div>
       <ul>
 
         {/* <p>this is a movie container</p>
