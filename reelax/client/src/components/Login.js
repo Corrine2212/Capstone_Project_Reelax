@@ -1,6 +1,7 @@
 
 import ForgotPassword from './ForgotPassword';
 import React, { useState } from 'react';
+import "./style.css"
 
 
 const Login = ({ onSubmitLogin, addUser, createUser }) => {
@@ -32,7 +33,7 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
     const onSubmit = (event) => {
         event.preventDefault();
         createUser(formData)
-        
+
         setFormData({
             username: "",
             email: "",
@@ -82,7 +83,45 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
         <div className="login-container">
             <div className="login-form-wrapper">
                 <h1>Sign in </h1>
-                <form className="login-form" onSubmit={handleSubmit}>
+                <div class="container">
+                    <form onSubmit={handleSubmit}>
+                        <label for="username">Username</label>
+                        <input type="text" id="user" placeholder="  Username/Email  " value={username} onChange={handleUsernameChange} required />
+                        <label for="Password">Password</label>
+                        <input type="password" id="password" placeholder="  Password  " value={password} onChange={handlePasswordChange} required />
+                        <button>Login</button>
+                    </form>
+                    <div class="ear-l"></div>
+                    <div class="ear-r"></div>
+                    <div class="panda-face">
+                        <div class="blush-l"></div>
+                        <div class="blush-r"></div>
+                        <div class="eye-l">
+                            <div class="eyeball-l"></div>
+                        </div>
+                        <div class="eye-r">
+                            <div class="eyeball-r"></div>
+                        </div>
+                        <div class="nose"></div>
+                        <div class="mouth"></div>
+                    </div>
+                    <div class="hand-l"></div>
+                    <div class="hand-r"></div>
+                    <div class="paw-l"></div>
+                    <div class="paw-r"></div>
+                </div>
+                <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+
+                {/* <form className="login-form" onSubmit={handleSubmit}>
                     <div className="input-field">
                         <input type="text" id="user" placeholder="  Username/Email  " value={username} onChange={handleUsernameChange} required />
                     </div>
@@ -100,7 +139,7 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
                         )}
                     </div>
                     <input className="login-submit-btn" type="submit" value="Sign In" />
-                </form>
+                </form> */}
                 <div>
                     <button onClick={handleCreate} className="create-acc-btn">Create an account</button>
                     {buttonClicked && (
