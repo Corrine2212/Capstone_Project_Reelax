@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
 
-const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
+const MovieDetail = ({movie, addToWatchList, user, users,reviews}) => {
 
     let review_id = null
     for (let review of reviews){
@@ -13,6 +13,16 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
         }
     }
     console.log("review id", review_id);
+    console.log("movie detail users", users)
+    let user_names = []
+    for (let movieUser of users){
+        for (let review of reviews){
+            if (movieUser.id === review.user_id){
+                user_names.push(movieUser)
+            }
+        }
+    }
+    console.log("users id", user_names);
 
     const [buttonClicked, setButtonClicked]= useState([false])
     const [formData, setFormData] = useState({
@@ -62,16 +72,9 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
     }
 
     const createMovieReview = (movieReview) => {
-        // let newReview = null
-        // for (let review of reviews){
-        //     if (review.user_id === user.id && review.movie_id === movie.id){
-        //         newReview = movieReview
-        //         let id = review.id
                 const request = new Request()
                 request.patch('/api/reviews/' + review_id, movieReview)
                 console.log(movieReview);
-            // }
-        // }
     }
 
     const onChange = (event) => {
@@ -95,18 +98,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                     "review": "",
                     "seen": true
                 })
-            // }
-        // }
     }
-
-    // let movieReviews = null
-    //   for (let review of reviews){
-    //     if (movie.id === review.movie_id){
-    //         movieReviews = reviews.map((review, index) => {
-    //             return <li key={index}>{review.review}</li>
-    //         })
-    //     }
-    //   }
 
     let watchListOptions = null
       for (let review of reviews){
@@ -117,6 +109,18 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
             watchListOptions = <button onClick={deleteReview}>Remove From Watch List</button>
         }
       }
+
+    const movieReviewsList = []
+    for ( let movieReview of reviews){
+        if (movieReview.movie_id === movie.id){
+            movieReviewsList.push(movieReview)
+        }
+    }
+    console.log(movieReviewsList);
+    const movieReviews = movieReviewsList.map((review, index) => {
+        return <li key={index}><h3>Reelax User</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
+    })
+    console.log(movieReviews)
 
     
     
@@ -149,9 +153,9 @@ const MovieDetail = ({movie, addToWatchList, user, reviews}) => {
                             <input type="submit" value="Confirm"/>
                         </div>
                     </form> : null}
-                {/* <ul>
+                <ul>
                     {movieReviews}
-                </ul> */}
+                </ul>
         </div>
      );
 }

@@ -16,7 +16,7 @@ import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SmallerCarousels from '../components/SmallerCarousels';
 
 
-const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
+const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
 
 
   const Footer = styled.footer`
@@ -36,7 +36,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   `
 
   const [movies, setMovies] = useState([])
-  const [users, setUsers] = useState([])
+  console.log("main users", users)
   const [reviews, setReviews] = useState([])
   const [movieTitle, setMovieTitle] = useState([])
   const [searchInput, setSearchInput] = useState("");
@@ -187,6 +187,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
     return foundMovie
   }
 
+
   const MovieDetailWrapper = () => {
     const { id } = useParams()
     let foundMovie = findMovieById(id)
@@ -237,6 +238,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
   const url = '/movies/';
 
   // Main Carousel Code End
+
 
 
   return (
@@ -314,6 +316,7 @@ const MainContainer = ({ user, removeUser, onUserLogout, addToWatchList }) => {
       <ul>
 
         {/* <p>this is a movie container</p>
+
                 {movieDisplay} 
                 {/* {userDisplay}
                 {reviewDisplay} */}
