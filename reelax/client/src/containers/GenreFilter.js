@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 
 
-const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
+const GenreFilter = ({getMoviesByGenre, setSearchInput}) => {
 
   const [input, setInput] = useState('');
   const navigate = useNavigate();
@@ -11,23 +11,23 @@ const LiveSearch = ({getMovieByTitle, setSearchInput}) => {
   useEffect(() => {
     setInput(''); // clear input on location change
     setSearchInput(''); // also clear the input in the parent component state
-    getMovieByTitle('');
+    getMoviesByGenre('');
   }, [location]); 
 
   const handleChange = event => {
     setInput(event.target.value);
     setSearchInput(event.target.value);
-    getMovieByTitle(event.target.value);
+    getMoviesByGenre(event.target.value);
    
   }
  
 
   return (
-    <input type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
+    <input type="text" onChange={handleChange} value={input} placeholder="know the genre..." />
   )
 }
 
-export default LiveSearch;
-
-
+export default GenreFilter;
+  
+    
   
