@@ -3,7 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
 
-const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
+const MovieDetail = ({users, movie, addToWatchList, user, reviews, genres}) => {
 
     let review_id = null
     for (let review of reviews){
@@ -18,9 +18,10 @@ const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
         if (genre.id === movie.genre){
             movieGenre = genre.name
         }
-    } 
+    }
 
     console.log("review id", review_id);
+    
     // console.log("movie detail users", users)
     // let user_names = []
     // for (let movieUser of users){
@@ -32,7 +33,8 @@ const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
     // }
     // console.log("users id", user_names);
 
-    const [buttonClicked, setButtonClicked]= useState([false])
+    const [buttonClicked, setButtonClicked]= useState(false)
+    const [seeReviews, setSeeReviews] = useState(false)
     const [formData, setFormData] = useState({
         "id": review_id,
         "user_id": user.id,
@@ -50,6 +52,10 @@ const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
 
     const handleClick = () => {
       setButtonClicked(!buttonClicked)
+    }
+
+    const getReviews = () => {
+      setSeeReviews(!seeReviews)
     }
     
     const onButtonClicked = (event) => {
@@ -126,7 +132,7 @@ const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
     }
     console.log(movieReviewsList);
     const movieReviews = movieReviewsList.map((review, index) => {
-        return <li key={index}><h3>Reelax User</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
+        return <li key={index}><h3>***Reelax User***</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
     })
     console.log(movieReviews)
 
@@ -160,11 +166,16 @@ const MovieDetail = ({movie, addToWatchList, user, reviews, genres}) => {
                             <input type="text" name="review" 
                             value={formData.review} onChange={onChange}/>
                             <input type="submit" value="Confirm"/>
+                            <button onClick={handleClick}>Cancel Review</button>
                         </div>
                     </form> : null}
-                <ul>
+                        <button onClick={getReviews}>Reviews</button>
+                {seeReviews?<ul>
                     {movieReviews}
-                </ul>
+                </ul>: null}
+                <p>spacing</p>
+                <p>spacing</p>
+                <p>spacing</p>
         </div>
      );
 }
