@@ -1,11 +1,21 @@
-import { Face } from "@styled-icons/boxicons-regular";
-
 const usernameRef = document.getElementById("username");
 const passwordRef = document.getElementById("password");
 const eyeL = document.querySelector(".eyeball-l")
 const eyeR = document.querySelector(".eyeball-r")
 const HandL = document.querySelector(".hand-l")
 const HandR = document.querySelector(".hand-l")
+
+const stars = document.querySelectorAll(".stars i")
+
+document.addEventListener("DOMContentLoaded", () => {
+stars.forEach((star, index1) => {
+  star.addEventListener("click", () => {
+    stars.forEach((star, index2) => {
+      index1 >= index2 ? star.classList.add("active") : star.classList.remove("active")
+    })
+  });
+});
+});
 
 const normalEyeStyle = () => {
     eyeL.style.cssText = `

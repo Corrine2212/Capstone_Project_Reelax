@@ -51,6 +51,13 @@ body {
   /* width: 90%; */
 }
 
+.ratingsContainer{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .content {
   text-align: center;
   margin-bottom: 30px;
