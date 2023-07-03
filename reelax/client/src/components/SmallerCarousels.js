@@ -5,6 +5,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../App.css'
 import MovieDetail from "./MovieDetail";
+import styled from 'styled-components';
+import {Fire} from '@styled-icons/remix-line';
+
 
 const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     const [movies, setMovies] = useState([]);
@@ -20,6 +23,17 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
         fetchMovies();
     }, [genre]);
     
+    const StyledLink = styled(Link)`
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+    `;
+
+    const StyledFireIcon = styled(Fire)`
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    `;
 
     // useEffect(() => {
         
@@ -73,7 +87,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     return (
         <>
             <div className="content">
-                <h1 className="sml-carousel-header">Trending</h1>
+                <h1 className="sml-carousel-header">Trending <StyledFireIcon/></h1> 
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (
