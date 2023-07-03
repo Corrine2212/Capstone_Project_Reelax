@@ -13,8 +13,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [selectedGenre, setSelectedGenre] = useState('')
 
-    useEffect(() => {
-    });
+   
     
     const StyledLink = styled(Link)`
     color: #333;
