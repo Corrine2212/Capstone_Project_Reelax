@@ -73,7 +73,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
 
     
     const setChange = (event) => {
-        const chosenGenre = genres[event.target.name]
+        const chosenGenre = genres[event.target.value]
         setSelectedGenre(chosenGenre)
     }
     
