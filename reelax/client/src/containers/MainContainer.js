@@ -257,7 +257,12 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <Routes>
-            <Route path="/" element={[<LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />, <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
+            <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user} 
+            settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds} 
+            getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} 
+            setSearchInput={setSearchInput} />,            
+            , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, 
+            <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>

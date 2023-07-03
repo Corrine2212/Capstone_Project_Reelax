@@ -67,7 +67,7 @@ function App() {
       const foundUser = JSON.parse(loggedUser)
       setUser(foundUser)
     }
-  }, [onUserLogout])
+  }, [])
   
   const removeUser = (id) => {
     const usersToKeep = users.filter(user => user._id !== id)
@@ -121,6 +121,7 @@ function App() {
   //   // splice ( index, number, what to replace it with)
   //   setUsers(copiedUsers.reverse())
   // }
+  console.log("dippity doo");
   return (
     <Router>
       <div className="App">
