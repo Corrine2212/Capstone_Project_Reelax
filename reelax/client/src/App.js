@@ -3,6 +3,9 @@ import './App.css';
 import UserContainer from './containers/UserContainer'
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import About from '../src/components/About';
+
 
 
 function App() {
@@ -14,7 +17,7 @@ function App() {
     width: 100%;
     /* text-align: center; */
     margin-top: 20px;
-    position: fixed;
+    /* position: fixed; */
     margin-top: auto;
     z-index: 1;
     color: white;
@@ -55,64 +58,80 @@ function App() {
   }
 
 
-const removeUser = (id) => {
-  const usersToKeep = users.filter(user => user._id !== id)
-  setUsers(usersToKeep);
-}
+  const removeUser = (id) => {
+    const usersToKeep = users.filter(user => user._id !== id)
+    setUsers(usersToKeep);
+  }
 
 
-// const handleEditClicked = (id, post) => {
-//   putPost(id, post)
-//   let updatedPostIndex = posts.indexOf(post)
-//   let newPosts = [...posts]
-//   newPosts[updatedPostIndex] = post
-//   setPostToEdit(newPosts)
-// }
-// const addPost = (post) => {
-//   setPosts([...posts, post]);
-// }
-// const removeUser = (id) => {
-//   const usersToKeep = users.filter(user => user._id !== id)
-//   setUsers(usersToKeep);
-// }
-// const updatePostForUser = (updatedUser) => {
-//   console.log(updatedUser)
-//   createPostForUser(updatedUser)
-//   const copiedUsers = [...users]
-//   // loop through users and find user where user id matches find
-//   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
-//   const userIndex = copiedUsers.indexOf(foundUser)
-//   copiedUsers.splice(userIndex, 1, updatedUser)
-//   // splice ( index, number, what to replace it with)
-//   setUsers(copiedUsers.reverse())
-// }
-// const postForUserUpdated = (updatedUser) => {
-//   editPostForUser(updatedUser)
-//   const copiedUsers = [...users]
-//   // loop through users and find user where user id matches find
-//   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
-//   const userIndex = copiedUsers.indexOf(foundUser)
-//   copiedUsers.splice(userIndex, 1, updatedUser)
-//   // splice ( index, number, what to replace it with)
-//   setUsers(copiedUsers.reverse())
-// }
-// const updateCommentForUser = (updatedUser) => {
-//   createCommentForPost(updatedUser)
-//   // make a copy of the current users list
-//   const copiedUsers = [...users]
-//   // loop through users and find user where user id matches find
-//   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
-//   const userIndex = copiedUsers.indexOf(foundUser)
-//   copiedUsers.splice(userIndex, 1, updatedUser)
-//   // splice ( index, number, what to replace it with)
-//   setUsers(copiedUsers.reverse())
-// }
-return (
-  <div className='App'>
-    <UserContainer users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} removeUser={removeUser} />
-    {/* // addPost={addPost} updatePostForUser={updatePostForUser} updateCommentForUser={updateCommentForUser} postForUserUpdated={postForUserUpdated}/> */}
-    <div><Footer>A.H.E.C. ltd</Footer></div>
-  </div>
-);
+  // const handleEditClicked = (id, post) => {
+  //   putPost(id, post)
+  //   let updatedPostIndex = posts.indexOf(post)
+  //   let newPosts = [...posts]
+  //   newPosts[updatedPostIndex] = post
+  //   setPostToEdit(newPosts)
+  // }
+  // const addPost = (post) => {
+  //   setPosts([...posts, post]);
+  // }
+  // const removeUser = (id) => {
+  //   const usersToKeep = users.filter(user => user._id !== id)
+  //   setUsers(usersToKeep);
+  // }
+  // const updatePostForUser = (updatedUser) => {
+  //   console.log(updatedUser)
+  //   createPostForUser(updatedUser)
+  //   const copiedUsers = [...users]
+  //   // loop through users and find user where user id matches find
+  //   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+  //   const userIndex = copiedUsers.indexOf(foundUser)
+  //   copiedUsers.splice(userIndex, 1, updatedUser)
+  //   // splice ( index, number, what to replace it with)
+  //   setUsers(copiedUsers.reverse())
+  // }
+  // const postForUserUpdated = (updatedUser) => {
+  //   editPostForUser(updatedUser)
+  //   const copiedUsers = [...users]
+  //   // loop through users and find user where user id matches find
+  //   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+  //   const userIndex = copiedUsers.indexOf(foundUser)
+  //   copiedUsers.splice(userIndex, 1, updatedUser)
+  //   // splice ( index, number, what to replace it with)
+  //   setUsers(copiedUsers.reverse())
+  // }
+  // const updateCommentForUser = (updatedUser) => {
+  //   createCommentForPost(updatedUser)
+  //   // make a copy of the current users list
+  //   const copiedUsers = [...users]
+  //   // loop through users and find user where user id matches find
+  //   const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+  //   const userIndex = copiedUsers.indexOf(foundUser)
+  //   copiedUsers.splice(userIndex, 1, updatedUser)
+  //   // splice ( index, number, what to replace it with)
+  //   setUsers(copiedUsers.reverse())
+  // }
+  return (
+    <Router>
+      <div className="App">
+        <UserContainer
+          users={users}
+          loggedInUser={loggedInUser}
+          onSubmitLogin={onSubmitLogin}
+          onUserLogout={onUserLogout}
+          removeUser={removeUser}
+        />
+        <Routes>
+          <Route path="/about" element={<About />} />
+        </Routes>
+        
+        <div>
+          <Footer>
+            A.H.E.C. ltd <Link to="/about">About</Link>
+          </Footer>
+        </div>
+      </div>
+    </Router>
+
+  );
 }
 export default App;

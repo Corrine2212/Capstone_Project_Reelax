@@ -1,0 +1,125 @@
+
+.about-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile-pic,
+img {
+    position: absolute;
+    /* Add absolute positioning */
+    top: -50px;
+    /* Adjust the value to poke out halfway */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: orange;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+    /* Replace this with your own styles for the profile picture */
+}
+
+.card-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    /* Align items to the top */
+
+}
+
+.card {
+    position: relative;
+    width: 220px;
+    height: 200px;
+    border: 1px solid #8482A2;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 10px;
+    text-align: center;
+    background-color: #8482A2;
+}
+
+.card:hover {
+    /* Add your hover styles here */
+    background-color: #8482A2;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center;
+}
+
+.circle-border {
+    width: 35px;
+    /* Adjust the size as needed */
+    height: 35px;
+    /* Adjust the size as needed */
+    border-radius: 50%;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.custom-icon {
+    font-size: 20px;
+    margin: 5px;
+    color: white;
+}
+
+
+
+a {
+    text-decoration: none;
+    /* Remove underline */
+    color: inherit;
+    /* Inherit color from parent */
+}
+
+.circle-border:hover {
+    border-color: 2px solid purple;
+    background-color: #eaeaea;
+}
+
+.circle-border:hover .custom-icon {
+    color: purple;
+}
+
+h1,
+h4 {
+    margin: 5px;
+}
+
+h2 {
+    margin-top: 50px;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 1000px) {
+    .card-container {
+        align-items: center;
+    }
+
+    .card {
+        margin-top: 60px;
+        /* Increase the top margin to create space for the profile picture */
+    }
+
+    .profile-pic {
+        top: -50px;
+        /* Adjust the top position to prevent overlap on smaller screens */
+    }
+}

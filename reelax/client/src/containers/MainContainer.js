@@ -305,7 +305,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   return (
     <div>
       <div>
-        <Router>
+        {/* <Router> */}
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
@@ -365,12 +365,12 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
           {/* Carousels end */}
 
           <Routes>
-            <Route path="/" element={movieDisplay} />
+            <Route path="/" element={<MainCarousels movies={movies} findMovieById={findMovieById} />} />  
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
 
-        </Router>
+        {/* </Router> */}
       </div>
       <ul>
 
