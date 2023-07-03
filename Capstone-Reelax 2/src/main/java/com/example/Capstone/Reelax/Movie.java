@@ -26,6 +26,9 @@ public class Movie {
     @Column(name="release", nullable = true)
     private String release;
 
+    @Column(name="vote_average", nullable = true)
+    private double vote_average;
+
     @Column(name="backdrop", nullable = true)
     private String backdrop;
 
@@ -36,12 +39,13 @@ public class Movie {
 
 
 
-    public Movie(String title, String overview, String poster, int genre, String release, String backdrop) {
+    public Movie(String title, String overview, String poster, int genre, String release, double vote_average, String backdrop) {
         this.title = title;
         this.overview = overview;
         this.poster = poster;
         this.genre = genre;
         this.release = release;
+        this.vote_average = vote_average;
         this.backdrop = backdrop;
 
 
@@ -97,6 +101,14 @@ public class Movie {
 
     public void setRelease(String release) {
         this.release = release;
+    }
+
+    public double getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(double vote_average) {
+        this.vote_average = vote_average;
     }
 
     public String getBackdrop() {

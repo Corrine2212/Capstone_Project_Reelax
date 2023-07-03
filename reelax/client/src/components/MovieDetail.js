@@ -148,6 +148,7 @@ const MovieDetail = ({users, movie, addToWatchList, user, reviews, genres}) => {
             <img id="poster" 
                 src={"https://image.tmdb.org/t/p/original"+movie.poster} 
                 width={250} height={300}alt="poster"/>
+                <p>Voter Average {movie.vote_average}</p>
                 <p>{movie.overview}</p>
                 {watchListOptions}
                 <button onClick={handleClick}>Create Review</button>

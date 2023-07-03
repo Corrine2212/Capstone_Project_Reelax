@@ -151,6 +151,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   //         "poster": movie.poster_path,
   //         "genre": movie.genre_ids[0], 
   //         "release": movie.release_date,
+  //         "vote_average": movie.vote_average,
   //         "backdrop": movie.backdrop_path 
   //       }
 
