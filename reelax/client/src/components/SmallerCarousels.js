@@ -101,28 +101,10 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
 
     return (
         <>
-            {/* <div className="content">
-                <h1 className="sml-carousel-header">Trending <StyledFireIcon/></h1> 
-                <div className="sml-carousel-container">
-                    <Slider {...settings}>
-                    {movies.map((movie) => (
-                            <div>
-                                <img
-                                    id="poster"
-                                    alt={movie.title}
-                                    className="img"
-                                    src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                                />
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </div> */}
-
             <div className="content">
-                <h1 className="sml-carousel-header">Comedy</h1>
+                <h1 className="sml-carousel-header">Movies By Genre</h1>
                 <select defaultValue='' onChange={setChange}>
-                    <option value="" selected>Movies by Genre</option>
+                    <option value="" selected>Choose a Genre</option>
                     {genreOptions}
                 </select>
                 <div className="sml-carousel-container">

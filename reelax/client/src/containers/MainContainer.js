@@ -256,44 +256,8 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
         {/* <Router> */}
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
-          <LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />
-          <YearSlider yearRange={yearRange} setYearRange={setYearRange} />
-
-          {/* <GenreFilter getMoviesByGenre={getMoviesByGenre} searchInput={searchInput} setSearchInput={setSearchInput} /> */}
-
-          <div className="main-carousel">
-            <h1>Main Carousel</h1>
-            <Slider {...settings}>
-              {filteredMovies.map((movie, index) => (
-                <div
-                  key={movie.id}
-                  className={index === currentSlide ? "current-slide" : "carousel-slide"}>
-                  <Link to={url + movie.id} element={<MovieDetailWrapper />}>
-                    <div className="movie-card">
-                      <div className="poster">
-                        <img
-                          id="main-carousel-poster"
-                          alt={movie.title}
-                          src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                        />
-                      </div>
-                      <div className="details">
-                        <h2>{movie.title}</h2>
-                        <p>{movie.overview}</p>
-                        {/* Include other movie details as needed */}
-                      </div>
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </Slider>
-          </div>
-
-          {/* <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} /> */}
-          {/* Carousels end */}
-
           <Routes>
-            <Route path="/" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />} />
+            <Route path="/" element={[<LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />, <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
