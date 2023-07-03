@@ -69,38 +69,6 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     }
   }
 
-  // const getMoviesByGenre = (genre) => {
-  //   const request = new Request();
-  //   if (genre === genre) {
-  //     getMovies();
-  //   }
-  //   if (genre) {
-  //     request.get("/api/movies/search/" + genre)
-  //       .then((data) => {
-  //         setMovies(data);
-  //       });
-  //   } else {
-  //     getMovies();
-  //   }
-  // }
-
-  // const getMoviesByGenre = (genre) => {
-  //   const request = new Request();
-  //   if (genre === '') {
-  //     getMovies();
-  //   } else if (typeof genre === genre) {
-  //     request.get(`/api/movies/search/genre/${genre}`)
-  //       .then((data) => {
-  //         setMovies(data);
-  //       });
-  //   } else {
-  //     getMovies();
-  //   }
-  // };
-
-
-
-
   const handleLogout = () => {
     onUserLogout();
   }
@@ -115,21 +83,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
       })
   }
 
-  // const addUser = (user) => {
-  //   setUsers([...users, user])
-
-  // }
-
   // const getMovies = function () {
-
-
-  //     // const options = {
-  //     //     method: 'GET',
-  //     //     headers: {
-  //     //       accept: 'application/json',
-  //     //       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YTJmOTk5MTUyNzFhZmI3NGQxZmJmZjQxMDI2ZWI0YyIsInN1YiI6IjY0OTVhMDU1ODgwNTUxMDBlNzQ0N2FjNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.lFaWCPsXKZFT5aaHoRbNYKgyNEhOsVtu1AHUUZGVZ1g'
-  //     //     }
-  //     //   };
   // const allRequests = []
   // for (let i = 1; i <= 1000; i++){
   //   const newFetch = fetch("http://api.themoviedb.org/3/discover/movie?api_key=7f46651666f1ca68e4cf0cb150551f07&page=" + i)
@@ -276,23 +230,6 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     return <MovieSearchCard key={index} movie={movie} />
   })
 
-  // Main Carousel Code Start
-  // const NextArrow = ({ onClick }) => {
-  //   return (
-  //     <div className="arrow next" onClick={onClick}>
-  //       <FaArrowRight />
-  //     </div>
-  //   );
-  // };
-
-  // const PrevArrow = ({ onClick }) => {
-  //   return (
-  //     <div className="arrow prev" onClick={onClick}>
-  //       <FaArrowLeft />
-  //     </div>
-  //   );
-  // };
-
   const settings = {
     infinite: true,
     lazyLoad: true,
@@ -323,28 +260,6 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
           <YearSlider yearRange={yearRange} setYearRange={setYearRange} />
 
           {/* <GenreFilter getMoviesByGenre={getMoviesByGenre} searchInput={searchInput} setSearchInput={setSearchInput} /> */}
-
-          {/* Carousels start */}
-          {/* <div className="main-carousel">
-            <h1>Main Carousel</h1>
-            <Slider {...settings}>
-              {movies.map((movie, index) => (
-                <div
-                  key={movie.id}
-                  className={index === currentSlide ? "current-slide" : "carousel-slide"}>
-                  <Link to={url + movie.id} element={<MovieDetailWrapper />}>
-                    <div className="img-container">
-                      <img
-                        id="main-carousel-poster"
-                        alt={movie.title}
-                        src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                      />
-                    </div>
-                  </Link>
-                </div>
-              ))}
-            </Slider>
-          </div> */}
 
           <div className="main-carousel">
             <h1>Main Carousel</h1>
