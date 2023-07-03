@@ -1,0 +1,9 @@
+{
+  "About": [
+    {
+      "propName": "test",
+      "propType": "object",
+      "defaultValue": "test"
+    }
+  ]
+}

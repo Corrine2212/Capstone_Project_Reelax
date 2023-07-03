@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
     "@styled-icons/boxicons-regular": "^10.47.0",
     "@styled-icons/heroicons-outline": "^10.47.0",
     "@styled-icons/heroicons-solid": "^10.47.0",

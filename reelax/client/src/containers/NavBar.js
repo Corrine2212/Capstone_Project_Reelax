@@ -5,6 +5,11 @@ import { LogOut } from '@styled-icons/boxicons-regular/LogOut';
 
 const NavBar = ({ handleLogout, setSearchInput }) => {
     
+    const StyledLogoImg = styled.img`
+    height: 100px;
+    width: auto;
+
+    `;
 
     const StyledLink = styled(Link)`
     color: #333;
@@ -14,13 +19,13 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
   &:hover {
     text-decoration: underline;
   }
-`;
+`
 
-    const StyledFoodpandaIcon = styled(Foodpanda)`
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-  `;
+  //   const StyledFoodpandaIcon = styled(Foodpanda)`
+  //   width: 24px;
+  //   height: 24px;
+  //   margin-right: 8px;
+  // `;
 
     const StyledLogoutIcon = styled(LogOut)`
     width: 24px;
@@ -43,7 +48,8 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
 
             <StyledHeader>
                 <StyledLink to="/" onClick={() => setSearchInput("")}>
-                    <StyledFoodpandaIcon />
+                    <StyledLogoImg src="../../2.png" alt="" />
+                    {/* <StyledFoodpandaIcon /> */}
                 </StyledLink>
                 <StyledLink to="/" onClick={handleLogout}>
                     <StyledLogoutIcon />
