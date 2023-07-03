@@ -8,6 +8,7 @@ import MovieDetail from "./MovieDetail";
 
 const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     const [movies, setMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState([])
 
     useEffect(() => {
         const fetchMovies = () => {
@@ -37,11 +38,28 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
         dots: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 4,
-        slidesToScroll: 3,
+        slidesToShow: 4, // Adjust the number of visible slides on larger screens
+        slidesToScroll: 3, // Adjust the number of slides to scroll on larger screens
         autoplay: false,
         autoplaySpeed: 1000,
-    };
+        responsive: [
+          {
+            breakpoint: 1024, // Adjust the breakpoint value as needed
+            settings: {
+              slidesToShow: 3, // Adjust the number of visible slides on medium-sized screens
+              slidesToScroll: 2, // Adjust the number of slides to scroll on medium-sized screens
+            },
+          }
+        //   {
+        //     breakpoint: 768, 
+        //     settings: {
+        //       slidesToShow: 2,
+        //       slidesToScroll: 1, 
+        //     },
+        //   },
+        ],
+      };
+      
 
     const MovieDetailWrapper = () => {
         const {id} = useParams()
@@ -55,7 +73,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
     return (
         <>
             <div className="content">
-                <h1 className="header">Trending</h1>
+                <h1 className="sml-carousel-header">Trending</h1>
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (
@@ -69,7 +87,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
                                         src={"https://image.tmdb.org/t/p/original" + movie.poster}
                                     />
                                 </Link>
-                                <h5 className="title">{movie.title}</h5>
+                                
                             </div>
                         ))}
                     </Slider>
@@ -77,7 +95,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
             </div>
 
             <div className="content">
-                <h1 className="header">Comedy</h1>
+                <h1 className="sml-carousel-header">Comedy</h1>
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (
@@ -88,7 +106,6 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
                                     className="img"
                                     src={"https://image.tmdb.org/t/p/original" + movie.poster}
                                 />
-                                <h5 className="title">{movie.title}</h5>
                             </div>
                         ))}
                     </Slider>

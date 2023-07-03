@@ -48,7 +48,7 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
   background: #fff;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .content {
@@ -56,22 +56,36 @@ body {
   margin-bottom: 30px;
 }
 
-.header {
+.sml-carousel-header {
   font-size: 42px;
 }
 
 .img {
   display: flex;
-  margin: 0 auto;
+  margin: 5px auto;
   height: 30vh;
-  width: 200px;
+  width: auto;
   border-radius: 5%;
+}
+
+/* Adjust the size of the images for smaller screens */
+@media screen and (max-width: 768px) {
+  .img {
+    max-height: 20vh;
+  }
+}
+
+/* Adjust the size of the images for even smaller screens */
+@media screen and (max-width: 480px) {
+  .img {
+    max-height: 15vh;
+  }
 }
 
 .sml-carousel-container {
   margin: 0 auto;
-  width: 100%;
-  height: 55vh;
+  width: 90%;
+  height: 40vh;
   border-color: white;
 }
 
@@ -144,6 +158,7 @@ body {
 
 .poster {
   flex: 0 0 auto;
+  margin: 5px;
   margin-right: 20px;
 }
 

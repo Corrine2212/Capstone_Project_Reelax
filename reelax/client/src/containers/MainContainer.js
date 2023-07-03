@@ -320,7 +320,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
   return (
     <div>
-      <div className='which-div'>
+      <div>
         <Router>
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
