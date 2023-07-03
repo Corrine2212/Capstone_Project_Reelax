@@ -7,8 +7,7 @@
     text-align: center;
 }
 
-.profile-pic,
-img {
+.profile-pic {
     position: absolute;
     /* Add absolute positioning */
     top: -50px;

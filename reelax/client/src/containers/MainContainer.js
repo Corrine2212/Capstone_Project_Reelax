@@ -365,7 +365,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
           {/* Carousels end */}
 
           <Routes>
-            <Route path="/" element={<MainCarousels movies={movies} findMovieById={findMovieById} />} />  
+            <Route path="/" element={movieDisplay} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
