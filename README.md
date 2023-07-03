@@ -45,6 +45,7 @@ npm install @styled-icons/boxicons-regular
 npm install styled-components@^5.0.0
 npm install react-router-dom
 npm i react-icons react-slick slick-carousel
+npm install @styled-icons/remix-line
 ``````
 
 Run the frontend: `npm start`
