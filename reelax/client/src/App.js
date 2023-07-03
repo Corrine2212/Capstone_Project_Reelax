@@ -2,9 +2,26 @@ import logo from './logo.svg';
 import './App.css';
 import UserContainer from './containers/UserContainer'
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
 
 function App() {
+
+  const Footer = styled.footer`
+    position: fixed;
+    left: 0;
+    bottom: 15px;
+    width: 100%;
+    /* text-align: center; */
+    margin-top: 20px;
+    position: fixed;
+    margin-top: auto;
+    z-index: 1;
+    color: white;
+    font-size: 2vh;
+    text-shadow: rgba(0, 0, 0, 0.35) 0px 15px 25px, rgba(0, 0, 0, 0.35) 0px 5px 10px;
+    font-family: reem kufi, sans-serif;
+  `
   const baseURL = "/api/users"
   const [users, setUsers] = useState([])
   const [loggedInUser, setLoggedInUser] = useState(null)
@@ -94,6 +111,7 @@ return (
   <div className='App'>
     <UserContainer users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} removeUser={removeUser} />
     {/* // addPost={addPost} updatePostForUser={updatePostForUser} updateCommentForUser={updateCommentForUser} postForUserUpdated={postForUserUpdated}/> */}
+    <div><Footer>A.H.E.C. ltd</Footer></div>
   </div>
 );
 }

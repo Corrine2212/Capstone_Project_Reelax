@@ -19,22 +19,6 @@ import SmallerCarousels from '../components/SmallerCarousels';
 const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
 
 
-  const Footer = styled.footer`
-  position: fixed;
-    left: 0;
-    bottom: 15px;
-    width: 100%;
-    /* text-align: center; */
-    margin-top: 20px;
-    position: fixed;
-    margin-top: auto;
-    z-index: 1;
-    color: white;
-    font-size: 2vh;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 15px 25px, rgba(0, 0, 0, 0.35) 0px 5px 10px;
-    font-family: reem kufi, sans-serif;
-  `
-
   const [movies, setMovies] = useState([])
   console.log("main users", users)
   const [reviews, setReviews] = useState([])
@@ -388,8 +372,6 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
         </Router>
       </div>
-
-      <div><Footer>A.H.E.C. ltd</Footer></div>
       <ul>
 
         {/* <p>this is a movie container</p>
