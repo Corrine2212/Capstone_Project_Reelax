@@ -9,19 +9,12 @@ import styled from 'styled-components';
 import {Fire} from '@styled-icons/remix-line';
 
 
-const SmallerCarousels = ({ movie, genre, findMovieById }) => {
-    const [movies, setMovies] = useState([]);
+const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     const [filteredMovies, setFilteredMovies] = useState([])
+    const [selectedGenre, setSelectedGenre] = useState('')
 
     useEffect(() => {
-        const fetchMovies = () => {
-            fetch(`/api/movies?genre=${genre}`)
-                .then(response => response.json())
-                .then(data => setMovies(data.slice(0, 9)))
-                .catch(error => console.log('Error fetching movies:', error));
-        };
-        fetchMovies();
-    }, [genre]);
+    });
     
     const StyledLink = styled(Link)`
     color: #333;
@@ -83,36 +76,36 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
 
     const url = "/movies/";
 
+    
+    const setChange = (event) => {
+        const chosenGenre = genres[event.target.value]
+        setSelectedGenre(chosenGenre)
+    }
+    
+    console.log("genres", genres);
+    const genreOptions = genres.map((genre, index) => {
+        return <option value={index}>
+            {genre.name}
+        </option>
+    })
+
+    let moviesByGenre = []
+    for (let movie of movies){
+        if (movie.genre === selectedGenre.id){
+            moviesByGenre.push(movie)
+        }
+    }
+    console.log("result", moviesByGenre);
+
+    console.log(selectedGenre);
 
     return (
         <>
-            <div className="content">
+            {/* <div className="content">
                 <h1 className="sml-carousel-header">Trending <StyledFireIcon/></h1> 
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
-                        {movies.map((movie) => (
-                            <div key={movie.id}>
-                                <Link to={url + movie.id} element={<MovieDetailWrapper/>}>
-                                {/* <Link to={`/movies/${movie.id}`}> */}
-                                    <img
-                                        id="poster"
-                                        alt={movie.title}
-                                        className="img"
-                                        src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                                    />
-                                </Link>
-                                
-                            </div>
-                        ))}
-                    </Slider>
-                </div>
-            </div>
-
-            <div className="content">
-                <h1 className="sml-carousel-header">Comedy</h1>
-                <div className="sml-carousel-container">
-                    <Slider {...settings}>
-                        {movies.map((movie) => (
+                    {movies.map((movie) => (
                             <div>
                                 <img
                                     id="poster"
@@ -123,6 +116,29 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
                             </div>
                         ))}
                     </Slider>
+                </div>
+            </div> */}
+
+            <div className="content">
+                <h1 className="sml-carousel-header">Comedy</h1>
+                <select defaultValue='' onChange={setChange}>
+                    <option value="" selected>Movies by Genre</option>
+                    {genreOptions}
+                </select>
+                <div className="sml-carousel-container">
+                <Slider {...settings}>
+                    {moviesByGenre.map((movie, index) => {
+                            return <div key={index}>
+                                <Link to={"/movies/" + movie.id}>
+                                <img id="poster"
+                                alt={movie.title}
+                                className="img"
+                                src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                                />
+                                </Link>
+                            </div>
+                        })}
+                </Slider>
                 </div>
             </div>
         </>

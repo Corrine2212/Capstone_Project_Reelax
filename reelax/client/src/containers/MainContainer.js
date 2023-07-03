@@ -289,11 +289,11 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
             </Slider>
           </div>
 
-          <SmallerCarousels movies={movies} findMovieById={findMovieById} />
+          {/* <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} /> */}
           {/* Carousels end */}
 
           <Routes>
-            <Route path="/" element={movieDisplay} />
+            <Route path="/" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
