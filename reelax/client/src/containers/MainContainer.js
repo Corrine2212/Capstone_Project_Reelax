@@ -15,6 +15,7 @@ import Slider from 'react-slick';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SmallerCarousels from '../components/SmallerCarousels';
 import YearSlider from '../components/YearSlider';
+import RatingSlider from '../components/RatingSlider';
 
 
 const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
@@ -28,6 +29,8 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   const [foundMovies, setFoundMovies] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [yearRange, setYearRange] = useState({ min: 2000, max: 2023 });
+  const [ratingRange, setRatingRange] = useState({ min: 0, max: 10 });
+
 
 
   useEffect(() => {
@@ -42,6 +45,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     request.get("/api/movies")
       .then((data) => {
         setMovies(data)
+        console.log(data);
       })
   }
 
@@ -217,8 +221,10 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
   const filteredMovies = movies.filter(movie => {
     const movieYear = new Date(movie.release).getFullYear();
-    return movieYear >= yearRange.min && movieYear <= yearRange.max;
+    return movieYear >= yearRange.min && movieYear <= yearRange.max 
+        && movie.vote_average >= ratingRange.min && movie.vote_average <= ratingRange.max;
   });
+  
   
   const movieDisplay = filteredMovies.map((movie, index) => {
     return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
@@ -257,7 +263,8 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <Routes>
-            <Route path="/" element={[<LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />, <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
+            <Route path="/" element={[<LiveSearch getMovieByTitle={getMovieByTitle} searchInput={searchInput} setSearchInput={setSearchInput} />, <YearSlider yearRange={yearRange} setYearRange={setYearRange} />,<RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />
+, <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
