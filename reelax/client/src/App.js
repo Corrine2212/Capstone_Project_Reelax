@@ -27,21 +27,13 @@ function App() {
   const [loggedInUser, setLoggedInUser] = useState(null)
   // const [postToEdit, setPostToEdit] = useState(null)
   // const [posts, setPosts] = useState([])
-  useEffect(() => {
-    getUsers()
-    const loggedUser = localStorage.getItem("user")
-    if (loggedUser) {
-      const foundUser = JSON.parse(loggedUser)
-      setUser(foundUser)
-    }
-  }, [])
   
   const getUsers = () => {
     return fetch(baseURL)
-      .then(res => res.json())
-      .then(data => setUsers(data))
+    .then(res => res.json())
+    .then(data => setUsers(data))
   }
-
+  
   const setUser = (newUser) => {
     setLoggedInUser(newUser)
     
@@ -50,20 +42,28 @@ function App() {
     console.log('search user', searchUser);
     const workingUser = users.find(
       (user) => // find the user that matches the username or email and password
-        (user.username === searchUser.username || user.email === searchUser.username) &&
-        user.password === searchUser.password
-    );
-    if (workingUser) {
-      setLoggedInUser(workingUser)
-      // localStorage.setItem(‘loggedInUser’, JSON.stringify(workingUser)); // stores the logged in user in local storage
-    } else { // if user doesn’t exist
-      console.log('Authentication failed');
+      (user.username === searchUser.username || user.email === searchUser.username) &&
+      user.password === searchUser.password
+      );
+      if (workingUser) {
+        setLoggedInUser(workingUser)
+        // localStorage.setItem(‘loggedInUser’, JSON.stringify(workingUser)); // stores the logged in user in local storage
+      } else { // if user doesn’t exist
+        console.log('Authentication failed');
+      }
+    };
+    const onUserLogout = () => {
+      setLoggedInUser(null);
+      localStorage.removeItem('user') // removes the logged in user from local storage
     }
-  };
-  const onUserLogout = () => {
-    setLoggedInUser(null);
-    localStorage.removeItem('loggedInUser') // removes the logged in user from local storage
-  }
+    useEffect(() => {
+      getUsers()
+      const loggedUser = localStorage.getItem("user")
+      if (loggedUser) {
+        const foundUser = JSON.parse(loggedUser)
+        setUser(foundUser)
+      }
+    }, [onUserLogout])
 
 
 const removeUser = (id) => {

@@ -109,7 +109,7 @@ const SmallerCarousels = ({ movie, genre, findMovieById }) => {
             </div>
 
             <div className="content">
-                <h1 className="sml-carousel-header">Comedy</h1>
+                <h1 className="sml-carousel-header">Select a Genre</h1>
                 <div className="sml-carousel-container">
                     <Slider {...settings}>
                         {movies.map((movie) => (

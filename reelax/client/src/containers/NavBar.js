@@ -47,8 +47,9 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
                 </StyledLink>
                 <StyledLink to="/" onClick={handleLogout}>
                     <StyledLogoutIcon />
-                <Link to="/profile"> profile </Link>
                 </StyledLink>
+                <Link to="/profile"> profile </Link>
+                
 
 
             </StyledHeader>
