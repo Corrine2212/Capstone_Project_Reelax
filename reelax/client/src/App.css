@@ -48,6 +48,7 @@ body {
   font-family: sans-serif;
   box-sizing: border-box;
   background: #fff;
+  color: white;
   /* width: 90%; */
 }
 
@@ -241,4 +242,54 @@ body {
   min-height: 100vh;
   background: rgb(76, 59, 92);
   background: linear-gradient(0deg, rgba(76, 59, 92, 1) 7%, rgba(89, 66, 110, 1) 44%, rgba(98, 69, 129, 1) 87%);
+}
+
+
+  
+.input-field {
+  margin-bottom: 30px;
+}
+
+input {
+  padding: 1em 8em;
+  border-radius: 10px;
+
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.login-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+}
+
+.login-submit-btn {
+  background-color: hotpink;
+  color: white;
+  padding: 10px 7em;
+  border-radius:  10px;
+  border: none;
+  margin: 30px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.login-logo {
+  /* height: 200px; */
+  width: 200px;
+  margin-bottom: 60px;
+  text-align: center;
+}
+
+.sign-in-title {
+  margin-bottom: 40px;
 }
