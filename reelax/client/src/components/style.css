@@ -1,14 +1,16 @@
-body{
-    background-color: #f4c531;
+body {
+    /* background-color: #f4c531; */
 }
-.container{
+
+.container {
     height: 31.25em;
     width: 31.25em;
     position: absolute;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
 }
+
 /* form{
     height: 23.75em;
     width: 18.75em;
@@ -23,86 +25,72 @@ body{
     justify-content: center;
     border-radius: 0.5em;
 } */
-form label{
+form label {
     display: block;
     margin-bottom: 0.2em;
     font-weight: 600;
     columns: black;
 }
-form input{
+
+form input {
     font-size: 0.95em;
     font-weight: 400;
-    color: purple;
+    color: white;
     padding: 0.3em;
     border: none;
     border-bottom: 0.12em solid plum;
     outline: none;
 }
 
-form input:focus{
+form input:focus {
     border-color: yellow;
 }
 
-form input:not(:last-child){
+form input:not(:last-child) {
     margin-bottom: 0.9em;
 }
 
 form button {
     font-size: 0.95em;
-    padding: 0.8em 0 ;
+    padding: 0.8em 0;
     border-radius: 2em;
     border: none;
     outline: none;
     background-color: #f4c531;
     color: black;
-    text-transform: uppercase;
     font-weight: 600;
     letter-spacing: 0.15em;
     margin-top: 0.8;
 }
-.panda-face {
-    height: 7.5em;
-    width: 8.4em;
-    background-color: #ffffff;
-    border: 0.18em solid black;
-    border-radius: 7.5em 7.5em 5.62em 5.62em;
-    position: absolute;
-    top: 2em;
-    margin: auto;
-    left: 0;
-    right: 0;
-}
-.blush-l{
-    color: pink;
-}
-.blush-r{
-    color: pink;
-}
 
-.ratingsContainer{
-    height:100vh;
+
+
+.ratingsContainer {
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
 
 }
-.rating-box{
+
+.rating-box {
     position: relative;
-    background:#ffb28f ;
+    background: #ffb28f;
     padding: 25px 50px 35px;
     border-radius: 25px;
-    box-shadow: 0 5px 10px (0,0,0,0.05);
+    box-shadow: 0 5px 10px (0, 0, 0, 0.05);
 }
 
-.rating-box header{
+.rating-box header {
     font-size: 22px;
     color: #dadadd;
     font-weight: 500;
     margin-bottom: 20px;
     text-align: center;
 }
-.rating-box .stars{
+
+.rating-box .stars {
     display: flex;
     align-items: center;
     gap: 25px;
@@ -115,6 +103,116 @@ form button {
     transition: color 0.2 ease;
 }
 
-.stars i.active{
+.stars i.active {
     color: #ff9c1a
+}
+
+.login-form {
+    position: relative;
+    padding: 25px 50px 35px;
+    border-radius: 25px;
+    box-shadow: 0 5px 10px (0, 0, 0, 0.05);
+}
+
+.forgot-pw {
+    background: rgb(144, 113, 144);
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin: 0;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px, rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+}
+
+.input-field {
+    background: rgb(144, 113, 144);
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    padding: 18px 36px;
+    font-family: Quicksand, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin: 0;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px, rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+
+}
+
+#password{
+    background-color: initial;
+    
+}
+#user{
+    background-color: initial;
+    
+}
+.login-submit-btn {
+    background: rgb(144, 113, 144);
+    align-items: center;
+    background-color: initial;
+    background-image: linear-gradient(rgba(179, 132, 201, .84), rgba(57, 31, 91, .84) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    margin: 2 em;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin: 5;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: rgba(255, 255, 255, 0.4) 0 0 4px, rgba(255, 255, 255, 0.2) 0 0 12px, rgba(57, 31, 91, 0.6) 1px 1px 4px, rgba(57, 31, 91, 0.32) 4px 4px 16px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+}
+
+
+
+@media (min-width: 768px) {
+    .button-72 {
+        font-size: 21px;
+        padding: 18px 34px;
+    }
 }

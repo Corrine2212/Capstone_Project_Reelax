@@ -2,6 +2,7 @@
 import ForgotPassword from './ForgotPassword';
 import React, { useState } from 'react';
 import "./style.css"
+import { Json } from '@styled-icons/simple-icons';
 
 
 const Login = ({ onSubmitLogin, addUser, createUser }) => {
@@ -70,6 +71,7 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
         ) {
             console.log('User Logged In', user);
             onSubmitLogin(user);
+            localStorage.setItem('user', JSON.stringify(user))
         } else {
             console.log('Authentication failed');
         }

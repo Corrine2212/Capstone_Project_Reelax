@@ -29,11 +29,22 @@ function App() {
   // const [posts, setPosts] = useState([])
   useEffect(() => {
     getUsers()
+    const loggedUser = localStorage.getItem("user")
+    if (loggedUser) {
+      const foundUser = JSON.parse(loggedUser)
+      setUser(foundUser)
+    }
   }, [])
+  
   const getUsers = () => {
     return fetch(baseURL)
       .then(res => res.json())
       .then(data => setUsers(data))
+  }
+
+  const setUser = (newUser) => {
+    setLoggedInUser(newUser)
+    
   }
   const onSubmitLogin = (searchUser) => { // searchUser is the user that is trying to log in
     console.log('search user', searchUser);
