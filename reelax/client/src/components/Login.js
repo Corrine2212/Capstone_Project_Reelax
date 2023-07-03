@@ -82,17 +82,21 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
     return (
         <div className="login-container">
             <div className="login-form-wrapper">
-                <h1>Sign in </h1>
+                <img className='login-logo' src='../../1.png'></img>
+                <h1 className='sign-in-title'>Sign in </h1>
                 <div class="container">
                 <form className="login-form" onSubmit={handleSubmit}>
+                    <label>Username/Email</label>
                     <div className="input-field">
-                        <input type="text" id="user" placeholder="  Username/Email  " value={username} onChange={handleUsernameChange} required />
+                        <input type="text" id="user" placeholder="Username/Email" value={username} onChange={handleUsernameChange} required />
                     </div>
+
+                    <label>Password</label>
                     <div className="input-field">
-                        <input type="password" id="password" placeholder="  Password  " value={password} onChange={handlePasswordChange} required />
+                        <input type="password" id="password" placeholder="Password" value={password} onChange={handlePasswordChange} required />
                     </div>
                     <div>
-                        <button onClick={() => setShow(true)} className="forgot-pw">Forget Password?</button>
+                        <p onClick={() => setShow(true)} className="forgot-pw">Forget Password?</p>
                         {show && (
                             <div className="modal-overlay">
                                 <div className="modal-content">
@@ -104,7 +108,7 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
                     <input className="login-submit-btn" type="submit" value="Sign In" />
                 </form> 
                 <div>
-                    <button onClick={handleCreate} className="create-acc-btn">Create an account</button>
+                    <p onClick={handleCreate} className="create-acc-btn">Create an account</p>
                     {buttonClicked && (
                         <div className="modal-overlay">
                             <div className="modal-content">

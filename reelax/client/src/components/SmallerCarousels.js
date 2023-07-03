@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import '../App.css'
 import MovieDetail from "./MovieDetail";
 import styled from 'styled-components';
-import {Fire} from '@styled-icons/remix-line';
+
 
 
 const SmallerCarousels = ({ movies, genres, findMovieById }) => {
@@ -22,11 +22,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     font-weight: bold;
     `;
 
-    const StyledFireIcon = styled(Fire)`
-    width: 24px;
-    height: 24px;
-    margin-right: 8px;
-    `;
+
 
     // useEffect(() => {
         

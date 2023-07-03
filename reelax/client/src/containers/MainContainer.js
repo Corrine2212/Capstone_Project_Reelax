@@ -215,7 +215,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   }
 
 
-  const filteredMovies = movies.filter(movie => {
+    const filteredMovies = movies.filter(movie => {
     const movieYear = new Date(movie.release).getFullYear();
     return movieYear >= yearRange.min && movieYear <= yearRange.max;
   });
