@@ -29,3 +29,4 @@ const YearSlider = ({ yearRange, setYearRange }) => {
 }
 
 export default YearSlider;
+
