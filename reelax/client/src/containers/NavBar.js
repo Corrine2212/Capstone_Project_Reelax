@@ -43,6 +43,10 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
 
   `;
 
+  const StyledProfile = styled.p`
+
+  `
+
     return (
         <>
 
@@ -51,10 +55,11 @@ const NavBar = ({ handleLogout, setSearchInput }) => {
                     <StyledLogoImg src="../../2.png" alt="" />
                     {/* <StyledFoodpandaIcon /> */}
                 </StyledLink>
+                <StyledLink to="/profile"> Profile </StyledLink>
+                <StyledLink to="/search/genre">Search by Genre</StyledLink>
                 <StyledLink to="/" onClick={handleLogout}>
                     <StyledLogoutIcon />
                 </StyledLink>
-                <Link to="/profile"> profile </Link>
 
 
             </StyledHeader>
