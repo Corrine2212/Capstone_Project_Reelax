@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './ProfileCard.css';
 import placeholder from '../placeholder.jpg';
+import pedro from '../pedro.jpeg';
 
 
 
@@ -72,14 +73,13 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
     console.log("rando", randomImage);
 
 
-
     return ( 
         <div className='container'>
             <div id='imgContainer'>
-                <img className='background-img' src={"https://image.tmdb.org/t/p/original" + randomImage.backdrop} alt='Reelax'/>
+                <img className='background-img' src={pedro} alt="pedro"/>
             </div>
-        <div>
-                <img className='profilePic' src={placeholder} alt="profile picture"/>
+        <div className='profile-info'>
+        <img className='profilePic' src={placeholder} alt="profile picture"/>
         <h1 className='header'>Hello</h1> 
         <h1>{user.username}</h1>
         </div>

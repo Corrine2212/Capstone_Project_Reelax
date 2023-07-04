@@ -42,6 +42,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    top: 455px;
 }
 
 #imgContainer {
@@ -53,10 +54,15 @@
     justify-content: center;
     max-width: 1000px;
     max-height: 2000px;
-    margin: 0 auto;
     padding: 20px;
+    filter: blur(1px);
 }
 
+.background-img {
+    justify-content: center;
+    height: 550px;
+    width: 1000px;
+ }
 .listItem {
     padding: 20px;
 }
