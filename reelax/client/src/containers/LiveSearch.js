@@ -60,6 +60,7 @@ const LiveSearch = ({currentSlide, findMovieById, settings, user, users, addToWa
                           id="main-carousel-poster"
                           alt={movie.title}
                           src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                          
                         />
                       </div>
                       <div className="details">
