@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './ProfileCard.css';
+import placeholder from '../placeholder.jpg'
 
 
 
@@ -9,9 +10,11 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
     
 
     const [buttonClicked, setButtonClicked] = useState([false])
+    const [randomImage, setRandomImage] = useState([])
 
     useEffect(() => {
       getReviews()
+      getRandomImage()
     }, [])
 
     const onDelete = () => {
@@ -49,25 +52,36 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
 
         movieList = watchListMovies.map((movie, index) => {
         console.log("map called", index);
-        return <li key={index}>
+        return <li className='listItem' key={index}>
             <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}><img id="poster" 
                 src={"https://image.tmdb.org/t/p/original"+movie.poster} 
                 width={250} height={300}alt="poster"/>
-            <p>{movie.title}</p></Link></li>
+            <b><p>{movie.title}</p></b></Link></li>
     })
+}
 
+    let userMovies = movies
+    console.log("user movies", userMovies);
+    const getRandomImage = () => {
+        if (userMovies.length > 0){
+            let randomIndex = Math.floor(Math.random() * userMovies.length)
+            setRandomImage(userMovies[randomIndex])
+        }
     }
+
+    console.log("rando", randomImage);
 
 
 
     return ( 
         <div className='container'>
+            <div id='imgContainer'>
+                <img src={"https://image.tmdb.org/t/p/original" + randomImage.backdrop} alt="backdrop"/>
+                <img className='profilePic' src={placeholder} alt="profile picture"/>
+            </div>
        
-        <h1>Hello @{user.username}</h1>
-        
-        profilePicture
-        <h3>@{user.username}</h3>
-        <p>user profile</p>
+        <h1>Hello</h1> 
+        <h1>{user.username}</h1>
         <div>
         <button onClick={handleClick1}className='watchlist-btn'>Watch List</button>
         </div>
@@ -76,7 +90,7 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
             {movieList}
         </ul> : null}
 
-        <Link to="/"><button onClick={onDelete}>Delete Account</button></Link>
+        <Link to="/"><button className='deleteButton' onClick={onDelete}>Delete Account</button></Link>
         </div>
      );
 }
