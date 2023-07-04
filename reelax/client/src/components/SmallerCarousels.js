@@ -107,8 +107,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                     {moviesByGenre.map((movie, index) => {
                             return <div key={index}>
                                 <Link to={"/movies/" + movie.id}>
-                                <p>{movie.overview}</p>
-                                <img id="poster"
+                                <img id="small-car-poster"
                                 alt={movie.title}
                                 className="img"
                                 src={"https://image.tmdb.org/t/p/original" + movie.poster}/>
