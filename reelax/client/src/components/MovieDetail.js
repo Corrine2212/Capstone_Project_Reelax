@@ -121,7 +121,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
             watchListOptions = <button onClick={onButtonClicked}>Add To Watch List</button>
         }
         else if (review.user_id === user.id && review.movie_id === movie.id) {
-            watchListOptions = <button onClick={deleteReview}>Remove From Watch List</button>
+            watchListOptions = <button className='movie-detail-b' onClick={deleteReview}>Remove From Watch List</button>
         }
     }
 
@@ -141,55 +141,48 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
 
 
     return (
-        <div>
-            <h1>
-                {movie.title}
-            </h1>
-            <h3>{movieGenre}</h3>
+        <div className='movie-card-container'>
+          <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} />
+          <h1 id='movie-card-h1'>{movie.title}</h1>
+          <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3>
+      
+          <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
+          <p>Voter Average {movie.vote_average}</p>
+          <p className='movie-overview'>{movie.overview}</p>
+          <div className="btn-wrapper">
+            {watchListOptions}
+            <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
+            {buttonClicked ?
+              <div className="review-section">
+                <form onSubmit={onSubmit}>
 
-            <img id="poster" 
-                src={"https://image.tmdb.org/t/p/original"+movie.poster} 
-                width={250} height={300}alt="poster"/>
-                <p>Voter Average {movie.vote_average}</p>
-                <p>{movie.overview}</p>
-                {watchListOptions}
-                <button onClick={handleClick}>Create Review</button>
-                {buttonClicked?
-                    <form onSubmit={onSubmit}>
-                        <div>
-                        <b>{user.username}</b>
+                  <div id="ratings-body">
+                    <div id="rating-box">
+                      <header id="rating-box-header">How was the movie?</header>
+                      <div></div>
+                      <input id="user-input" type="number" name="stars" value={formData.stars} onChange={onChange} />
+                      <div className="stars">
+                        <input id="user-input" type="text" name="review" value={formData.review} onChange={onChange} />
+                        <input id="user-input" type="submit" value="Confirm" />
+                        <button className='movie-detail-btns' id="rating-button" onClick={handleClick}>Cancel Review</button>
+                      </div>
                     </div>
-                    <b>{movie.title}</b>
-                    {/* <b>{movie.id}</b> */}
-                    <div>
-                            //
-                        <body class="ratingsContainer">
-                            <div class="rating-box">
-                                <header> how was the movie?</header>
-                                <div>
-                                </div>
-                                <input type="number" name="stars"
-                                    value={formData.stars} onChange={onChange} />
-                                <div class="stars">
-                                    <input type="text" name="review"
-                                        value={formData.review} onChange={onChange} />
-                                    <input type="submit" value="Confirm" />
-                                    <button onClick={handleClick}>Cancel Review</button>
-                                </div>
-                            </div>
-                        </body>
-                    </div>
-                </form> : null}
-            <button onClick={getReviews}>Reviews</button>
-            {seeReviews ? <ul>
-
-                {movieReviews}
-            </ul> : null}
-            <p>spacing</p>
-            <p>spacing</p>
-            <p>spacing</p>
+                  </div>
+                </form>
+              </div>
+              : null}
+            <button className='movie-detail-btns' onClick={getReviews}>Reviews</button>
+            {seeReviews ?
+              <div className="review-section">
+                <ul>
+                  {movieReviews}
+                </ul>
+              </div>
+              : null}
+          </div>
         </div>
-    );
-}
+      );
+      
+};
 
 export default MovieDetail;
