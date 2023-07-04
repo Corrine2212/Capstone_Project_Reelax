@@ -54,10 +54,11 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
         movieList = watchListMovies.map((movie, index) => {
         console.log("map called", index);
         return <li className='listItem' key={index}>
-            <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}><img id="poster" 
+            <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}><img id="Watch-list-poster" 
                 src={"https://image.tmdb.org/t/p/original"+movie.poster} 
                 width={250} height={300}alt="poster"/>
-            <b><p>{movie.title}</p></b></Link></li>
+            {/* <b><p>{movie.title}</p></b> */}
+            </Link></li>
     })
 }
 
