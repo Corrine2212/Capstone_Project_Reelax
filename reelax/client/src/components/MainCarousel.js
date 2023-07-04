@@ -46,6 +46,7 @@ const MainCarousel = () => {
                     <div className={idx === imgIndex ? "slide activeSlide" : "slide"}>
 
                         <img src={img} alt={idx} />
+                       
                     </div>
                 ))}
             </Slider>

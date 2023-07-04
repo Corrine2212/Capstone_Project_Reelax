@@ -91,7 +91,7 @@ body {
 
 .sml-carousel-container {
   margin: 0 auto;
-  width: 90%;
+  width: 60%;
   height: 40vh;
   border-color: white;
 }
@@ -125,14 +125,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(0.09);
+  transform: scale(0.50);
   transition: transform 300ms;
   opacity: 0.5;
 }
 
 .current-slide {
-  transform: scale(0.15);
+  transform: scale(1.0, 1.0);
   opacity: 1;
+  height: 300px
 }
 
 .img-container {
@@ -173,6 +174,7 @@ body {
 
 .details {
   flex: 1 1 auto;
+  color: purple
 }
 
 .details h2 {
