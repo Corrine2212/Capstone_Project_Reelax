@@ -15,6 +15,7 @@ import Slider from 'react-slick';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import SmallerCarousels from '../components/SmallerCarousels';
 import YearSlider from '../components/YearSlider';
+import RatingSlider from '../components/RatingSlider';
 
 
 const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
@@ -28,12 +29,19 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   const [foundMovies, setFoundMovies] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [yearRange, setYearRange] = useState({ min: 2000, max: 2023 });
+  const [ratingRange, setRatingRange] = useState({min:0.0, max:10.0});
 
 
   useEffect(() => {
     getMovies();
     getReviews();
   }, [])
+
+  useEffect(() => {
+    if(movies.length > 0){
+      runFilters();
+    }
+   }, [movies, yearRange, ratingRange])
 
 
 
@@ -214,21 +222,34 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     return <MovieDetail user={user} users={users} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds}/>
   }
 
+  let filteredMovies = []
+  let movieDisplay = []
+  let movieSearchDisplay = []
 
-    const filteredMovies = movies.filter(movie => {
-    const movieYear = new Date(movie.release).getFullYear();
-    return movieYear >= yearRange.min && movieYear <= yearRange.max;
-  });
-  
-  const movieDisplay = filteredMovies.map((movie, index) => {
-    return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
-  })
-  
-  
+  const runFilters = () => {
 
-  const movieSearchDisplay = movies.map((movie, index) => {
-    return <MovieSearchCard key={index} movie={movie} />
-  })
+    
+    filteredMovies = movies.filter(movie => {
+      const movieYear = new Date(movie.release).getFullYear();
+      return movieYear >= yearRange.min && movieYear <= yearRange.max && movie.vote_average >= ratingRange.min && movie.vote_average <= ratingRange.max;
+    });
+
+
+    console.log("filtered movies", filteredMovies);
+    
+    movieDisplay = filteredMovies.map((movie, index) => {
+      return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
+    })
+    
+    
+  
+    // movieSearchDisplay = movies.map((movie, index) => {
+    //   return <MovieSearchCard key={index} movie={movie} />
+    // })
+  }
+
+
+
 
   const settings = {
     infinite: true,
@@ -257,12 +278,12 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
           <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
           <Routes>
-            <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user} 
+            {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user} 
             settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds} 
-            getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} 
+            getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} ratingRange={ratingRange}
             setSearchInput={setSearchInput} />,            
-            , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, 
-            <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} />
+            , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />,
+            <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} /> : null}
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
