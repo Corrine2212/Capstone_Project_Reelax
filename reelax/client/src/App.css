@@ -40,7 +40,6 @@
   }
 } */
 
-
 /* Smaller Carousel css start */
 body {
   margin: 0 auto;
@@ -52,7 +51,7 @@ body {
   /* width: 90%; */
 }
 
-.ratingsContainer{
+.ratingsContainer {
   height: 100vh;
   display: flex;
   align-items: center;
@@ -104,7 +103,6 @@ body {
   /* padding: 20px; */
   border-radius: 5px;
   text-align: center;
-
 }
 
 .description {
@@ -122,8 +120,6 @@ body {
   width: 50%;
   margin: 10rem auto;
 } */
-
-
 
 .carousel-slide {
   display: flex;
@@ -189,7 +185,6 @@ body {
   margin-bottom: 10px;
 }
 
-
 /* .arrow {
   background-color: #fff;
   position: absolute;
@@ -217,7 +212,6 @@ body {
 
 /* Main Carousel css end */
 
-
 a {
   text-decoration: none;
   color: inherit;
@@ -241,18 +235,28 @@ html {
 
 body {
   min-height: 100vh;
-  background: rgb(76, 59, 92);
-  background: linear-gradient(0deg, rgba(76, 59, 92, 1) 7%, rgba(89, 66, 110, 1) 44%, rgba(98, 69, 129, 1) 87%);
+  background: rgb(63, 59, 85);
+  background: linear-gradient(
+    0deg,
+    rgba(63, 59, 85, 1) 34%,
+    rgba(95, 90, 157, 1) 100%
+  );
 }
-  
+
 .input-field {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+  margin-top: 10px;
 }
 
 input {
-  padding: 1em 8em;
+  padding: 10px 20px;
   border-radius: 10px;
-
+  background-color: #8482a2;
+  border: none;
+  width: 100%;
+  height: 45px;
+  box-sizing: border-box;
+  font-size: 15px;
 }
 
 .login-container {
@@ -271,22 +275,41 @@ input {
   align-items: center;
 }
 
+.login-form {
+  /* margin: 10px; */
+  width: 20rem;
+  text-align: center;
+}
+
 .login-submit-btn {
-  background-color: hotpink;
+  background-color: #e5171a;
   color: white;
-  padding: 10px 7em;
-  border-radius:  10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
   border: none;
-  margin: 30px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   font-weight: bold;
   font-size: 20px;
+  box-sizing: border-box;
+}
+
+.login-submit-btn:hover {
+  background-color: #b01214;
+  cursor: pointer;
 }
 
 .login-logo {
   /* height: 200px; */
   width: 200px;
-  margin-bottom: 60px;
+  margin-bottom: 45px;
   text-align: center;
+}
+
+.login-form label {
+  align-self: left; /* Align the label text to the left */
+  margin-bottom: 10px;
 }
 
 .sign-in-title {
@@ -487,4 +510,109 @@ input {
   color: #fff;
   border: none;
   cursor: pointer;
+=======
+  /* margin-left: 40px; */
+  margin-bottom: 30px;
+  /* align-self: flex-start; */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  padding: 35px;
+  max-width: 400px;
+  width: 400px;
+  height: 450px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: gray;
+  cursor: pointer;
+}
+.silly-goose {
+  width: 100%;
+}
+
+.silly-goose-btn {
+  border-radius: 20px;
+  width: 100%;
+}
+
+.silly-goose-btn:hover {
+  background-color: #00e1e1;
+}
+
+.silly-goose-txt {
+  color: black;
+  margin: 10px;
+}
+
+.silly-goose-btn,
+.acc-cancel-btn,
+.acc-submit-btn {
+  /* width: 230px; */
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.acc-submit-btn:hover {
+  background-color: #00E1E1;
+  cursor: pointer;
+}
+
+.login-submit-btn:hover {
+  background-color: #00E1E1;
+}
+
+.forgot-pw,
+.create-acc-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  /* text-decoration: underline; */
+  /* text-align: left; */
+  color: inherit;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.forgot-pw:hover,
+.create-acc-btn:hover {
+  color: red;
 }

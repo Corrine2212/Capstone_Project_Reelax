@@ -5,7 +5,7 @@ import Slider from 'react-slick';
 import MovieDetail from '../components/MovieDetail';
 
 const LiveSearch = ({currentSlide, findMovieById, settings, user, users, addToWatchList, reviews, 
-  genreIds, movies, yearRange, getMovieByTitle, setSearchInput}) => {
+  genreIds, movies, yearRange, getMovieByTitle, setSearchInput, ratingRange}) => {
 
   const [input, setInput] = useState('');
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const LiveSearch = ({currentSlide, findMovieById, settings, user, users, addToWa
 
   const filteredMovies = movies.filter(movie => {
     const movieYear = new Date(movie.release).getFullYear();
-    return movieYear >= yearRange.min && movieYear <= yearRange.max;
+    return movieYear >= yearRange.min && movieYear <= yearRange.max && movie.vote_average >= ratingRange.min && movie.vote_average <= ratingRange.max
   });
 
   const url = '/movies/';
