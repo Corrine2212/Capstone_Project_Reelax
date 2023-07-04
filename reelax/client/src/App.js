@@ -11,14 +11,15 @@ import About from '../src/components/About';
 function App() {
 
   const Footer = styled.footer`
-    position: fixed;
+    /* position: fixed;
     left: 0;
-    bottom: 15px;
+    bottom: 15px; */
     width: 100%;
     /* text-align: center; */
-    margin-top: 20px;
+    margin-top: 60px;
     /* position: fixed; */
-    margin-top: auto;
+    /* margin-top: auto; */
+    margin-bottom: 10px;
     z-index: 1;
     color: white;
     font-size: 2vh;
