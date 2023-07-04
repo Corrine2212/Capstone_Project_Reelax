@@ -282,8 +282,8 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
             settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds} 
             getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} ratingRange={ratingRange}
             setSearchInput={setSearchInput} />,            
-            , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />,
-            <SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />]} /> : null}
+            , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />]} /> : null}
+            <Route path="search/genre" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />}/>
             <Route path="/movies/:id" element={<MovieDetailWrapper />} />
             <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
           </Routes>
