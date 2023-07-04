@@ -136,6 +136,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
         return <li key={index}><h3>***Reelax User***</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
     })
     console.log(movieReviews)
+    
 
 
 
