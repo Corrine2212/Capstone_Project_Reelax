@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import './ProfileCard.css';
-import placeholder from '../placeholder.jpg'
+import placeholder from '../placeholder.jpg';
 
 
 
@@ -76,12 +76,13 @@ const ProfileCard = ({user, handleLogout, getMovies, handleDelete, reviews, movi
     return ( 
         <div className='container'>
             <div id='imgContainer'>
-                <img src={"https://image.tmdb.org/t/p/original" + randomImage.backdrop} alt="backdrop"/>
-                <img className='profilePic' src={placeholder} alt="profile picture"/>
+                <img className='background-img' src={"https://image.tmdb.org/t/p/original" + randomImage.backdrop} alt='Reelax'/>
             </div>
-       
-        <h1>Hello</h1> 
+        <div>
+                <img className='profilePic' src={placeholder} alt="profile picture"/>
+        <h1 className='header'>Hello</h1> 
         <h1>{user.username}</h1>
+        </div>
         <div>
         <button onClick={handleClick1}className='watchlist-btn'>Watch List</button>
         </div>

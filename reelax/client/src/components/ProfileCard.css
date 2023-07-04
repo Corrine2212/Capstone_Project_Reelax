@@ -36,8 +36,25 @@
     box-shadow: 5px 5px 5px 5px black;
 }
 
+.profile-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 #imgContainer {
     padding: 50px;
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    max-height: 2000px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 .listItem {
