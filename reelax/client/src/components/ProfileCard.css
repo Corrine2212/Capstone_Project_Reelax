@@ -1,16 +1,111 @@
 .container {
+    margin: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100%;
     width: 100%;
+    padding-top: 50px;
 }
 
 
 .movieGrid {
     display: grid;
+    background-color: rgba(95, 90, 157, 1);
+    /* border: 10px solid black; */
+    border-radius: 20px;
     grid-template-columns: 30em 30em 30em;
     padding: 20px;
     list-style: none;
+}
+
+@media only screen and (max-width: 800px){
+    .movieGrid {
+        display: flex;
+        grid-template-columns: 100%;
+        flex-direction: column;
+    }
+}
+
+.profilePic {
+    border-radius: 50%;
+    height: 250px;
+    width: 250px;
+    border: 2px solid black;
+    box-shadow: 5px 5px 5px 5px black;
+}
+
+.profile-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    top: 455px;
+}
+
+#imgContainer {
+    padding: 50px;
+    position: relative;
+    top: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    max-height: 2000px;
+    padding: 20px;
+    filter: blur(1px);
+}
+
+.background-img {
+    justify-content: center;
+    height: 550px;
+    width: 1000px;
+ }
+.listItem {
+    padding: 20px;
+}
+
+#poster {
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px 5px rgb(30, 30, 30);
+}
+
+.watchlist-btn {
+    background-color: #e5171a;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: 2px solid white;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.watchlist-btn:hover {
+    cursor: pointer;
+    background-color: #00e1e1;;
+}
+
+.deleteButton {
+    background-color: #e5171a;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+  box-sizing: border-box;
+}
+
+.deleteButton:hover{
+    cursor: pointer;
+    border: 2px solid white;
 }
