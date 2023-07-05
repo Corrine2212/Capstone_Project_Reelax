@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import '../App.css'
 import MovieDetail from "./MovieDetail";
 import styled from 'styled-components';
+import pronoun from "../pronoun.jpg"
 
 
 
@@ -13,8 +14,8 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [selectedGenre, setSelectedGenre] = useState('')
 
-   
-    
+
+
     const StyledLink = styled(Link)`
     color: #333;
     text-decoration: none;
@@ -24,7 +25,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
 
 
     // useEffect(() => {
-        
+
     //     const fetchMovies = () => {
     //         if (genre === '') {
     //             getMoviesByGenre('');
@@ -45,38 +46,38 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
         autoplay: false,
         autoplaySpeed: 1000,
         responsive: [
-          {
-            breakpoint: 1024, // Adjust the breakpoint value as needed
-            settings: {
-              slidesToShow: 3, // Adjust the number of visible slides on medium-sized screens
-              slidesToScroll: 2, // Adjust the number of slides to scroll on medium-sized screens
-            },
-          }
-        //   {
-        //     breakpoint: 768, 
-        //     settings: {
-        //       slidesToShow: 2,
-        //       slidesToScroll: 1, 
-        //     },
-        //   },
+            {
+                breakpoint: 1024, // Adjust the breakpoint value as needed
+                settings: {
+                    slidesToShow: 3, // Adjust the number of visible slides on medium-sized screens
+                    slidesToScroll: 2, // Adjust the number of slides to scroll on medium-sized screens
+                },
+            }
+            //   {
+            //     breakpoint: 768, 
+            //     settings: {
+            //       slidesToShow: 2,
+            //       slidesToScroll: 1, 
+            //     },
+            //   },
         ],
-      };
-      
+    };
+
 
     const MovieDetailWrapper = () => {
-        const {id} = useParams()
+        const { id } = useParams()
         let foundMovie = findMovieById(id)
-        return <MovieDetail movie={foundMovie}/>
+        return <MovieDetail movie={foundMovie} />
     }
 
     const url = "/movies/";
 
-    
+
     const setChange = (event) => {
         const chosenGenre = genres[event.target.value]
         setSelectedGenre(chosenGenre)
     }
-    
+
     console.log("genres", genres);
     const genreOptions = genres.map((genre, index) => {
         return <option value={index}>
@@ -85,8 +86,8 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     })
 
     let moviesByGenre = []
-    for (let movie of movies){
-        if (movie.genre === selectedGenre.id){
+    for (let movie of movies) {
+        if (movie.genre === selectedGenre.id) {
             moviesByGenre.push(movie)
         }
     }
@@ -103,19 +104,36 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                     {genreOptions}
                 </select>
                 <div className="sml-carousel-container">
-                <Slider {...settings}>
-                    {moviesByGenre.map((movie, index) => {
+                    <Slider {...settings}>
+                        {moviesByGenre.map((movie, index) => {
                             return <div key={index}>
                                 <Link to={"/movies/" + movie.id}>
-                                <img id="small-car-poster"
-                                alt={movie.title}
-                                className="img"
-                                src={"https://image.tmdb.org/t/p/original" + movie.poster}/>
-                                
+                                    {movie.title === "Pronoun" ? (
+                                        <img id="small-car-poster"
+                                            
+                                            src={pronoun}
+                                            width={250}
+                                            height={300}
+                                            alt="pronoun"
+                                        />
+                                    ) : (
+                                        <img id="small-car-poster"
+                                            
+                                            src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                                            width={250}
+                                            height={300}
+                                            alt="poster"
+                                        />
+                                    )}
+                                    {/* <img id="small-car-poster"
+                                        alt={movie.title}
+                                        className="img"
+                                        src={"https://image.tmdb.org/t/p/original" + movie.poster} /> */}
+
                                 </Link>
                             </div>
                         })}
-                </Slider>
+                    </Slider>
                 </div>
             </div>
         </>
