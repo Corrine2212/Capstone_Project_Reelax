@@ -20,7 +20,7 @@ const About = () => {
 
           <div className="icon-wrapper icon-container">
             <div className="github-wrapper">
-              <a className="github" href="https://github.com">
+              <a className="github" href="https://github.com/HeatherBluesky">
                 <div className="circle-border">
                   <i className="fab fa-github custom-icon"></i>
                 </div>
@@ -28,7 +28,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper linkedin-wrapper">
-              <a href="https://linkedin.com">
+              <a href="https://www.linkedin.com/in/heatherbluesky/">
                 <div className="circle-border">
                   <i className="fab fa-linkedin-in custom-icon"></i>
                 </div>
@@ -44,7 +44,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper email-wrapper">
-              <a href="mailto:example2@example.com">
+              <a href="mailto:heatherbluesky@outlook.com">
                 <div className="circle-border">
                   <i className="fas fa-envelope custom-icon"></i>
                 </div>
@@ -60,7 +60,7 @@ const About = () => {
 
           <div className="icon-wrapper icon-container">
             <div className="github-wrapper">
-              <a className="github" href="https://github.com">
+              <a className="github" href="https://github.com/ewangomolka">
                 <div className="circle-border">
                   <i className="fab fa-github custom-icon"></i>
                 </div>
@@ -68,7 +68,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper linkedin-wrapper">
-              <a href="https://linkedin.com">
+              <a href="https://www.linkedin.com/in/ewan-gomolka-35420b277/">
                 <div className="circle-border">
                   <i className="fab fa-linkedin-in custom-icon"></i>
                 </div>
@@ -84,7 +84,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper email-wrapper">
-              <a href="mailto:example2@example.com">
+              <a href="mailto:ewangomolka@gmail.com">
                 <div className="circle-border">
                   <i className="fas fa-envelope custom-icon"></i>
                 </div>
@@ -100,7 +100,7 @@ const About = () => {
 
           <div className="icon-wrapper icon-container">
             <div className="github-wrapper">
-              <a className="github" href="https://github.com">
+              <a className="github" href="https://github.com/LamKD98">
                 <div className="circle-border">
                   <i className="fab fa-github custom-icon"></i>
                 </div>
@@ -108,7 +108,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper linkedin-wrapper">
-              <a href="https://linkedin.com">
+              <a href="https://www.linkedin.com/in/andy-lam-810b81278/">
                 <div className="circle-border">
                   <i className="fab fa-linkedin-in custom-icon"></i>
                 </div>
@@ -124,7 +124,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper email-wrapper">
-              <a href="mailto:example2@example.com">
+              <a href="mailto:andylam98@hotmail.co.uk">
                 <div className="circle-border">
                   <i className="fas fa-envelope custom-icon"></i>
                 </div>
@@ -140,7 +140,7 @@ const About = () => {
 
           <div className="icon-wrapper icon-container">
             <div className="github-wrapper">
-              <a className="github" href="https://github.com">
+              <a className="github" href="https://github.com/Corrine2212">
                 <div className="circle-border">
                   <i className="fab fa-github custom-icon"></i>
                 </div>
@@ -148,7 +148,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper linkedin-wrapper">
-              <a href="https://linkedin.com">
+              <a href="https://www.linkedin.com/in/corrine-sing-a27735b2/">
                 <div className="circle-border">
                   <i className="fab fa-linkedin-in custom-icon"></i>
                 </div>
@@ -164,7 +164,7 @@ const About = () => {
             </div>
 
             <div className="icon-wrapper email-wrapper">
-              <a href="mailto:example2@example.com">
+              <a href="mailto:corrine.sing@gmail.com">
                 <div className="circle-border">
                   <i className="fas fa-envelope custom-icon"></i>
                 </div>

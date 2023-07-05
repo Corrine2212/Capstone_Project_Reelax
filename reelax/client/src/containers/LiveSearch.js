@@ -65,7 +65,7 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
           <div className="button-container">
           </div>
           <input className='movie-search-input' type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
-          <StyledButton to="/search/genre">Search by Genre</StyledButton>
+          <StyledButton to="/search/genre">Search by Movie Title</StyledButton>
         </div>
       </div>
       <div>
