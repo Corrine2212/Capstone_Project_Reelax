@@ -32,9 +32,9 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) {
 
 
-        User user1 = new User("UserOne","1234@gmail.com","1234");
+        User user1 = new User("Scott","1234@gmail.com","1234");
         userRepository.save(user1);
-        User user2 = new User("UserTwo","4321@gmail.com","4321");
+        User user2 = new User("Callum","4321@gmail.com","4321");
         userRepository.save(user2);
 
         Movie movie1= new Movie("Pronoun", "Pronoun is a gripping crime documentary that delves into the dark and twisted mind of Scott, a tormented individual who embarks on a chilling murder spree fueled by the mispronunciation of personal pronouns. This thought-provoking film explores the complex themes of identity, language, and the consequences of society's failure to understand and respect individuality.", "poster2", 60, "last week", 0.0, "kjhkjhk");
