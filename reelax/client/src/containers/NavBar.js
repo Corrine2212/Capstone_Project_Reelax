@@ -4,6 +4,7 @@ import { Foodpanda } from '@styled-icons/simple-icons';
 import { LogOut } from '@styled-icons/boxicons-regular/LogOut';
 import callum from "../callum.jpg";
 import placeholder from "../placeholder.jpg";
+import defaultprofile from "../defaultprofile.jpeg";
 
 const NavBar = ({ handleLogout, setSearchInput, user }) => {
 
@@ -73,25 +74,33 @@ const NavBar = ({ handleLogout, setSearchInput, user }) => {
         </StyledLink>
         <StyledLink to="/search/genre">Search by Genre</StyledLink>
 
-          <StyledLink to="/profile">
-            {/* <StyledProfileImg>  */}
-              {user.username === "Callum" ? (
-                    <img className='nav-profile-img'
-                      src={callum}
-                      width={60}
-                      height={60}
-                      alt="profile-picture"
-                    />
-                  ) : (
-                    <img className='nav-profile-img'
-                      src={placeholder}
-                      width={60}
-                      height={60}
-                      alt="profile-picture"
-                    />
-                  )}
-                   {/* </StyledProfileImg> */}
-          </StyledLink>
+        <StyledLink to="/profile">
+          {/* <StyledProfileImg>  */}
+          {user.username === "Callum" ? (
+            <img className='nav-profile-img'
+              src={callum}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          ) : user.username === "Scott" ? (
+            <img className='nav-profile-img'
+              src={placeholder}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          ) : (
+            <img className='nav-profile-img'
+              src={defaultprofile}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          )}
+
+          {/* </StyledProfileImg> */}
+        </StyledLink>
 
 
       </StyledHeader>
