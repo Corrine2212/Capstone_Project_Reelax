@@ -72,12 +72,18 @@ const MainContainer = ({ users, user, removeUser, onUserLogout, addToWatchList }
     if (title) {
       request.get("/api/movies/search/" + title)
         .then((data) => {
-          setMovies(data);
+          if(data.length === 0) { // If no movie found, set foundMovies as "Not found"
+            setFoundMovies("Not found");
+          } else {
+            setMovies(data);
+            setFoundMovies(""); // Reset foundMovies if movie is found
+          }
         });
     } else {
       getMovies();
     }
   }
+
 
   const handleLogout = () => {
     onUserLogout();
@@ -287,17 +293,17 @@ const MainContainer = ({ users, user, removeUser, onUserLogout, addToWatchList }
       <div>
         {/* <Router> */}
 
-        <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
+        <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} user={user} />
         
         <Routes>
-          {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user}
+          {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} foundMovies={foundMovies} user={user}
             settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds}
             getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} ratingRange={ratingRange}
             setSearchInput={setSearchInput} />,
             , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />]} /> : null}
           <Route path="search/genre" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />} />
           <Route path="/movies/:id" element={<MovieDetailWrapper />} />
-          <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
+          <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} handleLogout={handleLogout} />} />
         </Routes>
 
 
