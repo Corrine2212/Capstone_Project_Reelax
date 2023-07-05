@@ -147,6 +147,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
     return (
         <div className='movie-card-container'>
 
+            {/* <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} /> */}
             <h1 id='movie-card-h1'>{movie.title}</h1>
             <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
 
@@ -170,8 +171,8 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
                   )}
 
 
-            <h1 id='movie-card-h1'>{movie.title}</h1>
-            <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3>
+            {/* <h1 id='movie-card-h1'>{movie.title}</h1>
+            <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3> */}
 
 
             {movie.title === "Pronoun" ? (
@@ -191,6 +192,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
                       alt="poster"
                     />
                   )}
+                  
     
 
             {/* <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" /> */}
@@ -199,6 +201,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
             <p className='movie-overview'>{movie.overview}</p>
             <div className="btn-wrapper">
                 {watchListOptions}
+                <button className='movie-detail-btns' onClick={onButtonClicked}>Add To Watch List</button>
                 <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
                 {buttonClicked ?
                     <div className="review-section">

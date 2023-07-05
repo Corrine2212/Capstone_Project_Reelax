@@ -25,7 +25,7 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
     border-radius: 10px;
 
     &:hover {
-      background-color: #B01214;
+      background-color: #555;
     }
   `;
 
@@ -65,7 +65,7 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
           <div className="button-container">
           </div>
           <input className='movie-search-input' type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
-          <StyledButton to="/search/genre">Search by Genre</StyledButton>
+          <StyledButton to="/search/genre">Search by Movie Title</StyledButton>
           {foundMovies === "Not found" && 
             <p>Sorry, that movie doesn't exist.</p>
           }
@@ -111,6 +111,23 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
 }
 
 export default LiveSearch;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
