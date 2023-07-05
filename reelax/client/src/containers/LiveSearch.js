@@ -6,7 +6,7 @@ import MovieDetail from '../components/MovieDetail';
 import styled from 'styled-components';
 
 const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToWatchList, reviews,
-  genreIds, movies, yearRange, getMovieByTitle, setSearchInput, ratingRange }) => {
+  genreIds, movies, yearRange, getMovieByTitle, setSearchInput, ratingRange , foundMovies }) => {
 
 
 
@@ -66,6 +66,9 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
           </div>
           <input className='movie-search-input' type="text" onChange={handleChange} value={input} placeholder="Search for a movie..." />
           <StyledButton to="/search/genre">Search by Movie Title</StyledButton>
+          {foundMovies === "Not found" && 
+            <p>Sorry, that movie doesn't exist.</p>
+          }
         </div>
       </div>
       <div>
