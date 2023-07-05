@@ -163,8 +163,7 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
             <Link to="/"><button className='deleteButton' onClick={onDelete}>Delete Account</button></Link>
 
             <StyledProfileLink to="/" onClick={handleLogout}>
-                <StyledLogoutIcon />
-                Log Out
+                <StyledLogoutIcon>Log Out</StyledLogoutIcon>  
             </StyledProfileLink>
         </div>
 

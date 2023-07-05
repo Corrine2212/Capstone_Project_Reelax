@@ -303,7 +303,7 @@ const MainContainer = ({ users, user, removeUser, onUserLogout, addToWatchList }
             , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />]} /> : null}
           <Route path="search/genre" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />} />
           <Route path="/movies/:id" element={<MovieDetailWrapper />} />
-          <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
+          <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} handleLogout={handleLogout} />} />
         </Routes>
 
 
