@@ -74,7 +74,7 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
       </div>
       <div>
         <div className="main-carousel-wrapper">
-          <h1 className='random-movie-title'>Random Movie</h1>
+          {/* <h1 className='random-movie-title'>Random Movie</h1> */}
           <Slider {...settings}>
             {filteredMovies.map((movie, index) => (
               <div

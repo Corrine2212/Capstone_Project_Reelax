@@ -123,10 +123,10 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
         if (review.user_id === user.id && review.movie_id === movie.id) {
             watchListOptions = <button className='movie-detail-b' onClick={deleteReview}>Remove From Watch List</button>
         }
-        else  {
+        else {
             watchListOptions = <button className='movie-detail-btns' onClick={onButtonClicked}>Add To Watch List</button>
         }
-        
+
     }
 
     const movieReviewsList = []
@@ -142,89 +142,82 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
     console.log(movieReviews)
 
 
-
-
-
     return (
-        <div className='movie-card-container'>
-
-            <h1 id='movie-card-h1'>{movie.title}</h1>
-            <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
-
-            <div>
-                {movie.title === "Pronoun" ? (
-                    <img
-                        id="backdrop"
-                        src={pronounbd}
-                        width={590}
-                        height={300}
-                        alt="pronounbd"
-                    />
-                ) : (
-                    <img
-                        id="backdrop"
-                        src={"https://image.tmdb.org/t/p/original" + movie.backdrop}
-                        width={590}
-                        height={300}
-                        alt="pronounbd"
-                    />
-                )}
-
-            </div>
-            <div>
-                {movie.title === "Pronoun" ? (
-                    <img
-                        id="poster"
-                        src={pronoun}
-                        width={250}
-                        height={300}
-                        alt="pronoun"
-                    />
-                ) : (
-                    <img
-                        id="poster"
-                        src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                        width={250}
-                        height={300}
-                        alt="poster"
-                    />
-                )}
-            </div>
-
-            <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
-            {/* <p>Voter Average {movie.vote_average}</p> */}
-
-            <p className='movie-overview'>{movie.overview}</p>
-            <div className="btn-wrapper">
-                <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
-                {watchListOptions}
-                {buttonClicked ?
-                    <div className="review-section">
-                        <form onSubmit={onSubmit}>
-
-                            <div id="ratings-body">
-                                <div id="rating-box">
-                                    <header id="rating-box-header">How was the movie?</header>
-                                    <div></div>
-                                    <input id="user-input" type="number" name="stars" value={formData.stars} onChange={onChange} />
-                                    <div className="stars">
-                                        <input id="user-input" type="text" name="review" value={formData.review} onChange={onChange} />
-                                        <input id="user-input" type="submit" value="Confirm" />
-                                        <button className='movie-detail-btns' id="rating-button" onClick={handleClick}>Cancel Review</button>
+        <div className="movie-detail-container">
+            <div className='movie-card-container'>
+                <h1 id='movie-card-h1'>{movie.title}</h1>
+                <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
+                <div>
+                    {movie.title === "Pronoun" ? (
+                        <img
+                            id="backdrop"
+                            src={pronounbd}
+                            width={590}
+                            height={300}
+                            alt="pronounbd"
+                        />
+                    ) : (
+                        <img
+                            id="backdrop"
+                            src={"https://image.tmdb.org/t/p/original" + movie.backdrop}
+                            width={590}
+                            height={300}
+                            alt="pronounbd"
+                        />
+                    )}
+                </div>
+                <div>
+                    {movie.title === "Pronoun" ? (
+                        <img
+                            id="poster"
+                            src={pronoun}
+                            width={250}
+                            height={300}
+                            alt="pronoun"
+                        />
+                    ) : (
+                        <img
+                            id="poster"
+                            src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                            width={250}
+                            height={300}
+                            alt="poster"
+                        />
+                    )}
+                </div>
+                <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
+                {/* <p>Voter Average {movie.vote_average}</p> */}
+                <p className='movie-overview'>{movie.overview}</p>
+                <div className="btn-wrapper">
+                    <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
+                    {watchListOptions}
+                    {buttonClicked ?
+                        <div className="review-section">
+                            <form onSubmit={onSubmit}>
+                                <div id="ratings-body">
+                                    <div id="rating-box">
+                                        <header id="rating-box-header">How was the movie?</header>
+                                        <div></div>
+                                        <input id="review-user-input" type="number" name="stars" value={formData.stars} onChange={onChange} />
+                                        <div className="stars">
+                                            <input id="review-user-input" placeholder='Type your review here' type="text" name="review" value={formData.review} onChange={onChange} />
+                                            <input id="confirm-user-input" type="submit" value="Confirm" />
+                                            <button className='movie-detail-btns' id="rating-button" onClick={handleClick}>Cancel Review</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                    : null}
-                <button className='movie-detail-btns' onClick={getReviews}>Reviews</button>
-                {seeReviews ?
-                    <div className="review-section">
-                        <ul>
-                            {movieReviews}
-                        </ul>
-                    </div>
-                    : null}
+                            </form>
+                        </div>
+                        : null}
+                    <button className='movie-detail-btns' onClick={getReviews}>Reviews</button>
+                    {seeReviews ?
+                        <div className="review-section">
+                            <ul>
+                                {movieReviews}
+                            </ul>
+                        </div>
+                        : null}
+                </div>
             </div>
         </div>
     );

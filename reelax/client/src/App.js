@@ -10,6 +10,16 @@ import About from '../src/components/About';
 
 function App() {
 
+  const AppWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  `;
+
+const MainContent = styled.div`
+flex: 1;
+`;
+
   const Footer = styled.footer`
     /* position: absolute; */
     left: 0;
@@ -154,35 +164,34 @@ function App() {
   console.log("dippity doo");
   return (
     <Router>
-      <div className="App">
-        <UserContainer
-          users={users}
-          loggedInUser={loggedInUser}
-          onSubmitLogin={onSubmitLogin}
-          onUserLogout={onUserLogout}
-          removeUser={removeUser}
-        />
-        <Routes>
-          <Route path="/about" element={<About />} />
-
-
-        </Routes>
-        
-        <Footer>
-          <bk></bk>
-          <bk></bk>
-          <bk></bk>
-          <bk></bk>
-          <bk></bk>
+      <AppWrapper>
+        <div className="App">
+          <UserContainer
+            users={users}
+            loggedInUser={loggedInUser}
+            onSubmitLogin={onSubmitLogin}
+            onUserLogout={onUserLogout}
+            removeUser={removeUser}
+          />
+          <MainContent>
+            <Routes>
+              <Route path="/about" element={<About />} />
+            </Routes>
+          </MainContent>
+          <div className='footer'>
+            <bk></bk>
+            <bk></bk>
+            <bk></bk>
+            <bk></bk>
+            <bk></bk>
             <Link to="/about">
-              A.H.E.C. ltd  
+              A.H.E.C. ltd
             </Link>
-          </Footer>
-          
-      <div>
-      </div>
-         
+          </div>
+          <div>
+          </div>
         </div>
+      </AppWrapper>
     </Router>
 
   );
