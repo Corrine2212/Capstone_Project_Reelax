@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import Request from '../helpers/request';
 import ReviewForm from './ReviewForm';
+import pronoun from "../pronoun.jpg";
+import pronounbd from "../pronounbd.jpg";
+
 
 
 const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) => {
@@ -136,54 +139,93 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
         return <li key={index}><h3>***Reelax User***</h3><h4>{review.stars}</h4><p>{review.review}</p></li>
     })
     console.log(movieReviews)
-    
+
 
 
 
 
     return (
         <div className='movie-card-container'>
-          <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} />
-          <h1 id='movie-card-h1'>{movie.title}</h1>
-          <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3>
-      
-          <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
-          <p>Voter Average {movie.vote_average}</p>
-          <p className='movie-overview'>{movie.overview}</p>
-          <div className="btn-wrapper">
-            {watchListOptions}
-            <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
-            {buttonClicked ?
-              <div className="review-section">
-                <form onSubmit={onSubmit}>
+            {/* <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} /> */}
+            {movie.title === "Pronoun" ? (
+                    <img
+                      id="backdrop"
+                      src={pronounbd}
+                      width={590}
+                      height={300}
+                      alt="pronounbd"
+                    />
+                  ) : (
+                    <img
+                      id="backdrop"
+                      src={"https://image.tmdb.org/t/p/original" + movie.backdrop}
+                      width={590}
+                      height={300}
+                      alt="pronounbd"
+                    />
+                  )}
 
-                  <div id="ratings-body">
-                    <div id="rating-box">
-                      <header id="rating-box-header">How was the movie?</header>
-                      <div></div>
-                      <input id="user-input" type="number" name="stars" value={formData.stars} onChange={onChange} />
-                      <div className="stars">
-                        <input id="user-input" type="text" name="review" value={formData.review} onChange={onChange} />
-                        <input id="user-input" type="submit" value="Confirm" />
-                        <button className='movie-detail-btns' id="rating-button" onClick={handleClick}>Cancel Review</button>
-                      </div>
+
+            <h1 id='movie-card-h1'>{movie.title}</h1>
+            <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3>
+
+
+            {movie.title === "Pronoun" ? (
+                    <img
+                      id="poster"
+                      src={pronoun}
+                      width={250}
+                      height={300}
+                      alt="pronoun"
+                    />
+                  ) : (
+                    <img
+                      id="poster"
+                      src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                      width={250}
+                      height={300}
+                      alt="poster"
+                    />
+                  )}
+    
+
+            {/* <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" /> */}
+            <p>Voter Average {movie.vote_average}</p>
+            <p className='movie-overview'>{movie.overview}</p>
+            <div className="btn-wrapper">
+                {watchListOptions}
+                <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
+                {buttonClicked ?
+                    <div className="review-section">
+                        <form onSubmit={onSubmit}>
+
+                            <div id="ratings-body">
+                                <div id="rating-box">
+                                    <header id="rating-box-header">How was the movie?</header>
+                                    <div></div>
+                                    <input id="user-input" type="number" name="stars" value={formData.stars} onChange={onChange} />
+                                    <div className="stars">
+                                        <input id="user-input" type="text" name="review" value={formData.review} onChange={onChange} />
+                                        <input id="user-input" type="submit" value="Confirm" />
+                                        <button className='movie-detail-btns' id="rating-button" onClick={handleClick}>Cancel Review</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                  </div>
-                </form>
-              </div>
-              : null}
-            <button className='movie-detail-btns' onClick={getReviews}>Reviews</button>
-            {seeReviews ?
-              <div className="review-section">
-                <ul>
-                  {movieReviews}
-                </ul>
-              </div>
-              : null}
-          </div>
+                    : null}
+                <button className='movie-detail-btns' onClick={getReviews}>Reviews</button>
+                {seeReviews ?
+                    <div className="review-section">
+                        <ul>
+                            {movieReviews}
+                        </ul>
+                    </div>
+                    : null}
+            </div>
         </div>
-      );
-      
+    );
+
 };
 
 export default MovieDetail;

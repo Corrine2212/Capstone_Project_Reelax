@@ -16,6 +16,10 @@
   }
 } */
 
+.nav-profile-img{
+  margin-right: 8px;
+  border-radius: 100%;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
