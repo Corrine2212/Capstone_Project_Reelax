@@ -860,3 +860,16 @@ element.style {
   gap: 10px;
   margin-bottom: 50px;
 }
+
+.genre-dropdown {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding: 5px 20px;
+
+}
+
+#small-car-poster {
+  border-radius: 10px;
+  height: 300px;
+  margin: none;
+}

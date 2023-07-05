@@ -15,19 +15,19 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [selectedGenre, setSelectedGenre] = useState('')
 
-    const NextArrow = ({onClick}) => {
+    const NextArrow = ({ onClick }) => {
         return (
-          <div className="arrow next" onClick={onClick}>
-            <FaArrowRight />
-          </div>
+            <div className="arrow next" onClick={onClick}>
+                <FaArrowRight />
+            </div>
         )
     }
-    
-    const PrevArrow = ({onClick}) => {
+
+    const PrevArrow = ({ onClick }) => {
         return (
             <div className="arrow prev" onClick={onClick}>
-            <FaArrowLeft />
-          </div>
+                <FaArrowLeft />
+            </div>
         )
     }
 
@@ -51,11 +51,11 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
 
 
     const settings = {
-        dots: false,
+        dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 6, // Adjust the number of visible slides on larger screens
-        slidesToScroll: 3, // Adjust the number of slides to scroll on larger screens
+        slidesToScroll: 6, // Adjust the number of slides to scroll on larger screens
         autoplay: false,
         autoplaySpeed: 1000,
         responsive: [
@@ -65,14 +65,14 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                     slidesToShow: 3, // Adjust the number of visible slides on medium-sized screens
                     slidesToScroll: 2, // Adjust the number of slides to scroll on medium-sized screens
                 },
-            }
-            //   {
-            //     breakpoint: 768, 
-            //     settings: {
-            //       slidesToShow: 2,
-            //       slidesToScroll: 1, 
-            //     },
-            //   },
+            },
+              {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                },
+            },
         ],
     };
 
@@ -117,28 +117,28 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                     {genreOptions}
                 </select>
                 <div className="sml-carousel-container">
-                      
+
                     <Slider {...settings}>
                         {moviesByGenre.map((movie, index) => {
                             return <div key={index}>
                                 <Link to={"/movies/" + movie.id}>
                                     {movie.title === "Pronoun" ? (
                                         <img id="small-car-poster"
-                                        
-                                        src={pronoun}
-                                        width={250}
-                                        height={300}
-                                        alt="pronoun"
+
+                                            src={pronoun}
+                                            // width={250}
+                                            // height={300}
+                                            alt="pronoun"
                                         />
-                                        ) : (
-                                            <img id="small-car-poster"
-                                            
+                                    ) : (
+                                        <img id="small-car-poster"
+
                                             src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                                            width={250}
-                                            height={300}
+                                            // width={250}
+                                            // height={300}
                                             alt="poster"
-                                            />
-                                            )}
+                                        />
+                                    )}
                                     {/* <img id="small-car-poster"
                                         alt={movie.title}
                                         className="img"
@@ -148,7 +148,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                             </div>
                         })}
                     </Slider>
-                       
+
                 </div>
             </div>
         </>
