@@ -5,7 +5,6 @@ import com.example.Capstone.Reelax.Movie;
 import com.example.Capstone.Reelax.Repositories.MovieRepository;
 import com.example.Capstone.Reelax.Repositories.ReviewRepository;
 import com.example.Capstone.Reelax.Repositories.UserRepository;
-import com.example.Capstone.Reelax.Review;
 import com.example.Capstone.Reelax.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -38,15 +37,11 @@ public class DataLoader implements ApplicationRunner {
         User user2 = new User("UserTwo","4321@gmail.com","4321");
         userRepository.save(user2);
 
-        Movie movie1= new Movie("Underwhelming 2 hours of your life", "depressing", "poster2", 2, "last week", 0.0, "kjhkjhk");
+        Movie movie1= new Movie("Underwhelming 2 hours of your life", "Pronoun is a gripping crime documentary that delves into the dark and twisted mind of Scott, a tormented individual who embarks on a chilling murder spree fueled by the mispronunciation of personal pronouns. This thought-provoking film explores the complex themes of identity, language, and the consequences of society's failure to understand and respect individuality.", "poster2", 60, "last week", 0.0, "kjhkjhk");
         movieRepository.save(movie1);
-        Movie movie2= new Movie("Jaws", "excellent", "poster2", 2, "last week", 0.0, "kjhkjhk");
-        movieRepository.save(movie2);
 
-        Review review1 = new Review(user1.getId(), movie1.getId());
-        reviewRepository.save(review1);
-        Review review2 = new Review(user2.getId(), movie2.getId());
-        reviewRepository.save(review2);
+
+
 
 
 

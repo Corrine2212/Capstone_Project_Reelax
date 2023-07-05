@@ -14,6 +14,7 @@ public class Movie {
     @Column(name="title", nullable = true)
     private String title;
 
+    @Lob
     @Column(name="overview", nullable = true)
     private String overview;
 
