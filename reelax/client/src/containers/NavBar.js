@@ -72,7 +72,7 @@ const NavBar = ({ handleLogout, setSearchInput, user }) => {
           <StyledLogoImg src="../../2.png" alt="" />
           {/* <StyledFoodpandaIcon /> */}
         </StyledLink>
-        <StyledLink to="/search/genre">Search by Genre</StyledLink>
+        {/* <StyledLink to="/search/genre">Search by Genre</StyledLink> */}
 
         <StyledLink to="/profile">
           {/* <StyledProfileImg>  */}

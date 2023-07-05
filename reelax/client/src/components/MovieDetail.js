@@ -121,7 +121,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
     let watchListOptions = null
     for (let review of reviews) {
         if (review.user_id !== user.id && review.movie_id !== movie.id) {
-            watchListOptions = <button onClick={onButtonClicked}>Add To Watch List</button>
+            watchListOptions = <button className='movie-detail-btns' onClick={onButtonClicked}>Add To Watch List</button>
         }
         else if (review.user_id === user.id && review.movie_id === movie.id) {
             watchListOptions = <button className='movie-detail-b' onClick={deleteReview}>Remove From Watch List</button>
@@ -146,6 +146,14 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
 
     return (
         <div className='movie-card-container'>
+
+            <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} />
+            <h1 id='movie-card-h1'>{movie.title}</h1>
+            <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
+
+            <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
+            {/* <p className='movie-avg' >Voter Average {movie.vote_average}</p> */}
+
             {/* <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} /> */}
             {movie.title === "Pronoun" ? (
                     <img
@@ -191,6 +199,7 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
 
             {/* <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" /> */}
             <p>Voter Average {movie.vote_average}</p>
+
             <p className='movie-overview'>{movie.overview}</p>
             <div className="btn-wrapper">
                 {watchListOptions}
