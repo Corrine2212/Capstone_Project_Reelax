@@ -37,7 +37,7 @@ public class DataLoader implements ApplicationRunner {
         User user2 = new User("UserTwo","4321@gmail.com","4321");
         userRepository.save(user2);
 
-        Movie movie1= new Movie("Underwhelming 2 hours of your life", "Pronoun is a gripping crime documentary that delves into the dark and twisted mind of Scott, a tormented individual who embarks on a chilling murder spree fueled by the mispronunciation of personal pronouns. This thought-provoking film explores the complex themes of identity, language, and the consequences of society's failure to understand and respect individuality.", "poster2", 60, "last week", 0.0, "kjhkjhk");
+        Movie movie1= new Movie("Pronoun", "Pronoun is a gripping crime documentary that delves into the dark and twisted mind of Scott, a tormented individual who embarks on a chilling murder spree fueled by the mispronunciation of personal pronouns. This thought-provoking film explores the complex themes of identity, language, and the consequences of society's failure to understand and respect individuality.", "poster2", 60, "last week", 0.0, "kjhkjhk");
         movieRepository.save(movie1);
 
 
