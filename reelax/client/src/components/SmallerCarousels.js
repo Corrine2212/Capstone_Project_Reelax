@@ -40,7 +40,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 4, // Adjust the number of visible slides on larger screens
+        slidesToShow: 6, // Adjust the number of visible slides on larger screens
         slidesToScroll: 3, // Adjust the number of slides to scroll on larger screens
         autoplay: false,
         autoplaySpeed: 1000,
@@ -98,7 +98,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
         <>
             <div className="content">
                 <h1 className="sml-carousel-header">Movies By Genre</h1>
-                <select defaultValue='' onChange={setChange}>
+                <select className="genre-dropdown" defaultValue='' onChange={setChange}>
                     <option value="" selected>Choose a Genre</option>
                     {genreOptions}
                 </select>

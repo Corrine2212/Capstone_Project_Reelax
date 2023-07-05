@@ -11,9 +11,10 @@ import About from '../src/components/About';
 function App() {
 
   const Footer = styled.footer`
-    /* position: fixed;
+    position: absolute;
     left: 0;
-    bottom: 15px; */
+    bottom: 0px;
+    height: 1.5rem;
     width: 100%;
     /* text-align: center; */
     margin-top: 60px;
@@ -33,8 +34,8 @@ function App() {
   // const [posts, setPosts] = useState([])
   const getUsers = () => {
     return fetch(baseURL)
-    .then(res => res.json())
-    .then(data => setUsers(data))
+      .then(res => res.json())
+      .then(data => setUsers(data))
   }
 
   const setUser = (newUser) => {
@@ -45,31 +46,31 @@ function App() {
     console.log('search user', searchUser);
     const workingUser = users.find(
       (user) => // find the user that matches the username or email and password
-      (user.username === searchUser.username || user.email === searchUser.username) &&
-      user.password === searchUser.password
-      );
-      if (workingUser) {
-        setLoggedInUser(workingUser)
-        // localStorage.setItem(‘loggedInUser’, JSON.stringify(workingUser)); // stores the logged in user in local storage
-      } else { // if user doesn’t exist
-        console.log('Authentication failed');
-      }
-    };
-    const onUserLogout = () => {
+        (user.username === searchUser.username || user.email === searchUser.username) &&
+        user.password === searchUser.password
+    );
+    if (workingUser) {
+      setLoggedInUser(workingUser)
+      // localStorage.setItem(‘loggedInUser’, JSON.stringify(workingUser)); // stores the logged in user in local storage
+    } else { // if user doesn’t exist
+      console.log('Authentication failed');
+    }
+  };
+  const onUserLogout = () => {
     setLoggedInUser(null);
     localStorage.removeItem('user') // removes the logged in user from local storage
   }
 
-  
+
   useEffect(() => {
     getUsers()
     const loggedUser = localStorage.getItem("user")
-    if (loggedUser){
+    if (loggedUser) {
       const foundUser = JSON.parse(loggedUser)
       setUser(foundUser)
     }
   }, [])
-  
+
   const removeUser = (id) => {
     const usersToKeep = users.filter(user => user._id !== id)
     setUsers(usersToKeep);
@@ -136,16 +137,18 @@ function App() {
         <Routes>
           <Route path="/about" element={<About />} />
         </Routes>
-        
+
         <div>
           <Footer>
-            A.H.E.C. ltd <Link to="/about">About</Link>
+            <Link to="/about">
+              A.H.E.C. ltd
+            </Link>
           </Footer>
         </div>
       </div>
     </Router>
 
   );
-  
+
 }
 export default App;

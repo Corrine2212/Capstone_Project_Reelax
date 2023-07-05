@@ -25,7 +25,7 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
     border-radius: 10px;
 
     &:hover {
-      background-color: #555;
+      background-color: #B01214;
     }
   `;
 
