@@ -47,6 +47,7 @@ npm install react-router-dom
 npm i react-icons react-slick slick-carousel
 npm install @fortawesome/fontawesome-free
 npm install @styled-icons/open-iconic
+npm install rc-slider     
 ``````
 
 Run the frontend: `npm start`
