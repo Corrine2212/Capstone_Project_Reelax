@@ -287,7 +287,7 @@ const MainContainer = ({ users, user, removeUser, onUserLogout, addToWatchList }
       <div>
         {/* <Router> */}
 
-        <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
+        <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} user={user} />
         
         <Routes>
           {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user}
