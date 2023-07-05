@@ -7,6 +7,7 @@ import '../App.css'
 import MovieDetail from "./MovieDetail";
 import styled from 'styled-components';
 import pronoun from "../pronoun.jpg"
+import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 
 
 
@@ -14,15 +15,27 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
     const [filteredMovies, setFilteredMovies] = useState([])
     const [selectedGenre, setSelectedGenre] = useState('')
 
-
+    const NextArrow = ({onClick}) => {
+        return (
+          <div className="arrow next" onClick={onClick}>
+            <FaArrowRight />
+          </div>
+        )
+    }
+    
+    const PrevArrow = ({onClick}) => {
+        return (
+            <div className="arrow prev" onClick={onClick}>
+            <FaArrowLeft />
+          </div>
+        )
+    }
 
     const StyledLink = styled(Link)`
     color: #333;
     text-decoration: none;
     font-weight: bold;
     `;
-
-
 
     // useEffect(() => {
 
@@ -104,36 +117,38 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
                     {genreOptions}
                 </select>
                 <div className="sml-carousel-container">
+                      
                     <Slider {...settings}>
                         {moviesByGenre.map((movie, index) => {
                             return <div key={index}>
                                 <Link to={"/movies/" + movie.id}>
                                     {movie.title === "Pronoun" ? (
                                         <img id="small-car-poster"
-                                            
-                                            src={pronoun}
-                                            width={250}
-                                            height={300}
-                                            alt="pronoun"
+                                        
+                                        src={pronoun}
+                                        width={250}
+                                        height={300}
+                                        alt="pronoun"
                                         />
-                                    ) : (
-                                        <img id="small-car-poster"
+                                        ) : (
+                                            <img id="small-car-poster"
                                             
                                             src={"https://image.tmdb.org/t/p/original" + movie.poster}
                                             width={250}
                                             height={300}
                                             alt="poster"
-                                        />
-                                    )}
+                                            />
+                                            )}
                                     {/* <img id="small-car-poster"
                                         alt={movie.title}
                                         className="img"
-                                        src={"https://image.tmdb.org/t/p/original" + movie.poster} /> */}
+                                    src={"https://image.tmdb.org/t/p/original" + movie.poster} /> */}
 
                                 </Link>
                             </div>
                         })}
                     </Slider>
+                       
                 </div>
             </div>
         </>

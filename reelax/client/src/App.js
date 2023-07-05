@@ -11,10 +11,10 @@ import About from '../src/components/About';
 function App() {
 
   const Footer = styled.footer`
-    position: absolute;
+    /* position: absolute; */
     left: 0;
     bottom: 0px;
-    height: 1.5rem;
+    height: 0.5rem;
     width: 100%;
     /* text-align: center; */
     margin-top: 60px;
@@ -26,6 +26,7 @@ function App() {
     font-size: 2vh;
     text-shadow: rgba(0, 0, 0, 0.35) 0px 15px 25px, rgba(0, 0, 0, 0.35) 0px 5px 10px;
     font-family: reem kufi, sans-serif;
+    
   `
   const baseURL = "/api/users"
   const [users, setUsers] = useState([])
@@ -163,16 +164,25 @@ function App() {
         />
         <Routes>
           <Route path="/about" element={<About />} />
-        </Routes>
 
-        <div>
-          <Footer>
+
+        </Routes>
+        
+        <Footer>
+          <bk></bk>
+          <bk></bk>
+          <bk></bk>
+          <bk></bk>
+          <bk></bk>
             <Link to="/about">
-              A.H.E.C. ltd
+              A.H.E.C. ltd  
             </Link>
           </Footer>
-        </div>
+          
+      <div>
       </div>
+         
+        </div>
     </Router>
 
   );

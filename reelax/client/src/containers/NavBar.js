@@ -2,11 +2,13 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import { Foodpanda } from '@styled-icons/simple-icons';
 import { LogOut } from '@styled-icons/boxicons-regular/LogOut';
+import pronoun from '../pronoun.jpg';
 import callum from "../callum.jpg";
-import placeholder from "../placeholder.jpg";
 import defaultprofile from "../defaultprofile.jpeg";
+import placeholder from "../placeholder.jpg";
+import screamingcat from "../screamingcat.jpeg"
 
-const NavBar = ({ handleLogout, setSearchInput, user }) => {
+const NavBar = ({ handleLogout, setSearchInput, user}) => {
 
   const StyledLogoImg = styled.img`
     height: 100px;
@@ -75,31 +77,30 @@ const NavBar = ({ handleLogout, setSearchInput, user }) => {
         {/* <StyledLink to="/search/genre">Search by Genre</StyledLink> */}
 
         <StyledLink to="/profile">
-          {/* <StyledProfileImg>  */}
-          {user.username === "Callum" ? (
-            <img className='nav-profile-img'
-              src={callum}
-              width={60}
-              height={60}
-              alt="profile-picture"
+          <StyledProfileImg src={screamingcat} alt ='Profile pic'>
+          {/* {user.username === "Callum" ? (
+            <img className='profilePic'
+                src={callum}
+                width={60}
+                height={60}
+                alt="profile-picture"
             />
-          ) : user.username === "Scott" ? (
-            <img className='nav-profile-img'
-              src={placeholder}
-              width={60}
-              height={60}
-              alt="profile-picture"
+        ) : user.username === "Scott" ? (
+            <img className='profilePic'
+                src={placeholder}
+                width={60}
+                height={60}
+                alt="profile-picture"
             />
-          ) : (
-            <img className='nav-profile-img'
-              src={defaultprofile}
-              width={60}
-              height={60}
-              alt="profile-picture"
+        ) : (
+            <img className='profilePic'
+                src={defaultprofile}
+                width={60}
+                height={60}
+                alt="profile-picture"
             />
-          )}
-
-          {/* </StyledProfileImg> */}
+        )} */}
+          </StyledProfileImg>
         </StyledLink>
 
 

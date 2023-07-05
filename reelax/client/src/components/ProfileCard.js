@@ -157,9 +157,9 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                         alt="profile-picture"
                     />
                 )}
+            </div>
                 <h1 className='header'>Hello</h1>
                 <h1>{user.username}</h1>
-            </div>
             <div>
                 <button onClick={handleClick1} className='watchlist-btn'>Watch List</button>
             </div>

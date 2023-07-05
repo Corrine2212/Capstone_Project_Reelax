@@ -120,12 +120,13 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
 
     let watchListOptions = null
     for (let review of reviews) {
-        if (review.user_id !== user.id && review.movie_id !== movie.id) {
-            watchListOptions = <button className='movie-detail-btns' onClick={onButtonClicked}>Add To Watch List</button>
-        }
-        else if (review.user_id === user.id && review.movie_id === movie.id) {
+        if (review.user_id === user.id && review.movie_id === movie.id) {
             watchListOptions = <button className='movie-detail-b' onClick={deleteReview}>Remove From Watch List</button>
         }
+        else  {
+            watchListOptions = <button className='movie-detail-btns' onClick={onButtonClicked}>Add To Watch List</button>
+        }
+        
     }
 
     const movieReviewsList = []
@@ -150,56 +151,56 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
             <h1 id='movie-card-h1'>{movie.title}</h1>
             <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
 
-          
-            {movie.title === "Pronoun" ? (
+            <div>
+                {movie.title === "Pronoun" ? (
                     <img
-                      id="backdrop"
-                      src={pronounbd}
-                      width={590}
-                      height={300}
-                      alt="pronounbd"
+                        id="backdrop"
+                        src={pronounbd}
+                        width={590}
+                        height={300}
+                        alt="pronounbd"
                     />
-                  ) : (
+                ) : (
                     <img
-                      id="backdrop"
-                      src={"https://image.tmdb.org/t/p/original" + movie.backdrop}
-                      width={590}
-                      height={300}
-                      alt="pronounbd"
+                        id="backdrop"
+                        src={"https://image.tmdb.org/t/p/original" + movie.backdrop}
+                        width={590}
+                        height={300}
+                        alt="pronounbd"
                     />
-                  )}
+                )}
 
+            </div>
+            {/* <h1 id='movie-card-h1'>{movie.title}</h1> */}
+            {/* <h3 id="movie-card-h3-genre">{movieGenre} | {movie.release}</h3> */}
 
-            <h1 id='movie-card-h1'>{movie.title}</h1>
-            <h3 id="movie-card-h3">{movieGenre} | {movie.release}</h3>
-
-
-            {movie.title === "Pronoun" ? (
+            <div>
+                {movie.title === "Pronoun" ? (
                     <img
-                      id="poster"
-                      src={pronoun}
-                      width={250}
-                      height={300}
-                      alt="pronoun"
+                        id="poster"
+                        src={pronoun}
+                        width={250}
+                        height={300}
+                        alt="pronoun"
                     />
-                  ) : (
+                ) : (
                     <img
-                      id="poster"
-                      src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                      width={250}
-                      height={300}
-                      alt="poster"
+                        id="poster"
+                        src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                        width={250}
+                        height={300}
+                        alt="poster"
                     />
-                  )}
-    
+                )}
+            </div>
 
-            {/* <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" /> */}
-            <p>Voter Average {movie.vote_average}</p>
+            <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
+            {/* <p>Voter Average {movie.vote_average}</p> */}
 
             <p className='movie-overview'>{movie.overview}</p>
             <div className="btn-wrapper">
-                {watchListOptions}
                 <button className='movie-detail-btns' onClick={handleClick}>Create Review</button>
+                {watchListOptions}
                 {buttonClicked ?
                     <div className="review-section">
                         <form onSubmit={onSubmit}>

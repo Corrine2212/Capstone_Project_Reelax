@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import Slider from 'react-slick';
 import MovieDetail from '../components/MovieDetail';
 import styled from 'styled-components';
+import pronoun from "../pronoun.jpg"
 
 const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToWatchList, reviews,
   genreIds, movies, yearRange, getMovieByTitle, setSearchInput, ratingRange , foundMovies }) => {
@@ -82,12 +83,23 @@ const LiveSearch = ({ currentSlide, findMovieById, settings, user, users, addToW
                 <Link to={url + movie.id} element={<MovieDetailWrapper />}>
                   <div className="movie-card">
                     <div className="poster">
-                      <img
-                        id="main-carousel-poster"
-                        alt={movie.title}
-                        src={"https://image.tmdb.org/t/p/original" + movie.poster}
-
-                      />
+                       {movie.title === "Pronoun" ? (
+                                        <img id="main-carousel-poster"
+                                            
+                                            src={pronoun}
+                                            width={250}
+                                            height={300}
+                                            alt="pronoun"
+                                        />
+                                    ) : (
+                                        <img id="main-carousel-poster"
+                                            
+                                            src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                                            width={250}
+                                            height={300}
+                                            alt="poster"
+                                        />
+                                    )}
                     </div>
                     <div className="details">
                       <h2>{movie.title}</h2>

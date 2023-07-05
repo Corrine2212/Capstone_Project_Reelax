@@ -65,6 +65,7 @@ body {
 .content {
   text-align: center;
   margin-bottom: 30px;
+  
 }
 
 .sml-carousel-header {
@@ -109,12 +110,12 @@ body {
   text-align: center;
 }
 
-.description {
+/* .description {
   margin: 20px auto;
-  width: 00%;
+  width: 80%;
   font-size: 25px;
   margin: 20px auto;
-}
+} */
 
 /* Smaller Carousel css end */
 
@@ -320,9 +321,9 @@ html {
 }
 
 body {
-  min-height: 100vh;
-  background: rgb(63,59,85);
-background: linear-gradient(0deg, rgba(63,59,85,1) 0%, rgba(68,64,97,1) 32%, rgba(76,71,114,1) 61%, rgba(95,90,157,1) 100%);
+  /* min-height: 100vh; */
+  background: rgb(63,59,85); 
+  background: linear-gradient(0deg, rgba(63,59,85,1) 0%, rgba(68,64,97,1) 32%, rgba(76,71,114,1) 61%, rgba(95,90,157,1) 100%);
 }
 
 .input-field {
@@ -332,13 +333,6 @@ background: linear-gradient(0deg, rgba(63,59,85,1) 0%, rgba(68,64,97,1) 32%, rgb
 
 .create-acc-field {
   background-color: white;
-}
-
-.genre-dropdown {
-  margin-top: 20px;
-  margin-bottom: 40px;
-  padding: 5px 20px;
-
 }
 
 input {
@@ -416,7 +410,7 @@ input {
   max-width: 600px;
   max-height: 2000px;
   margin: 0 auto;
-  padding: 20px 0px 20px 0px;
+  padding: 20px;
   background-color: #f5f5f5;
   border-radius: 10px 10px 0px 0px;
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
@@ -424,7 +418,6 @@ input {
   flex-direction: column;
   justify-content: center;
   position: relative;
-  overflow: hidden;
 }
 
 
@@ -433,29 +426,20 @@ input {
   margin-bottom: 10px;
   color: purple;
   position: absolute;
-  left: 200px;
-  top: 320px;
-  margin-left: 0;
+  right: 15px;
+  top: 340px
 }
-
+#backdrop{
+  filter: blur(1px);
+}
 
 #movie-card-h3 {
   font-size: 18px;
-  font-weight: normal;
   color: purple;
   margin-bottom: 20px;
   position: absolute;
-  left: 200px;  
-  top: 345px;
-  
-}
-
-.movie-avg {
-  color: black;
-  position: absolute;
-  top: 420px;
-  left: 200px;  
-
+  right: 18px;
+  top: 380px;
 }
 
 #poster {
@@ -463,23 +447,19 @@ input {
   margin-bottom: 10px;
   position: absolute;
   top: 50%; /* Adjust this value to position the poster vertically */
-  left: 17%; /* Adjust this value to position the poster horizontally */
+  left: 15%; /* Adjust this value to position the poster horizontally */
   transform: translate(-50%, -50%);
   height: 200px;
   width: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   border-radius: 10px;
 }
 
 #backdrop{
-  width: 100%;
-  transform: translateY(-7%);
-  /* height: 300px; */
-  filter: blur(1px);
-  border-radius: 10px 10px 0px 0px;
-}                   
-
+  width: 590px;
+  height: 300px;
+  ;
+}
 /* 
 
 
@@ -515,6 +495,7 @@ input {
   flex-direction: column;
   justify-content: center;
   width: 600px;
+  top:500px
 }
 
 .movie-card-container p {
@@ -546,20 +527,18 @@ input {
 .ratingsContainer{
   max-height: 200;
   max-width: 400;
-  background-color: rgb(76, 59, 92);;
+  background-color: rgb(63,59,85);
+  
 }
 .movie-overview{
   color: purple;
   margin-top: 100px;
   text-align: left;
-  padding: 0px 35px 0px 35px;
 
 }
 .btn-wrapper{
   display: flex;
   justify-content: center;
-  padding: 0px 30px 0px 30px;
-
   
 }
 
@@ -588,6 +567,7 @@ input {
 } */
 
 #rating-box {
+  background: rgb(63,59,85);
   background-color: #fff;
   padding: 20px;
   border-radius: 5px;
@@ -830,8 +810,4 @@ element.style {
   display: flex;
   justify-content: center;
   gap: 10px;
-}
-
-.year-filter-title {
-  margin-top:  40px;
 }
