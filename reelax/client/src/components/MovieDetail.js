@@ -171,9 +171,6 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
                 )}
 
             </div>
-            {/* <h1 id='movie-card-h1'>{movie.title}</h1> */}
-            {/* <h3 id="movie-card-h3-genre">{movieGenre} | {movie.release}</h3> */}
-
             <div>
                 {movie.title === "Pronoun" ? (
                     <img
