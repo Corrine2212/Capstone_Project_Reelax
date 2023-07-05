@@ -37,7 +37,7 @@ const SmallerCarousels = ({ movies, genres, findMovieById }) => {
 
 
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 4, // Adjust the number of visible slides on larger screens

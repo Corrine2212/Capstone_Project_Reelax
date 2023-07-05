@@ -84,53 +84,53 @@ const Login = ({ onSubmitLogin, addUser, createUser }) => {
             <div className="login-form-wrapper">
                 <img className='login-logo' src='../../1.png'></img>
                 <h1 className='sign-in-title'>Sign in </h1>
-                <div class="container">
-                <form className="login-form" onSubmit={handleSubmit}>
-                    <label>Username/Email</label>
-                    <div className="input-field">
-                        <input type="text" id="user" placeholder="" value={username} onChange={handleUsernameChange} required />
-                    </div>
+                <div class="login-form-container">
+                    <form className="login-form" onSubmit={handleSubmit}>
+                        <label>Username/Email</label>
+                        <div className="input-field">
+                            <input type="text" id="user" placeholder="" value={username} onChange={handleUsernameChange} required />
+                        </div>
 
-                    <label>Password</label>
-                    <div className="input-field">
-                        <input type="password" id="password" placeholder="" value={password} onChange={handlePasswordChange} required />
-                    </div>
+                        <label>Password</label>
+                        <div className="input-field">
+                            <input type="password" id="password" placeholder="" value={password} onChange={handlePasswordChange} required />
+                        </div>
+                        <div>
+                            <p onClick={() => setShow(true)} className="forgot-pw">Forget Password?</p>
+                            {show && (
+                                <div className="modal-overlay">
+                                    <div className="modal-content">
+                                        <ForgotPassword onClose={() => setShow(false)} show={show} />
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                        <input className="login-submit-btn" type="submit" value="Sign In" />
+                    </form>
                     <div>
-                        <p onClick={() => setShow(true)} className="forgot-pw">Forget Password?</p>
-                        {show && (
+                        <p onClick={handleCreate} className="create-acc-btn">Create an account</p>
+                        {buttonClicked && (
                             <div className="modal-overlay">
                                 <div className="modal-content">
-                                    <ForgotPassword onClose={() => setShow(false)} show={show} />
+                                    <h1 className='create-usr-title'>Create an account</h1>
+                                    <form onSubmit={onSubmit}>
+                                        <div className="input-field ">
+                                            <input className='create-acc-field' type="text" id="user" name='username' placeholder="Username" value={formData.username} onChange={onChange} required />
+                                        </div>
+                                        <div className="input-field">
+                                            <input className='create-acc-field'  type="text" id="email" name='email' placeholder="Email" value={formData.email} onChange={onChange} required />
+                                        </div>
+                                        <input className='create-acc-field'  type="password" id="password" name='password' placeholder="Password" value={formData.password} onChange={onChange} required />
+                                        <input className="acc-submit-btn" type="submit" value="Create Account" />
+                                    <button className="acc-cancel-btn" onClick={handleCreate}>Cancel</button>
+                                    </form>
                                 </div>
                             </div>
                         )}
                     </div>
-                    <input className="login-submit-btn" type="submit" value="Sign In" />
-                </form> 
-                <div>
-                    <p onClick={handleCreate} className="create-acc-btn">Create an account</p>
-                    {buttonClicked && (
-                        <div className="modal-overlay">
-                            <div className="modal-content">
-                                <h1>Create Form</h1>
-                                <form onSubmit={onSubmit}>
-                                    <div className="input-field">
-                                        <input type="text" id="user" name='username' placeholder="  USERNAME  " value={formData.username} onChange={onChange} required />
-                                    </div>
-                                    <div className="input-field">
-                                        <input type="text" id="email" name='email' placeholder="  EMAIL  " value={formData.email} onChange={onChange} required />
-                                    </div>
-                                    <input type="password" id="password" name='password' placeholder="  PASSWORD  " value={formData.password} onChange={onChange} required />
-                                    <input className="acc-submit-btn" type="submit" value="Create Account" />
-                                </form>
-                                <button className="acc-cancel-btn" onClick={handleCreate}>Cancel</button>
-                            </div>
-                        </div>
-                    )}
                 </div>
             </div>
         </div>
-    </div>
     )
 }
 export default Login;

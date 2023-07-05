@@ -18,7 +18,7 @@ import YearSlider from '../components/YearSlider';
 import RatingSlider from '../components/RatingSlider';
 
 
-const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList }) => {
+const MainContainer = ({ users, user, removeUser, onUserLogout, addToWatchList }) => {
 
 
   const [movies, setMovies] = useState([])
@@ -29,8 +29,10 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   const [foundMovies, setFoundMovies] = useState("");
   const [currentSlide, setCurrentSlide] = useState(0);
   const [yearRange, setYearRange] = useState({ min: 2000, max: 2023 });
-  const [ratingRange, setRatingRange] = useState({min:0.0, max:10.0});
+  const [ratingRange, setRatingRange] = useState({ min: 0.0, max: 10.0 });
 
+
+ 
 
   useEffect(() => {
     getMovies();
@@ -38,10 +40,10 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
   }, [])
 
   useEffect(() => {
-    if(movies.length > 0){
+    if (movies.length > 0) {
       runFilters();
     }
-   }, [movies, yearRange, ratingRange])
+  }, [movies, yearRange, ratingRange])
 
 
 
@@ -219,7 +221,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     const { id } = useParams()
     let foundMovie = findMovieById(id)
     console.log("foundMovie", foundMovie);
-    return <MovieDetail user={user} users={users} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds}/>
+    return <MovieDetail user={user} users={users} movie={foundMovie} addToWatchList={addToWatchList} reviews={reviews} genres={genreIds} />
   }
 
   let filteredMovies = []
@@ -228,7 +230,7 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
   const runFilters = () => {
 
-    
+
     filteredMovies = movies.filter(movie => {
       const movieYear = new Date(movie.release).getFullYear();
       return movieYear >= yearRange.min && movieYear <= yearRange.max && movie.vote_average >= ratingRange.min && movie.vote_average <= ratingRange.max;
@@ -236,13 +238,13 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
 
 
     console.log("filtered movies", filteredMovies);
-    
+
     movieDisplay = filteredMovies.map((movie, index) => {
       return <li key={index}><MovieCard movie={movie} findMovieById={findMovieById} /></li>
     })
-    
-    
-  
+
+
+
     // movieSearchDisplay = movies.map((movie, index) => {
     //   return <MovieSearchCard key={index} movie={movie} />
     // })
@@ -263,6 +265,15 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
     // nextArrow: <NextArrow />,
     // prevArrow: <PrevArrow />,
     beforeChange: (current, next) => { setCurrentSlide(next) },
+    responsive: [
+      {
+        breakpoint: 768, // Adjust the breakpoint value as needed
+        settings: {
+          slidesToShow: 1,
+          centerMode: true,
+        },
+      },
+    ],
   };
 
   const url = '/movies/';
@@ -276,17 +287,20 @@ const MainContainer = ({users, user, removeUser, onUserLogout, addToWatchList })
       <div>
         {/* <Router> */}
 
-          <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
-          <Routes>
-            {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user} 
-            settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds} 
+        <NavBar handleLogout={handleLogout} setSearchInput={setSearchInput} />
+        
+        <Routes>
+          {movies.length > 0 ? <Route path="/" element={[<LiveSearch currentSlide={currentSlide} findMovieById={findMovieById} user={user}
+            settings={settings} users={users} addToWatchList={addToWatchList} reviews={reviews} genreIds={genreIds}
             getMovieByTitle={getMovieByTitle} movies={movies} searchInput={searchInput} yearRange={yearRange} ratingRange={ratingRange}
-            setSearchInput={setSearchInput} />,            
+            setSearchInput={setSearchInput} />,
             , <YearSlider yearRange={yearRange} setYearRange={setYearRange} />, <RatingSlider ratingRange={ratingRange} setRatingRange={setRatingRange} />]} /> : null}
-            <Route path="search/genre" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />}/>
-            <Route path="/movies/:id" element={<MovieDetailWrapper />} />
-            <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
-          </Routes>
+          <Route path="search/genre" element={<SmallerCarousels movies={movies} genres={genreIds} findMovieById={findMovieById} />} />
+          <Route path="/movies/:id" element={<MovieDetailWrapper />} />
+          <Route path="/profile" element={<ProfileCard key={user.id} user={user} handleDelete={handleDelete} reviews={reviews} movies={movies} MovieDetailWrapper={MovieDetailWrapper} getReviews={getReviews} />} />
+        </Routes>
+
+
 
         {/* </Router> */}
       </div>
