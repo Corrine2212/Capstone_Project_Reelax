@@ -7,6 +7,7 @@ import { LogOut } from '@styled-icons/boxicons-regular/LogOut';
 import styled from 'styled-components';
 import pronoun from '../pronoun.jpg';
 import callum from "../callum.jpg";
+import defaultprofile from "../defaultprofile.jpeg";
 
 
 
@@ -134,21 +135,28 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                 <img className='background-img' src={pedro} alt="pedro" />
             </div>
             <div className='profile-info'>
-                {user.username === "Callum" ? (
-                    <img className='profilePic'
-                      src={callum}
-                      width={250}
-                      height={300}
-                      alt="profile-picture"
-                    />
-                  ) : (
-                    <img className='profilePic'
-                      src={placeholder}
-                      width={250}
-                      height={300}
-                      alt="profile-picture"
-                    />
-                  )}
+            {user.username === "Callum" ? (
+            <img className='profilePic'
+              src={callum}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          ) : user.username === "Scott" ? (
+            <img className='profilePic'
+              src={placeholder}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          ) : (
+            <img className='profilePic'
+              src={defaultprofile}
+              width={60}
+              height={60}
+              alt="profile-picture"
+            />
+          )}
                 <h1 className='header'>Hello</h1>
                 <h1>{user.username}</h1>
             </div>
@@ -163,7 +171,8 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
             <Link to="/"><button className='deleteButton' onClick={onDelete}>Delete Account</button></Link>
 
             <StyledProfileLink to="/" onClick={handleLogout}>
-                <StyledLogoutIcon>Log Out</StyledLogoutIcon>  
+                <StyledLogoutIcon>Log Out</StyledLogoutIcon>
+                
             </StyledProfileLink>
         </div>
 
