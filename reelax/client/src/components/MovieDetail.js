@@ -147,14 +147,10 @@ const MovieDetail = ({ users, movie, addToWatchList, user, reviews, genres }) =>
     return (
         <div className='movie-card-container'>
 
-            <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} />
             <h1 id='movie-card-h1'>{movie.title}</h1>
             <h3 id="movie-card-h3">{movieGenre} | {movie.release} | {movie.vote_average} rating</h3>
 
-            <img id="poster" src={"https://image.tmdb.org/t/p/original" + movie.poster} width={250} height={300} alt="poster" />
-            {/* <p className='movie-avg' >Voter Average {movie.vote_average}</p> */}
-
-            {/* <img id="backdrop" src={"https://image.tmdb.org/t/p/original" + movie.backdrop} width={590} height={300} /> */}
+          
             {movie.title === "Pronoun" ? (
                     <img
                       id="backdrop"
