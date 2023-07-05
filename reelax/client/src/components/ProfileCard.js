@@ -90,31 +90,31 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
         movieList = watchListMovies.map((movie, index) => {
             console.log("map called", index);
             return (
-              <li className='listItem' key={index}>
-                <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}>
-                  {movie.title === "Pronoun" ? (
-                    <img
-                      id="Watch-list-poster"
-                      src={pronoun}
-                      width={250}
-                      height={300}
-                      alt="pronouns"
-                    />
-                  ) : (
-                    <img
-                      id="Watch-list-poster"
-                      src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                      width={250}
-                      height={300}
-                      alt="poster"
-                    />
-                  )}
-                  {/* <b><p>{movie.title}</p></b> */}
-                </Link>
-              </li>
+                <li className='listItem' key={index}>
+                    <Link to={"/movies/" + movie.id} element={MovieDetailWrapper}>
+                        {movie.title === "Pronoun" ? (
+                            <img
+                                id="Watch-list-poster"
+                                src={pronoun}
+                                width={250}
+                                height={300}
+                                alt="pronouns"
+                            />
+                        ) : (
+                            <img
+                                id="Watch-list-poster"
+                                src={"https://image.tmdb.org/t/p/original" + movie.poster}
+                                width={250}
+                                height={300}
+                                alt="poster"
+                            />
+                        )}
+                        {/* <b><p>{movie.title}</p></b> */}
+                    </Link>
+                </li>
             );
-          });
-          
+        });
+
     }
 
     let userMovies = movies
@@ -135,28 +135,28 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                 <img className='background-img' src={pedro} alt="pedro" />
             </div>
             <div className='profile-info'>
-            {user.username === "Callum" ? (
-            <img className='profilePic'
-              src={callum}
-              width={60}
-              height={60}
-              alt="profile-picture"
-            />
-          ) : user.username === "Scott" ? (
-            <img className='profilePic'
-              src={placeholder}
-              width={60}
-              height={60}
-              alt="profile-picture"
-            />
-          ) : (
-            <img className='profilePic'
-              src={defaultprofile}
-              width={60}
-              height={60}
-              alt="profile-picture"
-            />
-          )}
+                {user.username === "Callum" ? (
+                    <img className='profilePic'
+                        src={callum}
+                        width={60}
+                        height={60}
+                        alt="profile-picture"
+                    />
+                ) : user.username === "Scott" ? (
+                    <img className='profilePic'
+                        src={placeholder}
+                        width={60}
+                        height={60}
+                        alt="profile-picture"
+                    />
+                ) : (
+                    <img className='profilePic'
+                        src={defaultprofile}
+                        width={60}
+                        height={60}
+                        alt="profile-picture"
+                    />
+                )}
                 <h1 className='header'>Hello</h1>
                 <h1>{user.username}</h1>
             </div>
@@ -172,7 +172,7 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
 
             <StyledProfileLink to="/" onClick={handleLogout}>
                 <StyledLogoutIcon>Log Out</StyledLogoutIcon>
-                
+
             </StyledProfileLink>
         </div>
 
