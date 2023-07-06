@@ -8,8 +8,8 @@ const About = () => {
   return (
     <div>
       <div className="about-section">
-        <h1>About</h1>
-        <h4>Version 1.0</h4>
+        <h1>Meet the Team!</h1>
+        {/* <h4>Version 1.0</h4> */}
         <h3>Developed & designed by:</h3>
       </div>
 

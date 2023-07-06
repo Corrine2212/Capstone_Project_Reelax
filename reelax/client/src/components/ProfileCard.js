@@ -10,24 +10,27 @@ import callum from "../callum.jpg";
 import defaultprofile from "../defaultprofile.jpeg";
 
 
-
-
-
-
 const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, movies, MovieDetailWrapper, getReviews }) => {
 
     const StyledLogoutIcon = styled(LogOut)`
     width: 24px;
     height: 24px;
     margin-right: 8px;
+    color: red;
+    text-align: center;
+    &:hover {
+  text-decoration: underline;
+}
   `;
 
     const StyledProfileLink = styled(Link)`
-    color: #333;
+    color: red;
     text-decoration: none;
     font-weight: bold;
     display: flex;
+    justify-content: center;
     align-items: center;
+    margin-left: 10px;
 
 &:hover {
   text-decoration: underline;
@@ -96,16 +99,16 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                             <img
                                 id="Watch-list-poster"
                                 src={pronoun}
-                                width={250}
-                                height={300}
+                                // width={250}
+                                // height={300}
                                 alt="pronouns"
                             />
                         ) : (
                             <img
                                 id="Watch-list-poster"
                                 src={"https://image.tmdb.org/t/p/original" + movie.poster}
-                                width={250}
-                                height={300}
+                                // width={250}
+                                // height={300}
                                 alt="poster"
                             />
                         )}
@@ -130,7 +133,7 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
 
 
     return (
-        <div className='container'>
+        <div className='profile-container'>
             <div id='imgContainer'>
                 <img className='background-img' src={pedro} alt="pedro" />
             </div>
@@ -158,22 +161,23 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                     />
                 )}
             </div>
-                <h1 className='header'>Hello</h1>
-                <h1>{user.username}</h1>
-            <div>
+            <h1 className='header'>Hello {user.username}</h1>
+     
+
                 <button onClick={handleClick1} className='watchlist-btn'>Watch List</button>
-            </div>
+        
 
             {buttonClicked ? <ul className='movieGrid'>
                 {movieList}
             </ul> : null}
 
-            <Link to="/"><button className='deleteButton' onClick={onDelete}>Delete Account</button></Link>
-
-            <StyledProfileLink to="/" onClick={handleLogout}>
-                <StyledLogoutIcon>Log Out</StyledLogoutIcon>
-
-            </StyledProfileLink>
+            <div className="delete-logout-wrapper">
+                <Link to="/"><button className='deleteButton' onClick={onDelete}>Delete Account</button></Link>
+                <StyledProfileLink to="/" onClick={handleLogout}>
+                    <StyledLogoutIcon>Log Out</StyledLogoutIcon>
+                    <p>Logout</p>
+                </StyledProfileLink>
+            </div>
         </div>
 
 

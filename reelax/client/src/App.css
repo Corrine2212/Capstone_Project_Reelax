@@ -873,3 +873,15 @@ element.style {
   height: 300px;
   margin: none;
 }
+
+.watchlist-btn {
+  display: block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: red;
+  
+}
