@@ -21,7 +21,7 @@
   }
   
   .profilePic {
-    border: 2px solid white;
+    border: 7px solid #49456C;
     border-radius: 50%;
     height: 230px;
     width: auto;
@@ -31,12 +31,12 @@
   .header {
     margin-top: 200px;
     color: white;
-    font-size: 28px;
+    /* font-size: 28px; */
     text-align: center;
   }
   
   .watchlist-btn {
-    margin: 20px auto;
+    margin: 40px auto;
     display: block;
     padding: 10px 20px;
     background-color: #e5171a;
@@ -92,4 +92,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  span {
+    font-size: 12px;
   }

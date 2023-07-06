@@ -366,6 +366,18 @@ input {
   align-items: center;
   justify-content: center;
   height: 100vh;
+  animation: fadeIn 1s ease-in-out;
+
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .login-form-wrapper {
@@ -570,6 +582,12 @@ input {
   margin: 7.5px;
   height: 47.5px;
   width: 300px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.movie-detail-btns:hover {
+  background-color: #B01214;
 
 }
 

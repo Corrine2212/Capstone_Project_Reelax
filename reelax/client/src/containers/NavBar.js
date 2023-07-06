@@ -64,6 +64,8 @@ const NavBar = ({ handleLogout, setSearchInput, user}) => {
     height: 60px;
     margin-right: 8px;
     border-radius: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    
   `;
 
   return (

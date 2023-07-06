@@ -161,7 +161,9 @@ const ProfileCard = ({ user, handleLogout, getMovies, handleDelete, reviews, mov
                     />
                 )}
             </div>
-            <h1 className='header'>Hello {user.username}</h1>
+            <h1 className='header'>Hello {user.username} </h1>
+            <h4>@ScottH <span>pro/noun</span></h4>
+            <p>Films and such</p>
      
 
                 <button onClick={handleClick1} className='watchlist-btn'>Watch List</button>
